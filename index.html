@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>MineWeb docs</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,10 +101,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="php">php</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -113,7 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='http://mineweb.org'>Retour sur mineweb.org</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -122,11 +119,36 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<h4 id="c-39-est-quoi-mineweb">C&#39;est quoi MineWeb ?</h4>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>MineWeb est un <strong>CMS</strong>. Un CMS est un système de gestion de contenu. Plus précisément il vous permet de vous créer rapidement et facilement un site complètement personnalisable. MineWeb est la version 2 de l&#39;ancien CMS <strong>LapisCraft</strong> de Eywek. Celui-ci n&#39;étant plus stable et mal développé (cf. raisons <a href="http://eywek.fr/lc-explications.pdf">ici</a>).</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>MineWeb est développé sous un framework PHP nommé <strong>CakePHP</strong> permettant un développement plus <strong>rapide</strong>, <strong>sécurisé</strong> et <strong>optimisé</strong>. Le projet a été lancé il y a maintenant plus d&rsquo;<strong>1 an</strong> en compagnie de <strong>Mac&rsquo;</strong> permettant de convenir entièrement à <strong>vos besoins</strong>.</p>
+
+<h4 id="pr-requis">Pré-requis</h4>
+
+<aside class="notice">**Hébergeur compatible :** L'hébergeur [Revolta-Hosting](http://revolta-hosting.fr) est 100% **compatible** avec notre CMS !</aside>
+
+<p>Pour installer le CMS MineWeb votre hébergeur <strong>doit</strong> avoir :</p>
+
+<ul>
+<li>  Version PHP supérieure ou égale à 5.4</li>
+<li>  PDO activé</li>
+<li>  cURL activé</li>
+<li>  Réécriture d&#39;URL</li>
+<li>  .htaccess activés</li>
+<li>  La librairie GD2</li>
+<li>  La possibilité d&#39;ouvrir un zip</li>
+<li>  La possibilité d&#39;ouvrir un site à distance</li>
+<li>  ionCube Loader version 5.4</li>
+<li>  OpenSSL</li>
+</ul>
+
+<p>Pour plus de simplicité vous pouvez télécharger le <strong>fichier de compatibilité</strong> <a href="http://mineweb.org/files/compatibilite.zip">ici</a>. Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.</p>
+
+<h4 id="h-bergeur-mineweb">Hébergeur MineWeb</h4>
+
+<p>Vous ne souhaitez pas vous embêter à chercher un <strong>hébergeur compatible</strong> ? Alors n&#39;attendez plus et utilisez <strong>notre hébergeur</strong> qui vous installera <strong>automatiquement</strong> et <strong>sans aucun effort</strong> le CMS. Tous les prix et informations sont disponibles <a title="pages', 'action' =&gt; 'download" href="?=%20$this-%3EHtml-%3Eurl(array(%27controller%27%20=">ici</a>) ?&gt;).</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -353,10 +375,7 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="php">php</a>
           </div>
       </div>
     </div>
