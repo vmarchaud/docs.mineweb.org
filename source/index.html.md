@@ -16,15 +16,15 @@ search: true
 
 # Introduction
 
-#### C'est quoi MineWeb ?
+## C'est quoi MineWeb ?
 
 MineWeb est un **CMS**. Un CMS est un système de gestion de contenu. Plus précisément il vous permet de vous créer rapidement et facilement un site complètement personnalisable. MineWeb est la version 2 de l'ancien CMS **LapisCraft** de Eywek. Celui-ci n'étant plus stable et mal développé (cf. raisons [ici](http://eywek.fr/lc-explications.pdf)).
 
 MineWeb est développé sous un framework PHP nommé **CakePHP** permettant un développement plus **rapide**, **sécurisé** et **optimisé**. Le projet a été lancé il y a maintenant plus d'**1 an** en compagnie de **Mac'** permettant de convenir entièrement à **vos besoins**.
 
-#### Pré-requis
+## Pré-requis
 
-<aside class="notice">**Hébergeur compatible :** L'hébergeur [Revolta-Hosting](http://revolta-hosting.fr) est 100% **compatible** avec notre CMS !</aside>
+<aside class="notice"><strong>Hébergeur compatible :</strong> L'hébergeur <a href= "http://revolta-hosting.fr">Revolta-Hosting est 100% <strong>compatible</strong> avec notre CMS !</aside>
 
 Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 
@@ -41,7 +41,7 @@ Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 
 Pour plus de simplicité vous pouvez télécharger le **fichier de compatibilité** [ici](http://mineweb.org/files/compatibilite.zip). Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.
 
-#### Hébergeur MineWeb
+## Hébergeur MineWeb
 
 Vous ne souhaitez pas vous embêter à chercher un **hébergeur compatible** ? Alors n'attendez plus et utilisez **notre hébergeur** qui vous installera **automatiquement** et **sans aucun effort** le CMS. Tous les prix et informations sont disponibles [ici](<?= $this->Html->url(array('controller' => 'pages', 'action' => 'download')) ?>).
 
