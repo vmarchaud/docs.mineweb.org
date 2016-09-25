@@ -1,14 +1,11 @@
 ---
-title: API Reference
+title: MineWeb docs
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
+  - php
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='http://mineweb.org'>Retour sur mineweb.org</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -19,11 +16,34 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+#### C'est quoi MineWeb ?
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+MineWeb est un **CMS**. Un CMS est un système de gestion de contenu. Plus précisément il vous permet de vous créer rapidement et facilement un site complètement personnalisable. MineWeb est la version 2 de l'ancien CMS **LapisCraft** de Eywek. Celui-ci n'étant plus stable et mal développé (cf. raisons [ici](http://eywek.fr/lc-explications.pdf)).
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+MineWeb est développé sous un framework PHP nommé **CakePHP** permettant un développement plus **rapide**, **sécurisé** et **optimisé**. Le projet a été lancé il y a maintenant plus d'**1 an** en compagnie de **Mac'** permettant de convenir entièrement à **vos besoins**.
+
+#### Pré-requis
+
+<aside class="notice">**Hébergeur compatible :** L'hébergeur [Revolta-Hosting](http://revolta-hosting.fr) est 100% **compatible** avec notre CMS !</aside>
+
+Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
+
+*   Version PHP supérieure ou égale à 5.4
+*   PDO activé
+*   cURL activé
+*   Réécriture d'URL
+*   .htaccess activés
+*   La librairie GD2
+*   La possibilité d'ouvrir un zip
+*   La possibilité d'ouvrir un site à distance
+*   ionCube Loader version 5.4
+*   OpenSSL
+
+Pour plus de simplicité vous pouvez télécharger le **fichier de compatibilité** [ici](http://mineweb.org/files/compatibilite.zip). Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.
+
+#### Hébergeur MineWeb
+
+Vous ne souhaitez pas vous embêter à chercher un **hébergeur compatible** ? Alors n'attendez plus et utilisez **notre hébergeur** qui vous installera **automatiquement** et **sans aucun effort** le CMS. Tous les prix et informations sont disponibles [ici](<?= $this->Html->url(array('controller' => 'pages', 'action' => 'download')) ?>).
 
 # Authentication
 
@@ -186,4 +206,3 @@ This endpoint retrieves a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
-
