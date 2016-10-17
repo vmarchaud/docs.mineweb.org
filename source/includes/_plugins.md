@@ -325,4 +325,131 @@ Ces listes __ne sont pas rafraîchi__ après la suppression et/ou installation d
 
 ## Utiliser les events
 
+Dans la config.json du plugin, passez __useEvents__ à __true__.
+
+Pour créer un __écouteur__ _(Listener)_, il vous faut créer un fichier dans le dossier _/Event/_ de votre plugin. Le fichier doit être appelé de la manière suivante _NAMEEventListener.php_.
+
+>Et son contenu doit être comme ceci :
+
+```php
+<?php
+  App::uses('CakeEventListener', 'Event');
+
+  class NAMEEventListener implements CakeEventListener {
+
+    private $controller;
+
+    public function __construct($request, $response, $controller) {
+      $this->controller = $controller;
+    }
+
+    public function implementedEvents() {
+        return array();
+    }
+  }
+```
+
+>Pour écouter un event il vous faut l'ajouter dans l'array retourné par la fonction __implementedEvents()__ avec votre fonction comme valeur. Et il vous faut ensuite créer votre fonction.
+>Exemple :
+
+```php
+<?php
+  App::uses('CakeEventListener', 'Event');
+
+  class NAMEEventListener implements CakeEventListener {
+
+    public function implementedEvents() {
+        return array(
+          'requestPage' => 'mafonction'
+        );
+    }
+
+    public function mafonction($event) {
+
+    }
+  }
+```
+
+### Liste des events disponibles
+
+### Global
+
+- __requestPage__ : Appelé lors de chaque requête sans données particulières.
+- __onPostRequest__ : Appelé lors d’une requête POST sans données particulières.
+- __onLoadPage__ : Appelé lors de chaque chargement de page dans le beforeRender sans données particulières.
+- __onLoadAdminPanel__ : Appelé lors de chaque chargement de page admin (prefix) dans le beforeRender sans données particulières.
+
+### Fonction particulière
+
+- __beforeEncodePassword__ : Appelé avant chaque encodage de mot de passe avec le pseudo et le mot de passe en données.
+- __beforeSendMail__ : Appelé avant chaque envoie d’email avec le message et la configuration en données.
+- __beforeUploadImage__ : Appelé avant chaque upload d’image avec la requête et le nom de l’image voulu en données.
+
+### News
+
+- __beforeAddComment__ : Appelé avant que le commentaire ne soit enregistré avec le contenu, l’ID de la news et les infos de l’utilisateur en données.
+- __beforeLike__ : Appelé avant que le like ne soit enregistré avec l’ID de la news et les infos de l’utilisateur en données.
+- __beforeDislike__ : Appelé avant que le like ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.
+- __beforeDeleteComment__ : Appelé avant que le commentaire ne soit supprimé avec l’ID du commentaire, l’ID de la news et les infos de l’utilisateur en données.
+- __beforeDeleteNews__ : Appelé avant que la news ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.
+- __beforeAddNews__ : Appelé avant que la news ne soit enregistré avec le contenu de la requête et les infos de l’utilisateur en données.
+- __beforeEditNews__ : Appelé avant que la news ne soit enregistré avec le contenu de la requête, l’ID de la news et les infos de l’utilisateur en données.
+
+### User
+
+- __onLogin__ : Appelé à chaque login avec l’utilisateur et register (boolean) comme données.
+- __beforeRegister__ : Appelé avant l’enregistrement d’un utilisateur (après la validation) avec les données de la requête comme données.
+- __beforeConfirmAccount__ : Appelé avant la confirmation en base de donnée de l’utilisateur avec l’ID de l’utilisateur et manual si confirmé par un administrateur comme données.
+- __beforeSendResetPassMail__ : Appelé avant l’envoie de l’email permettant la rénitialisation du mot de passe avec l’ID de l’utilisateur et clé de reset comme données
+- __beforeResetPassword__ : Appelé avant l’enregistrement du nouveau mot de passe avec l’ID de l’utilisateur et le nouveau mot de passe comme données.
+onLogout : Appelé pendant la déconnexion avec la session “user” comme données.
+- __beforeUpdatePassword__ : Appelé avant l’enregistrement du nouveau mot de passe avec l’utilisateur et le nouveau mot de passe encodé comme données.
+- __beforeUpdateEmail__ : Appelé avant l’enregistrement du nouvel email avec l’utilisateur et le nouveau email comme données.
+- __beforeSendPoints__ : Appelé avant l’enregistrement de la transaction avec l’utilisateur, le nouveau solde de l’utilisateur, à qui sont transféré les points et combien comme données.
+- __beforeEditUser__ : Appelé avant que les données ne soit enregistrées avec l’ID de l’utilisateur, les données et password_updated comme données.
+- __beforeDeleteUser__ : Avant que l’utilisateur ne soit supprimé avec ses informations comme données.
+
+### [PLUGIN] Shop
+
+- __onBuy__ : Appelé à chaque achat avant tout enregistrement avec les articles, le prix total et les infos de l’user comme données.
+- __beforeEditItem__ : Appelé avant que les modifications de l’article ne soit enregistrés avec les infos et l’utilisateur en données.
+- __beforeAddItem__ : Appelé avant que les modifications de l’article ne soit enregistrés avec les infos et l’utilisateur en données.
+- __beforeAddCategory__ : Appelé avant l’enregistrement de la catégorie avec le nom de la catégorie et les infos de l’utilisateur en données.
+- __beforeDeleteItem__ : Appelé avant la suppression de l’article avec l’ID de l’article et les infos de l’utilisateur en données.
+- __beforeDeleteCategory__ : Appelé avant la suppression de la catégorie avec l’ID de la catégorie et les infos de l’utilisateur en données.
+- __beforeDeletePaypalOffer__ : Appelé avant la suppression de l’offre PayPal avec l’ID de l’offre et les infos de l’utilisateur en données.
+- __beforeDeleteStarpassOffer__ : Appelé avant la suppression de l’offre StarPass avec l’ID de l’offre et les infos de l’utilisateur en données.
+- __beforeAddVoucher__ : Appelé avant l’enregistrement du code promo avec les données et les infos de l’utilisateur en données.
+- __beforeDeleteVoucher__ : Appelé avant la suppression du code promo avec l’ID du code et les infos de l’utilisateur en données.
+
+### [PLUGIN] Vote
+
+- __onVote__ : Appelé pendant le vote (après l’enregistrement du vote, avant les récompenses) avec le choix du moyen de récompense (now/later), le site, la config et les infos de l’utilisateur en données.
+- __beforeReceiveRewards__ : Appelé avant le gain des récompenses avec les récompenses, le type et les infos de l’utilisateur en données.
+- __beforeGetWaitingReward__ : Appelé avant que la récompense en attente ne soit donné avec l’utilisateur en données.
+- __beforeResetVotes__ : Appelé avant que tous les votes ne soit rénitialisés avec les infos de l’utilisateur en données.
+
 ## Utiliser les modules
+
+### C'est quoi ?
+
+Les modules permettent aux développeurs de plugins d'ajouter du __code HTML__ ou du __code PHP__ ... facilement depuis des __pages du CMS__.
+
+### Liste des modules
+
+Les modules disponibles sont :
+
+- user_profile _Profil d'utilisateur_
+- user_profile_messages _Profil d'utilisateur (haut de page)_
+- admin_user_edit _Modification admin d'un utilisateur (bas de page)_
+- admin_user_edit_form _Modification admin d'un utilisateur (dans le formulaire)_
+- home _Accueil_
+- news _Page affichant une news_
+
+### Comment les utiliser ?
+
+Pour utiliser un module dans votre __plugin__, il vous suffit de créer un dossier _/Modules/_ dans le dossier de votre plugin. Il vous faut ensuite __créer__ un fichier nommé par le __nom du module__ que vous voulez utilisez et avec l'extension __.ctp__.
+
+Par exemple pour utiliser le module _user_profile_ il vous faut créer le fichier _/Modules/user_profile.ctp_.
+
+Dans ce fichier, vous pouvez ajouter le code que vous souhaitez, __HTML__, __PHP__ ou encore __JS__ ou __CSS__.
