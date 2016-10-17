@@ -683,7 +683,148 @@ Ces listes <strong>ne sont pas rafraîchi</strong> après la suppression et/ou i
 
 <h2 id="utiliser-les-events">Utiliser les events</h2>
 
+<p>Dans la config.json du plugin, passez <strong>useEvents</strong> à <strong>true</strong>.</p>
+
+<p>Pour créer un <strong>écouteur</strong> <em>(Listener)</em>, il vous faut créer un fichier dans le dossier <em>/Event/</em> de votre plugin. Le fichier doit être appelé de la manière suivante <em>NAMEEventListener.php</em>.</p>
+
+<blockquote>
+<p>Et son contenu doit être comme ceci :</p>
+</blockquote>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+  <span class="nx">App</span><span class="o">::</span><span class="na">uses</span><span class="p">(</span><span class="s1">'CakeEventListener'</span><span class="p">,</span> <span class="s1">'Event'</span><span class="p">);</span>
+
+  <span class="k">class</span> <span class="nc">NAMEEventListener</span> <span class="k">implements</span> <span class="nx">CakeEventListener</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$controller</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$controller</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span> <span class="o">=</span> <span class="nv">$controller</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">implementedEvents</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>Pour écouter un event il vous faut l&#39;ajouter dans l&#39;array retourné par la fonction <strong>implementedEvents()</strong> avec votre fonction comme valeur. Et il vous faut ensuite créer votre fonction.
+Exemple :</p>
+</blockquote>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+  <span class="nx">App</span><span class="o">::</span><span class="na">uses</span><span class="p">(</span><span class="s1">'CakeEventListener'</span><span class="p">,</span> <span class="s1">'Event'</span><span class="p">);</span>
+
+  <span class="k">class</span> <span class="nc">NAMEEventListener</span> <span class="k">implements</span> <span class="nx">CakeEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">implementedEvents</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+          <span class="s1">'requestPage'</span> <span class="o">=&gt;</span> <span class="s1">'mafonction'</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mafonction</span><span class="p">(</span><span class="nv">$event</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+
+<h3 id="liste-des-events-disponibles">Liste des events disponibles</h3>
+
+<h3 id="global">Global</h3>
+
+<ul>
+<li><strong>requestPage</strong> : Appelé lors de chaque requête sans données particulières.</li>
+<li><strong>onPostRequest</strong> : Appelé lors d’une requête POST sans données particulières.</li>
+<li><strong>onLoadPage</strong> : Appelé lors de chaque chargement de page dans le beforeRender sans données particulières.</li>
+<li><strong>onLoadAdminPanel</strong> : Appelé lors de chaque chargement de page admin (prefix) dans le beforeRender sans données particulières.</li>
+</ul>
+
+<h3 id="fonction-particuli-re">Fonction particulière</h3>
+
+<ul>
+<li><strong>beforeEncodePassword</strong> : Appelé avant chaque encodage de mot de passe avec le pseudo et le mot de passe en données.</li>
+<li><strong>beforeSendMail</strong> : Appelé avant chaque envoie d’email avec le message et la configuration en données.</li>
+<li><strong>beforeUploadImage</strong> : Appelé avant chaque upload d’image avec la requête et le nom de l’image voulu en données.</li>
+</ul>
+
+<h3 id="news">News</h3>
+
+<ul>
+<li><strong>beforeAddComment</strong> : Appelé avant que le commentaire ne soit enregistré avec le contenu, l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeLike</strong> : Appelé avant que le like ne soit enregistré avec l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDislike</strong> : Appelé avant que le like ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteComment</strong> : Appelé avant que le commentaire ne soit supprimé avec l’ID du commentaire, l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteNews</strong> : Appelé avant que la news ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeAddNews</strong> : Appelé avant que la news ne soit enregistré avec le contenu de la requête et les infos de l’utilisateur en données.</li>
+<li><strong>beforeEditNews</strong> : Appelé avant que la news ne soit enregistré avec le contenu de la requête, l’ID de la news et les infos de l’utilisateur en données.</li>
+</ul>
+
+<h3 id="user">User</h3>
+
+<ul>
+<li><strong>onLogin</strong> : Appelé à chaque login avec l’utilisateur et register (boolean) comme données.</li>
+<li><strong>beforeRegister</strong> : Appelé avant l’enregistrement d’un utilisateur (après la validation) avec les données de la requête comme données.</li>
+<li><strong>beforeConfirmAccount</strong> : Appelé avant la confirmation en base de donnée de l’utilisateur avec l’ID de l’utilisateur et manual si confirmé par un administrateur comme données.</li>
+<li><strong>beforeSendResetPassMail</strong> : Appelé avant l’envoie de l’email permettant la rénitialisation du mot de passe avec l’ID de l’utilisateur et clé de reset comme données</li>
+<li><strong>beforeResetPassword</strong> : Appelé avant l’enregistrement du nouveau mot de passe avec l’ID de l’utilisateur et le nouveau mot de passe comme données.
+onLogout : Appelé pendant la déconnexion avec la session “user” comme données.</li>
+<li><strong>beforeUpdatePassword</strong> : Appelé avant l’enregistrement du nouveau mot de passe avec l’utilisateur et le nouveau mot de passe encodé comme données.</li>
+<li><strong>beforeUpdateEmail</strong> : Appelé avant l’enregistrement du nouvel email avec l’utilisateur et le nouveau email comme données.</li>
+<li><strong>beforeSendPoints</strong> : Appelé avant l’enregistrement de la transaction avec l’utilisateur, le nouveau solde de l’utilisateur, à qui sont transféré les points et combien comme données.</li>
+<li><strong>beforeEditUser</strong> : Appelé avant que les données ne soit enregistrées avec l’ID de l’utilisateur, les données et password_updated comme données.</li>
+<li><strong>beforeDeleteUser</strong> : Avant que l’utilisateur ne soit supprimé avec ses informations comme données.</li>
+</ul>
+
+<h3 id="plugin-shop">[PLUGIN] Shop</h3>
+
+<ul>
+<li><strong>onBuy</strong> : Appelé à chaque achat avant tout enregistrement avec les articles, le prix total et les infos de l’user comme données.</li>
+<li><strong>beforeEditItem</strong> : Appelé avant que les modifications de l’article ne soit enregistrés avec les infos et l’utilisateur en données.</li>
+<li><strong>beforeAddItem</strong> : Appelé avant que les modifications de l’article ne soit enregistrés avec les infos et l’utilisateur en données.</li>
+<li><strong>beforeAddCategory</strong> : Appelé avant l’enregistrement de la catégorie avec le nom de la catégorie et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteItem</strong> : Appelé avant la suppression de l’article avec l’ID de l’article et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteCategory</strong> : Appelé avant la suppression de la catégorie avec l’ID de la catégorie et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeletePaypalOffer</strong> : Appelé avant la suppression de l’offre PayPal avec l’ID de l’offre et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteStarpassOffer</strong> : Appelé avant la suppression de l’offre StarPass avec l’ID de l’offre et les infos de l’utilisateur en données.</li>
+<li><strong>beforeAddVoucher</strong> : Appelé avant l’enregistrement du code promo avec les données et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteVoucher</strong> : Appelé avant la suppression du code promo avec l’ID du code et les infos de l’utilisateur en données.</li>
+</ul>
+
+<h3 id="plugin-vote">[PLUGIN] Vote</h3>
+
+<ul>
+<li><strong>onVote</strong> : Appelé pendant le vote (après l’enregistrement du vote, avant les récompenses) avec le choix du moyen de récompense (now/later), le site, la config et les infos de l’utilisateur en données.</li>
+<li><strong>beforeReceiveRewards</strong> : Appelé avant le gain des récompenses avec les récompenses, le type et les infos de l’utilisateur en données.</li>
+<li><strong>beforeGetWaitingReward</strong> : Appelé avant que la récompense en attente ne soit donné avec l’utilisateur en données.</li>
+<li><strong>beforeResetVotes</strong> : Appelé avant que tous les votes ne soit rénitialisés avec les infos de l’utilisateur en données.</li>
+</ul>
+
 <h2 id="utiliser-les-modules">Utiliser les modules</h2>
+
+<h3 id="c-39-est-quoi">C&#39;est quoi ?</h3>
+
+<p>Les modules permettent aux développeurs de plugins d&#39;ajouter du <strong>code HTML</strong> ou du <strong>code PHP</strong> &hellip; facilement depuis des <strong>pages du CMS</strong>.</p>
+
+<h3 id="liste-des-modules">Liste des modules</h3>
+
+<p>Les modules disponibles sont :</p>
+
+<ul>
+<li>user_profile <em>Profil d&#39;utilisateur</em></li>
+<li>user_profile_messages <em>Profil d&#39;utilisateur (haut de page)</em></li>
+<li>admin_user_edit <em>Modification admin d&#39;un utilisateur (bas de page)</em></li>
+<li>admin_user_edit_form <em>Modification admin d&#39;un utilisateur (dans le formulaire)</em></li>
+<li>home <em>Accueil</em></li>
+<li>news <em>Page affichant une news</em></li>
+</ul>
+
+<h3 id="comment-les-utiliser">Comment les utiliser ?</h3>
+
+<p>Pour utiliser un module dans votre <strong>plugin</strong>, il vous suffit de créer un dossier <em>/Modules/</em> dans le dossier de votre plugin. Il vous faut ensuite <strong>créer</strong> un fichier nommé par le <strong>nom du module</strong> que vous voulez utilisez et avec l&#39;extension <strong>.ctp</strong>.</p>
+
+<p>Par exemple pour utiliser le module <em>user_profile</em> il vous faut créer le fichier <em>/Modules/user_profile.ctp</em>.</p>
+
+<p>Dans ce fichier, vous pouvez ajouter le code que vous souhaitez, <strong>HTML</strong>, <strong>PHP</strong> ou encore <strong>JS</strong> ou <strong>CSS</strong>.</p>
 
       </div>
       <div class="dark-box">
