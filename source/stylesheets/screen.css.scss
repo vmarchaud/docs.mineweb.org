@@ -23,7 +23,7 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
-@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+@import 'https://fonts.googleapis.com/css?family=Roboto';
 
 html, body {
   color: $main-text;
@@ -36,7 +36,12 @@ html, body {
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
 
-  font-family: 'Open Sans';
+  font-family: 'Roboto', sans-serif;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -51,12 +56,12 @@ html, body {
 }
 
 @mixin embossed-bg {
-  background:
+  /*background:
     linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 8px),
     linear-gradient(to top, rgba(#000, 0.2), rgba(#000, 0) 8px),
     linear-gradient(to bottom, rgba($nav-embossed-border-top, 1), rgba($nav-embossed-border-top, 0) 1.5px),
     linear-gradient(to top, rgba($nav-embossed-border-bottom, 1), rgba($nav-embossed-border-bottom, 0) 1.5px),
-    $nav-subitem-bg;
+    $nav-subitem-bg;*/
 }
 
 .tocify-wrapper {
@@ -71,7 +76,7 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -180,6 +185,7 @@ html, body {
     box-shadow: 0px 1px 0px $nav-active-shadow;
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    font-weight: bold;
   }
 
   // Subheaders are the submenus that slide open
@@ -190,7 +196,7 @@ html, body {
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
-      font-size: 12px;
+      font-size: 15px;
     }
 
     // for embossed look:
@@ -628,4 +634,119 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+/*
+  BOOTSTRAP ALERTS
+*/
+
+aside.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px
+}
+
+aside.alert h4 {
+  margin-top: 0;
+  color: inherit
+}
+
+aside.alert .alert-link {
+  font-weight: 700
+}
+
+aside.alert>p, .alert>ul {
+  margin-bottom: 0
+}
+
+aside.alert>p+p {
+  margin-top: 5px
+}
+
+aside.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6
+}
+
+aside.alert-success hr {
+  border-top-color: #c9e2b3
+}
+
+aside.alert-success .alert-link {
+  color: #2b542c
+}
+
+aside.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1
+}
+
+aside.alert-info hr {
+  border-top-color: #a6e1ec
+}
+
+aside.alert-info .alert-link {
+  color: #245269
+}
+
+aside.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc
+}
+
+aside.alert-warning hr {
+  border-top-color: #f7e1b5
+}
+
+aside.alert-warning .alert-link {
+  color: #66512c
+}
+
+aside.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1
+}
+
+aside.alert-danger hr {
+  border-top-color: #e4b9c0
+}
+
+aside.alert-danger .alert-link {
+  color: #843534
+}
+
+aside.alert h2 {
+  margin-top: 0px;
+  font-weight: 300;
+}
+
+aside.alert {
+  border-radius: 2px;
+  font-family: 'Open Sans';
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+aside.alert.alert-warning {
+  border-left: #db9b15 3px solid;
+  color: #db9b15;
+}
+
+aside.alert.alert-info {
+  border-left: #31708f 3px solid;
+}
+
+aside.alert.alert-success {
+  border-left: #3c763d 3px solid;
+}
+
+aside.alert.alert-danger {
+  border-left: #a94442 3px solid;
 }

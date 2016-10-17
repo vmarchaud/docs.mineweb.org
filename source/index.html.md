@@ -24,7 +24,7 @@ MineWeb est développé sous un framework PHP nommé **CakePHP** permettant un d
 
 ## Pré-requis
 
-<aside class="notice"><strong>Hébergeur compatible :</strong> L'hébergeur <a href= "http://revolta-hosting.fr">Revolta-Hosting</a> est 100% <strong>compatible</strong> avec notre CMS !</aside>
+<aside class="alert alert-info"><strong>Hébergeur compatible :</strong> L'hébergeur <a href= "http://revolta-hosting.fr">Revolta-Hosting</a> est 100% <strong>compatible</strong> avec notre CMS !</aside>
 
 Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 
