@@ -324,6 +324,367 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft 
 <li>Avez-vous essayé de rédemarrer le serveur après avoir fait les commandes ?</li>
 </ul>
 
+          <h1 id="cr-er-un-plugin">Créer un plugin</h1>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Un plugin (aussi appelé <em>extension</em>), c’est des <strong>fichiers</strong> qui sont ajoutés à votre CMS pour y ajouter plusieurs <strong>fonctionnalités</strong> ou modifier certains <strong>comportement</strong> par défaut. Différents plugins “officiels” sont <em>déjà disponibles</em> sur le site de MineWeb. D’autres peuvent être <em>développés par la communauté</em> et c’est le but de ce tutoriel.</p>
+
+<h2 id="cr-ation">Création</h2>
+
+<h3 id="cr-ation-des-fichiers-dossiers">Création des fichiers/dossiers</h3>
+
+<p>Dans un premier temps, il va falloir créer le dossier de votre plugin, ce dossier doit être créé dans le dossier <code class="prettyprint">app/Plugin/</code>. Le nom du dossier doit être le nom de votre plugin.</p>
+
+<p>Par <strong>exemple</strong> si je veux créer un plugin de <strong>boutique</strong>, je vais l’appeler : <strong>Shop</strong>.</p>
+
+<p>Une fois ce dossier créé, il faut créer différents autres dossiers et fichiers :</p>
+
+<ul>
+<li>Config/</li>
+<li>Controller/</li>
+<li>Controller/Component/</li>
+<li>Model/</li>
+<li>Model/Behavior</li>
+<li>View/</li>
+<li>View/Helper/</li>
+<li>View/Layouts</li>
+<li>lang/</li>
+<li>SQL/</li>
+</ul>
+
+<p>C’est tout pour les dossiers, il nous reste maintenant encore des fichiers à créer tels que :</p>
+
+<ul>
+<li>Config/bootstrap.php</li>
+<li>Config/routes.php</li>
+<li>config.json</li>
+</ul>
+
+<h3 id="explications-et-configuration">Explications et configuration</h3>
+
+<p>Maintenant que vous avez créé tout ces fichiers, nous allons passer à la configuration de votre plugin. Pour cela, ouvrez le fichier <strong>config.json</strong>, c&#39;est dans ce fichier que toute la configuration sera située.</p>
+
+<blockquote>
+<p>Configuration par défaut (à remplir)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"NAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"SLUG"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nav"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_group_menu"</span><span class="p">:</span><span class="s2">"customisation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_name"</span><span class="p">:</span><span class="s2">"Boutique"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_icon"</span><span class="p">:</span><span class="s2">"shopping-cart"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="s2">"AUTHOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"apiID"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"useEvents"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"available"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"0"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"requirements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;= 1.1.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Maintenant, vous allez pouvoir configurer. Remplacez <strong>NAME</strong> par le <em>nom de votre plugin</em>, <strong>SLUG</strong> par le <em>nom du dossier</em> et puis AUTHOR par votre pseudo.
+Ensuite voici une explication des autres lignes :</p>
+
+<ul>
+<li>nav : Si votre plugin est affiché ou non dans la barre de navigation (<strong>Boolean</strong>),</li>
+<li>admin : Si votre plugin a besoin de fichiers pour l’administrer (<strong>Boolean</strong>),</li>
+<li>admin_group_menu : Si votre plugin a besoin de fichiers pour l’administrer, le nom de la section de liens dans le panel admin (<strong>String</strong>)<em>(Optionnel)</em>,</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Valeur</th>
+<th>Explication</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">general</code></td>
+<td>Correspondant au menu &lsquo;Général&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">customisation</code></td>
+<td>Correspondant au menu &#39;Personnalisation&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">server</code></td>
+<td>Correspondant au menu &#39;Serveur&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">other</code> / <code class="prettyprint">default</code></td>
+<td>Correspondant au menu &#39;Autres&rsquo; du panel admin</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>admin_name : Si votre plugin a besoin de fichiers pour l’administrer, le nom du lien dans le panel admin (<strong>String</strong>),</li>
+<li>admin_icon : Si votre plugin a besoin de fichiers pour l’administrer, le nom de l&#39;icone FontAwesome qui doit précéder le nom de l&#39;onglet (<strong>String</strong>)(Optionnel),</li>
+<li>admin_route : Si votre plugin a besoin de fichiers pour l’administrer, la route du controller admin (<strong>String</strong>),</li>
+<li>version : La version de votre plugin (<strong>Double</strong>),</li>
+<li>apiID : L’ID du plugin, ce champ est à remplir par la valeur -1 (<em>Sera automatiquement rempli après</em>),</li>
+<li>useEvents : Si votre plugin utilise les événements disponible sur le CMS (<strong>Boolean</strong>),</li>
+<li>permissions : Les permissions de votre plugin (voir plus tard) (<strong>Array</strong>)</li>
+</ul>
+
+<h3 id="les-sous-menu-du-panel-admin">Les sous-menu du panel admin</h3>
+
+<p>Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d&#39;ajouter la clé <code class="prettyprint">admin_menus</code> dans la configuration du plugin juste après <code class="prettyprint">admin_icon</code> (Et donc la clé <code class="prettyprint">admin_route</code> devient optionnelle).</p>
+
+<blockquote>
+<p>Associez-lui comme valeur un tableau avec vos sous-lien, comme ceci par exemple :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"NAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"SLUG"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nav"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_group_menu"</span><span class="p">:</span><span class="s2">"customisation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_name"</span><span class="p">:</span><span class="s2">"Boutique"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_icon"</span><span class="p">:</span><span class="s2">"shopping-cart"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_menus"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gérer les articles"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopping-basket"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_ITEMS"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gérer les promotions"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/shop/vouchers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_VOUCHERS"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gérer les paiements"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit-card"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/payment"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_PAYMENT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="s2">"AUTHOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"apiID"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"useEvents"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"available"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"0"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"requirements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;= 1.1.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>La clé <code class="prettyprint">permission</code> dans chaque lien est optionnelle, elle permet d&#39;afficher le lien seulement si la permission est accordée au groupe de l&#39;utilisateur.</p>
+</blockquote>
+
+<h2 id="les-tables-sql">Les tables SQL</h2>
+
+<p>Les tables dont vous avez besoin pour votre plugin vont être générées automatiquement par un Shell.
+Dans un premier temps, toutes les tables de votre plugin doivent être préfixé par le nom de votre plugin.
+Par exemple, pour le plugin Shop les tables doivent être préfixés par <strong>shop__</strong>.</p>
+
+<p>Pour générer vos tables automatiquement dans un schema (qui sera <strong>indispensable</strong> pour avoir un plugin valide) il vous faut vous rendre sur le ssh de votre VPS/Ordinateur/Dédié pour pouvoir utiliser la console de CakePHP. Il vous faut ensuite vous rendre dans le dossier contenant les fichiers du CMS puis, il vous faudra taper
+<code class="prettyprint">app/Console/cake schema generate plugin-shop</code>
+Un fichier <em>schema.php</em> sera automatiquement créé dans le dossier SQL de votre plugin.</p>
+
+<p>Si vous ne pouvez pas accéder à la console de CakePHP, vous pouvez toujours créer votre fichier <em>SQL/schema.php</em> <strong>manuellement</strong>.</p>
+
+<blockquote>
+<p>Vous devez commençer le fichier comme ceci</p>
+</blockquote>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">ShopAppSchema</span> <span class="k">extends</span> <span class="nx">CakeSchema</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="nv">$file</span> <span class="o">=</span> <span class="s1">'schema.php'</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">before</span><span class="p">(</span><span class="nv">$event</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">after</span><span class="p">(</span><span class="nv">$event</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>Il vous faut ensuite suivre la documentation <a href="http://book.cakephp.org/2.0/fr/console-and-shells/schema-management-and-migrations.html#ecrire-un-schema-cakephp-a-la-main">ici</a></p>
+</blockquote>
+
+<h2 id="callbacks">Callbacks</h2>
+
+<p>Les <strong>callbacks</strong> sont des fonctions appelées automatiquement par le CMS lors de certaines actions.</p>
+
+<p>Vous pouvez, si vous le souhaitez, créer un fichier <strong>MainComponent.php</strong> dans le dossier <code class="prettyprint">Controller/Component</code> de votre plugin.</p>
+
+<blockquote>
+<p>Dans ce fichier vous pouvez y ajouter :</p>
+</blockquote>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">MainComponent</span> <span class="k">extends</span> <span class="nx">Object</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">onEnable</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">onDisable</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p>Ces fonctions <strong>onEnable</strong> et <strong>onDisable</strong> seront <strong>automatiquement</strong> appelées par le CMS lors de l’<strong>installation</strong>, l’<strong>activation</strong> <em>(pour le onEnable)</em>, et pour la <strong>désinstallation</strong> et la <strong>désactivation</strong> <em>(pour le onDisable)</em> du plugin.</p>
+
+<h2 id="fonctions-disponibles">Fonctions disponibles</h2>
+
+<p><em>Toutes les fonctions/variables présentes ici, sont celles du <strong>EyPluginComponent</strong>.</em></p>
+
+<h3 id="fonctions">Fonctions</h3>
+
+<p>Tout comme les variables, certaines méthodes/fonctions sont disponibles pour vous permettre d’interagir avec les plugins installés.
+Tout d’abord vous avez la fonction <strong>loadPlugins()</strong> qui vous retournera tout comme la variable <strong>$pluginsLoaded</strong> (voir ci-dessous) les plugins chargés et installés, cette méthode/fonction vous donne simplement les données à jour si celle-ci ont été modifiés depuis le chargement du Component des plugins.</p>
+
+<p>Vous avez ensuite la fonction <strong>getPluginConfig($slug)</strong> qui vous retourne le JSON de la configuration d’un plugin. Vous devez <strong>spécifier</strong> le <strong>slug du plugin</strong>, par exemple, pour Boutique c’est Shop.</p>
+
+<p>Vous pouvez savoir si un plugin est installé avec <strong>isInstalled(<em>$id</em>)</strong>, qui retourne un <strong>boolean</strong>, sachant que <em>$id</em> est l’ID au format <em>auteur.nom.apiID</em>.</p>
+
+<p>Vous pouvez rechercher un plugin avec différentes fonctions :</p>
+
+<ul>
+<li><strong>findPluginsByName(<em>$name</em>)</strong></li>
+<li><strong>findPluginBySlug(<em>$slug</em>)</strong></li>
+<li><strong>findPluginByApiID(<em>$apiid</em>)</strong></li>
+<li><strong>findPluginByID(<em>$id</em>)</strong></li>
+<li><strong>findPluginsByAuthor(<em>$author</em>)</strong></li>
+</ul>
+
+<p>Qui vous retournerons ou <strong>un objet</strong> contenant les données du/des plugin(s) trouvé(s) (selon la fonction) avec comme clé l’ID du plugin. Ou la fonction vous retournera <strong>objet vide</strong> si aucun plugin ne correspond à la recherche.</p>
+
+<h3 id="variables">Variables</h3>
+
+<p>Les plugins sont chargés dès le chargement de votre site, en effet le CMS <strong>installe automatiquement</strong> les plugins qui sont valides dans le dossier <em>/app/Plugin/</em> et qui ne sont pas encore présent dans la base de données. Et celui-ci <strong>supprime</strong> aussi <strong>automatiquement</strong> les plugins qui sont encore en base de données mais plus dans le dossier.</p>
+
+<p>Après ces opérations effectuées, le CMS <strong>rafraichi les permissions</strong> (pour pouvoir supprimer/ajouter les permissions des plugins installés/supprimés).
+Une fois cela fais, vous pouvez accèder à une variable automatiquement initialisée nommée <strong>$pluginsLoaded</strong>. Celle-ci contient les différents plugins chargés et installés en base de données.</p>
+
+<blockquote>
+<p>Vous pouvez l’utilisez comme ceci :</p>
+</blockquote>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="nx">debug</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">EyPlugin</span><span class="o">-&gt;</span><span class="na">pluginsLoaded</span><span class="p">);</span> <span class="c1">// Dans un controller
+</span></code></pre>
+
+<blockquote>
+<p>Ce qui retournera :</p>
+</blockquote>
+<pre class="highlight php"><code>object(stdClass) {
+  eywek.support.2 =&gt; object(stdClass) {
+      name =&gt; 'Support'
+      slug =&gt; 'support'
+      nav =&gt; true
+      admin =&gt; false
+      author =&gt; 'Eywek'
+      version =&gt; '0.2.0'
+      apiID =&gt; (int) 2
+      useEvents =&gt; false
+      permissions =&gt; object(stdClass) {
+          available =&gt; array(
+              (int) 0 =&gt; 'POST_TICKET',
+              (int) 1 =&gt; 'VIEW_TICKETS',
+              (int) 2 =&gt; 'VIEW_ALL_TICKETS',
+              (int) 3 =&gt; 'DELETE_ALL_TICKETS',
+              (int) 4 =&gt; 'DELETE_HIS_TICKET',
+              (int) 5 =&gt; 'RESOLVE_HIS_TICKET',
+              (int) 6 =&gt; 'RESOLVE_ALL_TICKETS',
+              (int) 7 =&gt; 'SHOW_TICKETS_ANWSERS',
+              (int) 8 =&gt; 'REPLY_TO_HIS_TICKETS',
+              (int) 9 =&gt; 'REPLY_TO_ALL_TICKETS'
+          )
+          default =&gt; object(stdClass) {
+              0 =&gt; array(
+                  (int) 0 =&gt; 'POST_TICKET',
+                  (int) 1 =&gt; 'VIEW_TICKETS',
+                  (int) 2 =&gt; 'DELETE_HIS_TICKET',
+                  (int) 3 =&gt; 'RESOLVE_HIS_TICKET',
+                  (int) 4 =&gt; 'SHOW_TICKETS_ANWSERS',
+                  (int) 5 =&gt; 'REPLY_TO_HIS_TICKETS'
+              )
+              2 =&gt; array(
+                  (int) 0 =&gt; 'POST_TICKET',
+                  (int) 1 =&gt; 'VIEW_TICKETS',
+                  (int) 2 =&gt; 'DELETE_HIS_TICKET',
+                  (int) 3 =&gt; 'RESOLVE_HIS_TICKET',
+                  (int) 4 =&gt; 'SHOW_TICKETS_ANWSERS',
+                  (int) 5 =&gt; 'REPLY_TO_HIS_TICKETS'
+              )
+          }
+      }
+      tables =&gt; array(
+          (int) 0 =&gt; 'support__tickets',
+          (int) 1 =&gt; 'support__reply_tickets'
+      )
+  }
+  eywek.shop.1 =&gt; object(stdClass) {
+      name =&gt; 'Boutique'
+      slug =&gt; 'shop'
+      nav =&gt; true
+      admin =&gt; false
+      author =&gt; 'Eywek'
+      version =&gt; '0.3.1'
+      apiID =&gt; (int) 1
+      useEvents =&gt; false
+      permissions =&gt; object(stdClass) {
+          available =&gt; array(
+              (int) 0 =&gt; 'CREDIT_ACCOUNT',
+              (int) 1 =&gt; 'CAN_BUY'
+          )
+          default =&gt; object(stdClass) {
+              0 =&gt; array(
+                  (int) 0 =&gt; 'CREDIT_ACCOUNT',
+                  (int) 1 =&gt; 'CAN_BUY'
+              )
+              2 =&gt; array(
+                  (int) 0 =&gt; 'CREDIT_ACCOUNT',
+                  (int) 1 =&gt; 'CAN_BUY'
+              )
+          }
+      }
+      tables =&gt; array(
+          (int) 0 =&gt; 'shop__items',
+          (int) 1 =&gt; 'shop__categories',
+          (int) 2 =&gt; 'shop__vouchers',
+          (int) 3 =&gt; 'shop__paypals',
+          (int) 4 =&gt; 'shop__paysafecards',
+          (int) 5 =&gt; 'shop__paysafecard_messages',
+          (int) 6 =&gt; 'shop__starpasses'
+      )
+  }
+}
+</code></pre>
+
+<p>Les plugins sont différencier avec un <strong>ID</strong> propre à eux-même qui se compose comme ceci : <em>auteur.slug.apiID</em>
+Où le slug est le nom du dossier de votre plugin.</p>
+
+<p>Vous avez aussi accès aux variables <strong>$pluginsInFolder</strong> et <strong>$pluginsInDB</strong> qui vous retourne un array des plugins contenus dans leur dossier ou en base de données (donc installés).
+Ces listes <strong>ne sont pas rafraîchi</strong> après la suppression et/ou installation de nouveaux plugins. Il y a donc de forte chance que celles-ci ne soient pas à jour.</p>
+
+<h2 id="utiliser-les-events">Utiliser les events</h2>
+
+<h2 id="utiliser-les-modules">Utiliser les modules</h2>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
