@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - setup
   - link_server
+  - plugins
 
 search: true
 ---
