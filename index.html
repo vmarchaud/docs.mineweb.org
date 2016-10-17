@@ -111,7 +111,7 @@
       </div>
         <ul class="toc-footer">
             <li><a href='http://mineweb.org'>Retour sur mineweb.org</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://github.com/tripit/slate'>Documentation powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -132,7 +132,7 @@
 <p>Pour installer le CMS MineWeb votre hébergeur <strong>doit</strong> avoir :</p>
 
 <ul>
-<li>  Version PHP supérieure ou égale à 5.4</li>
+<li>  Version PHP supérieure ou égale à 5.4 (&lt; 7.0.0)</li>
 <li>  PDO activé</li>
 <li>  cURL activé</li>
 <li>  Réécriture d&#39;URL</li>
@@ -146,231 +146,183 @@
 
 <p>Pour plus de simplicité vous pouvez télécharger le <strong>fichier de compatibilité</strong> <a href="http://mineweb.org/files/compatibilite.zip">ici</a>. Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.</p>
 
-<h2 id="h-bergeur-mineweb">Hébergeur MineWeb</h2>
+<h2 id="licence-h-berg-e-mineweb">Licence hébergée MineWeb</h2>
 
-<p>Vous ne souhaitez pas vous embêter à chercher un <strong>hébergeur compatible</strong> ? Alors n&#39;attendez plus et utilisez <strong>notre hébergeur</strong> qui vous installera <strong>automatiquement</strong> et <strong>sans aucun effort</strong> le CMS. Tous les prix et informations sont disponibles <a href="http://mineweb.org/download">ici</a>.</p>
+<p>Vous ne souhaitez pas vous embêter à chercher un <strong>hébergeur compatible</strong> ? Alors n&#39;attendez plus et utilisez <strong>nos licences hébergées</strong>, votre licence sera installée <strong>automatiquement</strong> et <strong>sans aucun effort</strong>. Tous les prix et informations sont disponibles <a href="http://mineweb.org/download">ici</a>.</p>
 
-<h1 id="authentication">Authentication</h1>
+          <h1 id="installation">Installation</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+<aside class="alert alert-info">
+<h3>Informations</h3>
+<p>Vous devez placer tout le contenu de l'archive téléchargée sur votre espace membre, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tout les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+<h2 id="tape-1-configuration-de-la-base-de-donn-es">Étape 1 - Configuration de la base de données</h2>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p><strong>Sautez cette étape si vous utilisez l&#39;hébergeur MineWeb</strong></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>Vous devez avoir une page demandant vos identifiants de base de données, vous devez entrez ceux-ci et tester la connexion, puis il vous faudra cliquer sur un bouton qui installera la base de données automatiquement.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<h2 id="tape-2-mise-en-place-de-la-licence">Étape 2 - Mise en place de la licence</h2>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
+<p>Une fois la connexion à la base de données effectuée, le CMS vous demandera alors votre clé d&#39;activation. Celle-ci est disponible sur votre <a href="http://mineweb.org/user/profile">profil</a>.
+Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>Erreur</th>
+<th>Explication</th>
+<th>Résolution</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code class="prettyprint">Licence inconnue</code></td>
+<td>Votre licence n&#39;est pas trouvée dans notre base de données</td>
+<td>Téléchargez à nouveau les fichiers du CMS</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code class="prettyprint">Site d&#39;installation non valide</code></td>
+<td>L&#39;URL que vous utilisez pour accèder à votre site ne correspond pas à celle configurée</td>
+<td>Rendez-vous sur votre <a href="http://localhost:1337/user/profile">profil</a> et changez l&#39;URL de votre licence</td>
+</tr>
+<tr>
+<td><code class="prettyprint">Licence désactivée</code></td>
+<td>La licence n&#39;est pas activée</td>
+<td>Rendez-vous sur votre <a href="http://mineweb.org/user/profile">profil</a> et réactivez votre licence. Celle-ci peut être désactivée par l&#39;administration si un problème survient, une explication est alors affichée</td>
+</tr>
+<tr>
+<td><code class="prettyprint">L&#39;API de MineWeb.org est temporairement indisponible</code></td>
+<td>Le système de vérification de licence n&#39;est pas disponible</td>
+<td>Patientez, si ce problème survient nous travaillons à la résolution du problème</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<h2 id="tape-3-cr-ation-de-l-39-administrateur">Étape 3 - Création de l&#39;administrateur</h2>
+
+<p>Voici la troisième et dernière étape de l&#39;installation du CMS, vous allez créer votre compte administrateur qui permettra d&#39;accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton &ldquo;Suivant&rdquo;.</p>
+
+<h2 id="installation-termin-e">Installation terminée</h2>
+
+<p>Une fois l&#39;installation du CMS complétée vous pouvez passer à l&#39;utilisation du CMS en lui-même. Pour configurer votre CMS il vous faut vous connecter en cliquant sur le bouton en haut à gauche de la barre de navigation. Vous cliquez sur connexion puis entrez vos informations pour vous connecter. Vous cliquez ensuite sur Panel administrateur, vous serez redirigé et vous pourrez ensuite cliquer sur <em>Général</em> puis <em>Préférences générales</em>.</p>
+
+<h2 id="aide-externe-et-probl-mes-fr-quents">Aide externe et problèmes fréquents</h2>
+
+<h3 id="probl-me-avec-ioncube">Problème avec ionCube</h3>
+
+<p>Il est possible que vous obteniez une erreur dans ce style là :</p>
+
+<p><code class="prettyprint">/app/Controller/Component/UpdateComponent.php cannot be decoded by this version of the ionCube Loader. If you are the administrator of this site then please install the latest version of the ionCube Loader.</code></p>
+
+<p>Cela signifie que votre hébergeur n&#39;a pas installé la bonne version du <em>ionCube Loader</em>, il faut alors voir avec leur support. À noter que la version de PHP ne doit pas être supérieur à la version 7.</p>
+
+<h3 id="probl-me-chez-livehost">Problème chez livehost</h3>
+
+<p>Il est possible que vous obteniez une erreur dans ce style là :</p>
+
+<p><code class="prettyprint">Warning: include(Cake/bootstrap.php): failed to open stream: No such file or directory in</code></p>
+
+<p>Pour résoudre ce problème, rendez-vous dans <em>app/webroot</em>, ouvrez le fichier <em>index.php</em> et allez à la ligne 64</p>
+
+<p><code class="prettyprint">//define(&#39;CAKE_CORE_INCLUDE_PATH&#39;, ROOT . DS . &#39;lib&#39;);</code></p>
+
+<p>Retirez les deux slashs</p>
+
+<p><code class="prettyprint">define(&#39;CAKE_CORE_INCLUDE_PATH&#39;, ROOT . DS . &#39;lib&#39;);</code></p>
+
+<p>Sauvegardez et rechargez la page.</p>
+
+<h3 id="autres">Autres</h3>
+
+<ul>
+<li>Si vous êtes hébergé chez <strong>Revolta-Hosting</strong>, vous pouvez suivre ce <a href="http://forum.revolta-hosting.fr/threads/installer-mineweb.692/">tutoriel</a>.</li>
+<li>Si vous avez besoin d&#39;aide, si vous rencontrez un problème non répertorié ici, vous pouvez nous contacter sur le <a href="http://mineweb.org/support">support</a>.</li>
+</ul>
+
+          <h1 id="lier-serveur-site">Lier serveur-site</h1>
+
+<aside class="alert alert-warning">
+  <h3>Compatibilité</h3>
+  <p>Les plugins sont compatibles à partir de la version 1.7.10</p>
+  <p><small><em>Des problèmes de compatibilités peuvent survenir avec Cauldron.</em></small></p>
 </aside>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<aside class="alert alert-info">
+  <p><strong>Type de connexion</strong>:  <br>
+  - Par défaut : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/dl/plugin/bukkit/last">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (Boutique, Classement factions, Vote…)</em> <br>
+  - BungeeCord : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/plugin_bungee/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
+  - Ping : <em>Connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (La <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
+</aside>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id="configuration-pr-alable">Configuration préalable</h2>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>Rendez-vous sur la page de liaison site-serveur sur le panel admin de votre CMS.
+Vous devez dans un premier temps configurer le temps d’exécution maximum (appelé aussi timeout), il est conseillé de mettre 1 (secondes).</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<p><img src="http://pic.eywek.fr/491537.png" /></p>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<aside class="alert alert-info">
+Vous avez a côté 2 boutons pour désactiver la fonctionnalité (mettra automatiquement le statut du serveur à éteint) si vous ne souhaiter pas utiliser la liaison site-serveur. Et un autre bouton pour activer/désactiver le cache sur la “bannière” (Permet que le message affiché sur le site (joueurs connectés, MOTD…) soit stocké pendant quelques minutes permettant d’éviter la surcharge de commande au serveur)
+</aside>
 
-<p>This endpoint retrieves a specific kitten.</p>
+<h2 id="liaison-un-serveur-bukkit-spigot">Liaison à un serveur Bukkit/Spigot</h2>
 
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="http://mineweb.org/dl/plugin/bukkit/last">cette adresse</a>.
+Une fois le plugin téléchargé, placez-le dans votre dossier plugins de votre serveur et <strong>redémarrez celui-ci</strong>.
+Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.
+Quand votre serveur est en ligne, configurez le port que va utiliser le plugin pour communiquer avec le site, pour cela tapez la commande <code class="prettyprint">/mineweb port PORT</code> en remplaçant bien sur <strong>PORT</strong> par un port <strong>disponible</strong>, <strong>non utilisé</strong> et <strong>ouvert</strong>.</p>
 
-<h3 id="http-request">HTTP Request</h3>
+<aside class="alert alert-info">
+Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft quels ports sont disponibles. Si vous utilisez un Dédié ou un VPS, essayez par exemple des ports comme 4343 ou ou 26178.
+</aside>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p>Une fois que cette commande est effectuée tapez <code class="prettyprint">/mineweb setup</code>. Et rendez-vous sur la page de liaison site-serveur dans le panel admin.</p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<p>Maintenant que vous avez configuré le serveur vous pouvez <strong>ajouter un serveur</strong> et remplir les informations nécessaires :</p>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
+<ul>
+<li>Type de la connexion, donc mettez <em>Par défaut</em>.</li>
+<li>Nom par le nom affiché.</li>
+<li>IP par l’ip (ou domaine) sans le port.</li>
+<li>Port configuré par le port que vous avez tapé juste avant.</li>
+</ul>
 
-          <h1 id="errors">Errors</h1>
+<p>Cliquez ensuite sur Connexion pour tester la connexion, si celle-ci échoue, votre <strong>port n’est pas ouvert</strong> ou <strong>non disponible</strong>.</p>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<h2 id="liaison-un-serveur-bungeecord">Liaison à un serveur BungeeCord</h2>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>Même processus que pour la liaison Bukkit/Spigot mais avec le <a href="http://mineweb.org/plugin_bungee/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a> et vous devez mettre comme type de connexion <em>Bungeecord</em>.</p>
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
-</tr>
-</tbody></table>
+<h2 id="liaison-par-ping">Liaison par Ping</h2>
+
+<p>Vous n’avez pas besoin de plugin pour cette liaison, il vous suffit juste de configurer un serveur comme ceci depuis la page de liaison :</p>
+
+<ul>
+<li>Type de la connexion, donc mettez <em>Ping</em>.</li>
+<li>Nom par le nom affiché.</li>
+<li>IP par l’ip (ou domaine) <strong>sans le port</strong>.</li>
+<li>Port de votre serveur (25565 par défaut si vous n’avez pas de port).</li>
+</ul>
+
+<p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion.</p>
+
+<h2 id="la-connexion-choue">La connexion échoue</h2>
+
+<p>Dans un premier temps, vérifiez que vous n&#39;avez pas d&rsquo;<strong>erreur dans la console</strong> de votre serveur en rapport avec le plugin MineWeb.</p>
+
+<p>Dans un second temps, vérifiez que le <strong>port</strong> que vous avez configuré est <strong>ouvert</strong> et <strong>non utilisé</strong> (demandez à votre hébergeur minecraft si vous ne savez pas lequel utiliser).</p>
+
+<p>Ensuite, essayez de <strong>redémarrer votre serveur</strong> juste après avoir fait les commandes, puis testez la connexion à nouveau.</p>
+
+<p>Si la connexion échoue toujours, contactez le <a href="http://mineweb.org/support">support</a> avec un maximum d&#39;explications et d&#39;informations, et répondez à ces questions :</p>
+
+<ul>
+<li>Quelle IP avez-vous mis ?</li>
+<li>Quel port ?</li>
+<li>Comment êtes-vous sûr que le port est ouvert ?</li>
+<li>Avez-vous fait toutes les commandes indiquées dans la doc ?</li>
+<li>Aucune erreur dans la console ?</li>
+<li>Avez-vous essayé de rédemarrer le serveur après avoir fait les commandes ?</li>
+</ul>
 
       </div>
       <div class="dark-box">
