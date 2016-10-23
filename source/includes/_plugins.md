@@ -327,15 +327,16 @@ Ces listes __ne sont pas rafraîchi__ après la suppression et/ou installation d
 
 Dans la config.json du plugin, passez __useEvents__ à __true__.
 
-Pour créer un __écouteur__ _(Listener)_, il vous faut créer un fichier dans le dossier _/Event/_ de votre plugin. Le fichier doit être appelé de la manière suivante _NAMEEventListener.php_.
+Pour créer un __écouteur__ _(Listener)_, il vous faut créer un fichier dans le dossier _/Event/_ de votre plugin. Le fichier doit être appelé de la manière suivante _{PLUGIN_NAME}{NOM}EventListener.php_ (préfixé par le slug de votre plugin).
 
+>Exemple: ShopBuyEventListener
 >Et son contenu doit être comme ceci :
 
 ```php
 <?php
   App::uses('CakeEventListener', 'Event');
 
-  class NAMEEventListener implements CakeEventListener {
+  class {PLUGIN_NAME}{NOM}EventListener implements CakeEventListener {
 
     private $controller;
 
