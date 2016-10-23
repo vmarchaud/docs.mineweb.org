@@ -685,15 +685,16 @@ Ces listes <strong>ne sont pas rafraîchi</strong> après la suppression et/ou i
 
 <p>Dans la config.json du plugin, passez <strong>useEvents</strong> à <strong>true</strong>.</p>
 
-<p>Pour créer un <strong>écouteur</strong> <em>(Listener)</em>, il vous faut créer un fichier dans le dossier <em>/Event/</em> de votre plugin. Le fichier doit être appelé de la manière suivante <em>NAMEEventListener.php</em>.</p>
+<p>Pour créer un <strong>écouteur</strong> <em>(Listener)</em>, il vous faut créer un fichier dans le dossier <em>/Event/</em> de votre plugin. Le fichier doit être appelé de la manière suivante <em>{PLUGIN_NAME}{NOM}EventListener.php</em> (préfixé par le slug de votre plugin).</p>
 
 <blockquote>
-<p>Et son contenu doit être comme ceci :</p>
+<p>Exemple: ShopBuyEventListener
+Et son contenu doit être comme ceci :</p>
 </blockquote>
 <pre class="highlight php"><code><span class="cp">&lt;?php</span>
   <span class="nx">App</span><span class="o">::</span><span class="na">uses</span><span class="p">(</span><span class="s1">'CakeEventListener'</span><span class="p">,</span> <span class="s1">'Event'</span><span class="p">);</span>
 
-  <span class="k">class</span> <span class="nc">NAMEEventListener</span> <span class="k">implements</span> <span class="nx">CakeEventListener</span> <span class="p">{</span>
+  <span class="k">class</span> <span class="err">{</span><span class="nc">PLUGIN_NAME</span><span class="p">}{</span><span class="nx">NOM</span><span class="p">}</span><span class="nx">EventListener</span> <span class="k">implements</span> <span class="nx">CakeEventListener</span> <span class="p">{</span>
 
     <span class="k">private</span> <span class="nv">$controller</span><span class="p">;</span>
 
