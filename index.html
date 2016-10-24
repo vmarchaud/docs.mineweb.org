@@ -112,6 +112,26 @@
         <ul class="toc-footer">
             <li><a href='http://mineweb.org'>Retour sur mineweb.org</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation powered by Slate</a></li>
+          <li><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
+          <script type="text/javascript">
+            function activeRightExample (e) {
+              var link = document.createElement('link')
+              link.setAttribute('rel', 'stylesheet')
+              link.setAttribute('type', 'text/css')
+              link.setAttribute('id', 'examples-right')
+              link.setAttribute('href', 'stylesheets/examples-right.css')
+              document.getElementsByTagName('head')[0].appendChild(link)
+
+              e.setAttribute('onClick', 'desactiveRightExample(this)')
+              e.innerHTML = "Remettre l'affichage par défaut"
+            }
+            function desactiveRightExample (e) {
+              var link = document.getElementById('examples-right').remove()
+
+              e.setAttribute('onClick', 'activeRightExample(this)')
+              e.innerHTML = "Passer le code à droite de l'écran"
+            }
+          </script>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -826,6 +846,169 @@ onLogout : Appelé pendant la déconnexion avec la session “user” comme donn
 <p>Par exemple pour utiliser le module <em>user_profile</em> il vous faut créer le fichier <em>/Modules/user_profile.ctp</em>.</p>
 
 <p>Dans ce fichier, vous pouvez ajouter le code que vous souhaitez, <strong>HTML</strong>, <strong>PHP</strong> ou encore <strong>JS</strong> ou <strong>CSS</strong>.</p>
+
+          <h1 id="cr-er-des-th-mes">Créer des thèmes</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l&#39;apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles sur le site de MineWeb. D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.</p>
+
+<p>Il faut savoir que les thèmes sont une couche supplémentaire, c&#39;est à dire que si votre thème ne s&#39;occupe pas d&#39;une page du site, c&#39;est le thème par défaut qui prendra la relève.</p>
+
+<aside class="alert alert-info">Il est important et même presque indispensable d'avoir des connaissances en HTML/CSS voir JS et PHP pour pouvoir faire son propre thème.</aside>
+
+<h2 id="cr-ation-des-dossiers-amp-fichiers">Création des dossiers &amp; fichiers</h2>
+
+<p>Dans un premier temps, il va falloir créer le dossier de votre thème, ce dossier doit être créé dans le dossier <code class="prettyprint">app/View/Themed/</code>. Le nom du dossier doit être le nom de votre thème. Par exemple si je veux créer un thème de démonstration, je vais l’appeler : Demo (évitez les accents, les espaces et les tirets, essayez d&#39;utiliser des mots anglais pour le nom du dossier).</p>
+
+<p>Une fois ce dossier créé, il faut créer différents autres dossiers et fichiers :</p>
+
+<ul>
+<li>Config/</li>
+<li>Layouts/</li>
+<li>webroot/
+
+<ul>
+<li>css/</li>
+<li>js/</li>
+<li>img/</li>
+</ul></li>
+</ul>
+
+<p>C’est tout pour les dossiers, il nous reste maintenant encore des fichiers à créer tels que :</p>
+
+<p>Config/config.json.</p>
+
+<h2 id="utilisation-de-la-configuration">Utilisation de la configuration</h2>
+
+<p>Pour que votre thème soit valide, celui-ci doit contenir un fichier <em>config.json</em> dans le dossier <em>Config/</em> du thème. Ce fichier doit contenir des informations bien précises au format JSON.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apiID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nt">"supported"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Vous allez devoir configurer les informations les plus importantes.
+Tout d&#39;abord le <em>name</em> qui est le nom de votre thème, vous pouvez à cet endroit écrire le nom de votre thème en français, avec des accents, espaces ou autre si vous le souhaitez. Ce nom sera affiché sur le panel admin du CMS. (Exemple: Démonstration)
+Après, il faut configurer le <em>slug</em>, il faut ici insérer le nom du dossier du thème précédemment choisi (exemple: Demo).
+Pour la colonne <em>author</em>, mettez ici votre pseudo.
+Pour la <em>version</em> du thème, la version doit être au format 0.0.0 comme expliqué <a href="http://semver.org">ici</a>.
+Pour <em>apiID</em>, laissez ceci à 0, ne vous en souciez pas, il sera automatiquement rempli quand vous soumettrez votre thème au market de mineweb.org.
+Ne vous occupez pas non plus de <em>configurations</em> et <em>supported</em>, nous verrons cela plus tard.</p>
+
+<h2 id="modifier-la-disposition-globale-du-site">Modifier la disposition globale du site</h2>
+
+<p>Nous allons dans cet étape voir comment modifier la disposition du site, tous les éléments qui seront affichés sur chaque page (head, footer &hellip;)
+Pour modifier ceci, il vous faut créer un fichier <em>default.ctp</em> dans le dossier <em>Layouts</em>.</p>
+
+<aside class="alert alert-info">A savoir que les fichiers de vue (modification de la structure HTML) ont tous comme extension **.ctp** et non **.html** ou **.php** mais vous pouvez quand même y insérer de l'HTML ou du php.</aside>
+
+<p>Pour le contenu du fichier <em>default.ctp</em> vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier <em>default.ctp</em> se trouverai alors dans <em>/app/View/Layouts/default.ctp</em>).
+Certaines parties de code contenu dans le <em>default.ctp</em> doivent être conservées, comme par exemple ceci en fin de page :</p>
+<pre class="highlight html"><code><span class="cp">&lt;?= $this-&gt;Html-&gt;script('app.js') ?&gt;</span>
+<span class="cp">&lt;?= $this-&gt;Html-&gt;script('form.js') ?&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="c1">// Config FORM/APP.JS</span>
+
+<span class="kd">var</span> <span class="nx">LIKE_URL</span> <span class="o">=</span> <span class="s2">"&lt;?= $this-&gt;Html-&gt;url(array('controller' =&gt; 'news', 'action' =&gt; 'like')) ?&gt;"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">DISLIKE_URL</span> <span class="o">=</span> <span class="s2">"&lt;?= $this-&gt;Html-&gt;url(array('controller' =&gt; 'news', 'action' =&gt; 'dislike')) ?&gt;"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">LOADING_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('GLOBAL__LOADING') ?&gt;"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">ERROR_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('GLOBAL__ERROR') ?&gt;"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">INTERNAL_ERROR_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('ERROR__INTERNAL_ERROR') ?&gt;"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">FORBIDDEN_ERROR_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('ERROR__FORBIDDEN') ?&gt;"</span>
+<span class="kd">var</span> <span class="nx">SUCCESS_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('GLOBAL__SUCCESS') ?&gt;"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">CSRF_TOKEN</span> <span class="o">=</span> <span class="s2">"&lt;?= $csrfToken ?&gt;"</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="cp">&lt;?php if(isset($google_analytics) &amp;&amp; !empty($google_analytics)) { ?&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">o</span><span class="p">,</span><span class="nx">g</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">a</span><span class="p">,</span><span class="nx">m</span><span class="p">){</span><span class="nx">i</span><span class="p">[</span><span class="s1">'GoogleAnalyticsObject'</span><span class="p">]</span><span class="o">=</span><span class="nx">r</span><span class="p">;</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="o">=</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="o">||</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="p">(</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">q</span><span class="o">=</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">q</span><span class="o">||</span><span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)},</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span><span class="nx">a</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">o</span><span class="p">),</span>
+    <span class="nx">m</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">o</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="nx">a</span><span class="p">.</span><span class="nx">async</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">a</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">g</span><span class="p">;</span><span class="nx">m</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">m</span><span class="p">)</span>
+    <span class="p">})(</span><span class="nb">window</span><span class="p">,</span><span class="nb">document</span><span class="p">,</span><span class="s1">'script'</span><span class="p">,</span><span class="s1">'//www.google-analytics.com/analytics.js'</span><span class="p">,</span><span class="s1">'ga'</span><span class="p">);</span>
+
+    <span class="nx">ga</span><span class="p">(</span><span class="s1">'create'</span><span class="p">,</span> <span class="s1">'&lt;?= $google_analytics ?&gt;'</span><span class="p">,</span> <span class="s1">'auto'</span><span class="p">);</span>
+    <span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="s1">'pageview'</span><span class="p">);</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="cp">&lt;?php } ?&gt;</span>
+<span class="cp">&lt;?= (isset($configuration_end_code)) ? $configuration_end_code : '' ?&gt;</span>
+</code></pre>
+
+<blockquote>
+<p>Vous pouvez trouver plus d&#39;informations sur la <a href="http://book.cakephp.org/2.0/fr/views.html">documentation officiel de CakePHP</a> (<a href="https://fr.wikipedia.org/wiki/Framework">Framework</a> PHP utilisé pour MineWeb).</p>
+</blockquote>
+
+<p>Ce code permet de faire fonctionner correctement MineWeb notamment les formulaires en AJAX ou d&#39;afficher les paramètres configurées sur le panel admin.</p>
+
+<h2 id="modifier-les-diff-rentes-pages">Modifier les différentes pages</h2>
+
+<p>Pour modifier les différentes pages du CMS il vous faudra créer un dossier avec le nom du Controller et un fichier <em>.ctp</em> avec le nom de l&#39;action. Si vous ne comprenez pas ou que vous ne pouvez pas vous embêter, prenez exemples sur des thèmes déjà fait (<em>app/View/Themed</em> si vous en avez téléchargé depuis votre panel admin) ou sur le thème de base  (<em>app/View/</em>).</p>
+
+<p>Par exemple, pour modifier la page affichée quand vous lisez une news/un article, il vous faudra créer un fichier <strong>News/index.ctp</strong> et y insérer le contenu que vous souhaitez selon le modèle du thème par défaut (pour utiliser les bonnes variables).</p>
+
+<aside class="alert alert-info">Tout comme pour le <em>layout.ctp</em> vous pouvez vous référer à la <a href="http://book.cakephp.org/2.0/fr/views.html">documentation officielle de CakePHP</a>.</aside>
+
+<h2 id="modifier-les-diff-rentes-pages-d-39-un-plugin">Modifier les différentes pages d&#39;un plugin</h2>
+
+<p>Pour modifier les pages d&#39;un plugin il vous faudra tout comme à l&#39;étape précédente créer un dossier avec le nom du Controller et un fichier avec le nom de l&#39;action, <strong>sauf que</strong> il vous faudra placer ce dossier dans un autre dossier appelé <em>Plugin</em>.</p>
+
+<aside class="alert alert-info">Pour créer vos fichiers/dossiers, référez vous aux plugins en eux-mêmes, situés dans <em>app/Plugin/</em>, leurs fichiers <em>.ctp</em> seront dans le dossier <em>View</em>.</aside>
+
+<p>Il est mieux aussi de <strong>préciser dans la configuration</strong> si vous <em>supporter</em> (stylisé) des plugins. Pour cela, revenons dans le fichier <em>Config/config.json</em> et nous allons toucher à <em>supported</em>. En effet, vous aller devoir écrire l&rsquo;<em>ID</em> du plugin et la ou les versions supportées. Par exemple :</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+    </span><span class="nt">"supported"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"eywek.shop.1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Vous pouvez voir que l&rsquo;<em>ID</em> du plugin est spécial, en effet celui-ci se compose de la manière suivante : <strong>auteur.nomdudossier.apiID</strong>, vous pouvez donc trouver cet ID vous même facilement en regardant l&#39;intérieur du <em>config.json</em> d&#39;un plugin.
+Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très bien la faire précéder d&#39;un outil de comparaison. Comme ceci :</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+    </span><span class="nt">"supported"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"eywek.shop.1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;= 1.0.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A ce moment là, vous indiquez que votre thème supporte uniquement les versions du plugin &ldquo;Boutique&rdquo; au dessus et incluant la 1.0.0.</p>
+
+<h2 id="utiliser-des-fichiers-css-js-ou-images-personnalis-s">Utiliser des fichiers CSS, JS ou images personnalisés</h2>
+
+<p>Il est utile quand vous créer un thème de pouvoir utiliser des fichiers CSS/JS personnalisés ou même des images.
+Pour cela, il vous suffit de créer un dossier <em>webroot</em> contenant les sous-dossiers :</p>
+
+<ul>
+<li>css</li>
+<li>js</li>
+<li>img</li>
+</ul>
+
+<p>Ces donc dans ces dossiers que vous glisserez vos fichiers.
+Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichiers <em>.ctp</em> :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s1">'NomDuDossierDuTheme.votrefichier.css'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</code></pre>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'NomDuDossierDuTheme.votrefichier.js'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</code></pre>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">img</span><span class="p">(</span><span class="s1">'votreimage.ext'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'alt'</span> <span class="o">=&gt;</span> <span class="s1">'Ce que je veux'</span><span class="p">))</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<blockquote>
+<p>Vous pouvez avoir plus d&#39;informations <a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html">ici</a>.</p>
+</blockquote>
+
+<h2 id="la-personnalisation">La personnalisation</h2>
+
+<aside class="alert alert-warning">En cours de rédaction &hellip; (Vous pouvez vous référer au thème existant comme &ldquo;Universal&rdquo;.)</aside>
 
       </div>
       <div class="dark-box">
