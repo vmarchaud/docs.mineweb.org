@@ -345,9 +345,9 @@ html, body {
   }
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
-    @if $examples-right == 'true' {
+    /*@if $examples-right == 'true' {
       margin-right: $examples-width;
-    }
+    }*/
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
@@ -547,12 +547,12 @@ html, body {
     box-sizing: border-box;
     text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
 
-    @if $examples-right == 'true' {
-      @extend %right-col;
-    } @else {
+    //@if $examples-right == 'true' {
+      //@extend %right-col;
+    //} @else {
       width: auto;
       float: none;
-    }
+    //}
 
     &>p { margin: 0; }
 
@@ -579,11 +579,11 @@ html, body {
   }
 }
 
-@if $examples-right == 'false' {
+//@if $examples-right == 'false' {
   .dark-box {
     display: none;
   }
-}
+//}
 
 ////////////////////////////////////////////////////////////////////////////////
 // RESPONSIVE DESIGN

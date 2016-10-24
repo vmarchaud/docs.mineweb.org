@@ -1,0 +1,42 @@
+@charset "utf-8";
+@import 'variables';
+
+.content {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin-right: $examples-width;
+  }
+}
+
+.content {
+  pre, blockquote {
+    @extend %right-col;
+  }
+}
+
+.page-wrapper {
+  .dark-box {
+    width: $examples-width;
+    background-color: $examples-bg;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+  }
+}
+
+%right-col {
+  width: $examples-width;
+  float: right;
+}
+
+@media (max-width: $phone-width) {
+  %right-col {
+    width: auto;
+    float: none;
+  }
+
+  %right-col + %left-col {
+    margin-top: $main-padding;
+  }
+}

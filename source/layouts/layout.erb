@@ -67,6 +67,26 @@ under the License.
           <% current_page.data.toc_footers.each do |footer| %>
             <li><%= footer %></li>
           <% end %>
+          <li><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
+          <script type="text/javascript">
+            function activeRightExample (e) {
+              var link = document.createElement('link')
+              link.setAttribute('rel', 'stylesheet')
+              link.setAttribute('type', 'text/css')
+              link.setAttribute('id', 'examples-right')
+              link.setAttribute('href', 'stylesheets/examples-right.css')
+              document.getElementsByTagName('head')[0].appendChild(link)
+
+              e.setAttribute('onClick', 'desactiveRightExample(this)')
+              e.innerHTML = "Remettre l'affichage par défaut"
+            }
+            function desactiveRightExample (e) {
+              var link = document.getElementById('examples-right').remove()
+
+              e.setAttribute('onClick', 'activeRightExample(this)')
+              e.innerHTML = "Passer le code à droite de l'écran"
+            }
+          </script>
         </ul>
       <% end %>
     </div>

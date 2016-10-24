@@ -12,6 +12,7 @@ includes:
   - setup
   - link_server
   - plugins
+  - themes
 
 search: true
 ---
