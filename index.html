@@ -112,7 +112,7 @@
         <ul class="toc-footer">
             <li><a href='http://mineweb.org'>Retour sur mineweb.org</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation powered by Slate</a></li>
-          <li><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
+          <li style="position: absolute;bottom: 10px;font-size: 0.85em;"><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
           <script type="text/javascript">
             function activeRightExample (e) {
               var link = document.createElement('link')
@@ -268,8 +268,8 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/dl/plugin/bukkit/last">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (Boutique, Classement factions, Vote…)</em> <br>
-  - BungeeCord : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/plugin_bungee/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
+  - Par défaut : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (Boutique, Classement factions, Vote…)</em> <br>
+  - BungeeCord : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
   - Ping : <em>Connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (La <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
@@ -286,7 +286,7 @@ Vous avez a côté 2 boutons pour désactiver la fonctionnalité (mettra automat
 
 <h2 id="liaison-un-serveur-bukkit-spigot">Liaison à un serveur Bukkit/Spigot</h2>
 
-<p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="http://mineweb.org/dl/plugin/bukkit/last">cette adresse</a>.
+<p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">cette adresse</a>.
 Une fois le plugin téléchargé, placez-le dans votre dossier plugins de votre serveur et <strong>redémarrez celui-ci</strong>.
 Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.
 Quand votre serveur est en ligne, configurez le port que va utiliser le plugin pour communiquer avec le site, pour cela tapez la commande <code class="prettyprint">/mineweb port PORT</code> en remplaçant bien sur <strong>PORT</strong> par un port <strong>disponible</strong>, <strong>non utilisé</strong> et <strong>ouvert</strong>.</p>
@@ -310,7 +310,7 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft 
 
 <h2 id="liaison-un-serveur-bungeecord">Liaison à un serveur BungeeCord</h2>
 
-<p>Même processus que pour la liaison Bukkit/Spigot mais avec le <a href="http://mineweb.org/plugin_bungee/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a> et vous devez mettre comme type de connexion <em>Bungeecord</em>.</p>
+<p>Même processus que pour la liaison Bukkit/Spigot mais avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a> et vous devez mettre comme type de connexion <em>Bungeecord</em>.</p>
 
 <h2 id="liaison-par-ping">Liaison par Ping</h2>
 
