@@ -67,7 +67,7 @@ under the License.
           <% current_page.data.toc_footers.each do |footer| %>
             <li><%= footer %></li>
           <% end %>
-          <li><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
+          <li style="position: absolute;bottom: 10px;font-size: 0.85em;"><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
           <script type="text/javascript">
             function activeRightExample (e) {
               var link = document.createElement('link')

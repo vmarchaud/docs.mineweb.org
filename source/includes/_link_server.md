@@ -7,8 +7,8 @@
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/dl/plugin/bukkit/last">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (Boutique, Classement factions, Vote…)</em> <br>
-  - BungeeCord : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/plugin_bungee/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
+  - Par défaut : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (Boutique, Classement factions, Vote…)</em> <br>
+  - BungeeCord : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
   - Ping : <em>Connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (La <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
@@ -25,7 +25,7 @@ Vous avez a côté 2 boutons pour désactiver la fonctionnalité (mettra automat
 
 ## Liaison à un serveur Bukkit/Spigot
 
-Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [cette adresse](http://mineweb.org/dl/plugin/bukkit/last).
+Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [cette adresse](http://mineweb.org/files/1.1-mineweb_bukkit.jar).
 Une fois le plugin téléchargé, placez-le dans votre dossier plugins de votre serveur et __redémarrez celui-ci__.
 Vous n’avez __pas à toucher à la configuration du plugin__.
 Quand votre serveur est en ligne, configurez le port que va utiliser le plugin pour communiquer avec le site, pour cela tapez la commande `/mineweb port PORT` en remplaçant bien sur __PORT__ par un port __disponible__, __non utilisé__ et __ouvert__.
@@ -47,7 +47,7 @@ Cliquez ensuite sur Connexion pour tester la connexion, si celle-ci échoue, vot
 
 ## Liaison à un serveur BungeeCord
 
-Même processus que pour la liaison Bukkit/Spigot mais avec le [plugin BungeeCord](http://mineweb.org/plugin_bungee/1.0.3-mineweb_bungee.jar) et vous devez mettre comme type de connexion _Bungeecord_.
+Même processus que pour la liaison Bukkit/Spigot mais avec le [plugin BungeeCord](http://mineweb.org/files/1.0.3-mineweb_bungee.jar) et vous devez mettre comme type de connexion _Bungeecord_.
 
 ## Liaison par Ping
 
