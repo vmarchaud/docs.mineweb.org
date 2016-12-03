@@ -19,7 +19,7 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.
 Erreur | Explication | Résolution
 --------- | ------- | -----------
 `Licence inconnue` | Votre licence n'est pas trouvée dans notre base de données | Téléchargez à nouveau les fichiers du CMS
-`Site d'installation non valide` | L'URL que vous utilisez pour accèder à votre site ne correspond pas à celle configurée | Rendez-vous sur votre [profil](http://localhost:1337/user/profile) et changez l'URL de votre licence
+`Site d'installation non valide` | L'URL que vous utilisez pour accèder à votre site ne correspond pas à celle configurée | Rendez-vous sur votre [profil](http://mineweb.org/user/profile) et changez l'URL de votre licence
 `Licence désactivée` | La licence n'est pas activée | Rendez-vous sur votre [profil](http://mineweb.org/user/profile) et réactivez votre licence. Celle-ci peut être désactivée par l'administration si un problème survient, une explication est alors affichée
 `L'API de MineWeb.org est temporairement indisponible` | Le système de vérification de licence n'est pas disponible | Patientez, si ce problème survient nous travaillons à la résolution du problème
 
