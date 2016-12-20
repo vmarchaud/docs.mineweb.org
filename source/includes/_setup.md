@@ -60,5 +60,4 @@ Sauvegardez et rechargez la page.
 
 ### Autres
 
-- Si vous êtes hébergé chez __Revolta-Hosting__, vous pouvez suivre ce [tutoriel](http://forum.revolta-hosting.fr/threads/installer-mineweb.692/).
 - Si vous avez besoin d'aide, si vous rencontrez un problème non répertorié ici, vous pouvez nous contacter sur le [support](http://mineweb.org/support).
