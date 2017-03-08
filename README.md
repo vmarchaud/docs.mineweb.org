@@ -4,9 +4,6 @@
 
 <p align="center">Documentation du CMS MineWeb.</p>
 
-<p align="center"><img src="https://dl.dropboxusercontent.com/u/95847291/github%20images/slate/slate_screenshot_new.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
-
-
 Présentation
 ------------
 
