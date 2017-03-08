@@ -15,9 +15,8 @@ Comment contribuer ?
 
 Nous vous remercions de votre contribution. Veillez à faire le moins possible de fautes aussi bien de français que dans vos informations. Votre contribution sera bien sûr vérifiée avant d'être validée
 
-## Cloner et modifier
-
-Il vous faut tout simplement cloner ce repo, et faire vos modifications directement dans `source/`. 
+Pour contribuer, il vous faut tout simplement cloner ce repo, et faire vos modifications directement dans `source/`. 
+Une fois vos modifications apportées, soumettez-nous une pull-request. 
 
 ### Comment éditer une section
 
