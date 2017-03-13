@@ -2,7 +2,7 @@
 
 <aside class="alert alert-info">
 <h3>Informations</h3>
-<p>Vous devez placer tout le contenu de l'archive téléchargée sur votre espace membre, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tout les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
+<p>Vous devez placer tout le contenu de l'archive téléchargée sur votre espace membre, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tous les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
 </aside>
 
 ## Étape 1 - Configuration de la base de données
@@ -25,7 +25,7 @@ Erreur | Explication | Résolution
 
 ## Étape 3 - Création de l'administrateur
 
-Voici la troisième et dernière étape de l'installation du CMS, vous allez créer votre compte administrateur qui permettra d'accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton "Suivant".
+Voici la troisième et dernière étape de l'installation du CMS, vous allez créer votre compte administrateur qui vous permettra d'accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton "Suivant".
 
 ## Installation terminée
 
