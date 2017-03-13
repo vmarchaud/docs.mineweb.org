@@ -4,9 +4,9 @@
 
 Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l'apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles sur le site de MineWeb. D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.
 
-Il faut savoir que les thèmes sont une couche supplémentaire, c'est à dire que si votre thème ne s'occupe pas d'une page du site, c'est le thème par défaut qui prendra la relève.
+Il faut savoir que les thèmes sont une couche supplémentaire, c'est-à-dire que si votre thème ne s'occupe pas d'une page du site, c'est le thème par défaut qui prendra la relève.
 
-<aside class="alert alert-info">Il est important et même presque indispensable d'avoir des connaissances en HTML/CSS voir JS et PHP pour pouvoir faire son propre thème.</aside>
+<aside class="alert alert-info">Il est important et même presque indispensable d'avoir des connaissances en HTML/CSS voire JS et PHP pour pouvoir faire son propre thème.</aside>
 
 
 ## Création des dossiers & fichiers
@@ -15,16 +15,16 @@ Dans un premier temps, il va falloir créer le dossier de votre thème, ce dossi
 
 Une fois ce dossier créé, il faut créer différents autres dossiers et fichiers :
 
-- Config/
-- Layouts/
-- webroot/
- - css/
- - js/
- - img/
+- `Config/`
+- `Layouts/`
+- `webroot/`
+ - `css/`
+ - `js/`
+ - `img/`
 
 C’est tout pour les dossiers, il nous reste maintenant encore des fichiers à créer tels que :
 
-Config/config.json.
+- `Config/config.json`
 
 ## Utilisation de la configuration
 
@@ -43,22 +43,22 @@ Pour que votre thème soit valide, celui-ci doit contenir un fichier _config.jso
 ```
 
 Vous allez devoir configurer les informations les plus importantes.
-Tout d'abord le _name_ qui est le nom de votre thème, vous pouvez à cet endroit écrire le nom de votre thème en français, avec des accents, espaces ou autre si vous le souhaitez. Ce nom sera affiché sur le panel admin du CMS. (Exemple: Démonstration)
-Après, il faut configurer le _slug_, il faut ici insérer le nom du dossier du thème précédemment choisi (exemple: Demo).
+Tout d'abord le _name_ qui est le nom de votre thème, vous pouvez à cet endroit écrire le nom de votre thème en français, avec des accents, espaces ou autre si vous le souhaitez. Ce nom sera affiché sur le panel admin du CMS. (exemple : Démonstration).
+Après, il faut configurer le _slug_, il faut ici insérer le nom du dossier du thème précédemment choisi (exemple : Demo).
 Pour la colonne _author_, mettez ici votre pseudo.
-Pour la _version_ du thème, la version doit être au format 0.0.0 comme expliqué [ici](http://semver.org).
+Pour la _version_ du thème, la version doit être au format X.Y.Z comme expliqué [ici](http://semver.org).
 Pour _apiID_, laissez ceci à 0, ne vous en souciez pas, il sera automatiquement rempli quand vous soumettrez votre thème au market de mineweb.org.
 Ne vous occupez pas non plus de _configurations_ et _supported_, nous verrons cela plus tard.
 
 ## Modifier la disposition globale du site
 
-Nous allons dans cet étape voir comment modifier la disposition du site, tous les éléments qui seront affichés sur chaque page (head, footer ...)
+Nous allons dans cette étape voir comment modifier la disposition du site, tous les éléments qui seront affichés sur chaque page (head, footer...).
 Pour modifier ceci, il vous faut créer un fichier _default.ctp_ dans le dossier _Layouts_.
 
-<aside class="alert alert-info">A savoir que les fichiers de vue (modification de la structure HTML) ont tous comme extension **.ctp** et non **.html** ou **.php** mais vous pouvez quand même y insérer de l'HTML ou du php.</aside>
+<aside class="alert alert-info">A savoir que les fichiers de vue (modification de la structure HTML) ont tous comme extension **.ctp** et non **.html** ou **.php** mais vous pouvez quand même y insérer de l'HTML ou du PHP.</aside>
 
-Pour le contenu du fichier _default.ctp_ vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier _default.ctp_ se trouverai alors dans _/app/View/Layouts/default.ctp_).
-Certaines parties de code contenu dans le _default.ctp_ doivent être conservées, comme par exemple ceci en fin de page :
+Pour le contenu du fichier _default.ctp_ vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier _default.ctp_ se trouverait alors dans _/app/View/Layouts/default.ctp_).
+Certaines parties de code contenues dans le _default.ctp_ doivent être conservées, comme par exemple ceci en fin de page :
 
 ```html
 <?= $this->Html->script('app.js') ?>
@@ -98,7 +98,7 @@ Ce code permet de faire fonctionner correctement MineWeb notamment les formulair
 
 ## Modifier les différentes pages
 
-Pour modifier les différentes pages du CMS il vous faudra créer un dossier avec le nom du Controller et un fichier _.ctp_ avec le nom de l'action. Si vous ne comprenez pas ou que vous ne pouvez pas vous embêter, prenez exemples sur des thèmes déjà fait (_app/View/Themed_ si vous en avez téléchargé depuis votre panel admin) ou sur le thème de base  (_app/View/_).
+Pour modifier les différentes pages du CMS il vous faudra créer un dossier avec le nom du Controller et un fichier _.ctp_ avec le nom de l'action. Si vous ne comprenez pas ou que vous ne pouvez pas vous embêter, prenez exemple sur des thèmes déjà fait (_app/View/Themed_ si vous en avez téléchargé depuis votre panel admin) ou sur le thème de base (_app/View/_).
 
 Par exemple, pour modifier la page affichée quand vous lisez une news/un article, il vous faudra créer un fichier **News/index.ctp** et y insérer le contenu que vous souhaitez selon le modèle du thème par défaut (pour utiliser les bonnes variables).
 
@@ -108,7 +108,7 @@ Par exemple, pour modifier la page affichée quand vous lisez une news/un articl
 
 Pour modifier les pages d'un plugin il vous faudra tout comme à l'étape précédente créer un dossier avec le nom du Controller et un fichier avec le nom de l'action, **sauf que** il vous faudra placer ce dossier dans un autre dossier appelé _Plugin_.
 
-<aside class="alert alert-info">Pour créer vos fichiers/dossiers, référez vous aux plugins en eux-mêmes, situés dans <em>app/Plugin/</em>, leurs fichiers <em>.ctp</em> seront dans le dossier <em>View</em>.</aside>
+<aside class="alert alert-info">Pour créer vos fichiers/dossiers, référez-vous aux plugins en eux-mêmes, situés dans <em>app/Plugin/</em>, leurs fichiers <em>.ctp</em> seront dans le dossier <em>View</em>.</aside>
 
 Il est mieux aussi de **préciser dans la configuration** si vous _supporter_ (stylisé) des plugins. Pour cela, revenons dans le fichier _Config/config.json_ et nous allons toucher à _supported_. En effet, vous aller devoir écrire l'_ID_ du plugin et la ou les versions supportées. Par exemple :
 
@@ -133,18 +133,18 @@ Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très
 }
 ```
 
-A ce moment là, vous indiquez que votre thème supporte uniquement les versions du plugin "Boutique" au dessus et incluant la 1.0.0.
+À ce moment-là, vous indiquez que votre thème supporte uniquement les versions du plugin "Boutique" au dessus et incluant la 1.0.0.
 
-## Utiliser des fichiers CSS, JS ou images personnalisés
+## Utiliser des fichiers CSS, JS ou images personnalisées
 
-Il est utile quand vous créer un thème de pouvoir utiliser des fichiers CSS/JS personnalisés ou même des images.
+Il est utile quand vous créez un thème de pouvoir utiliser des fichiers CSS/JS personnalisés ou même des images.
 Pour cela, il vous suffit de créer un dossier _webroot_ contenant les sous-dossiers :
 
-- css
-- js
-- img
+- `css`
+- `js`
+- `img`
 
-Ces donc dans ces dossiers que vous glisserez vos fichiers.
+C'est donc dans ces dossiers que vous glisserez vos fichiers.
 Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichiers _.ctp_ :
 
 ```php
@@ -163,4 +163,4 @@ Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichi
 
 ## La personnalisation
 
-<aside class="alert alert-warning">En cours de rédaction ... (Vous pouvez vous référer au thème existant comme "Universal".)</aside>
+<aside class="alert alert-warning">En cours de rédaction... (vous pouvez vous référer au thème existant comme "Universal")</aside>
