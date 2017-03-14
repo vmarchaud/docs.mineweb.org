@@ -174,7 +174,7 @@
 
 <aside class="alert alert-info">
 <h3>Informations</h3>
-<p>Vous devez placer tout le contenu de l'archive téléchargée sur votre espace membre, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tout les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
+<p>Vous devez placer tout le contenu de l'archive téléchargée sur votre espace membre, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tous les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
 </aside>
 
 <h2 id="tape-1-configuration-de-la-base-de-donn-es">Étape 1 - Configuration de la base de données</h2>
@@ -219,7 +219,7 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 
 <h2 id="tape-3-cr-ation-de-l-39-administrateur">Étape 3 - Création de l&#39;administrateur</h2>
 
-<p>Voici la troisième et dernière étape de l&#39;installation du CMS, vous allez créer votre compte administrateur qui permettra d&#39;accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton &ldquo;Suivant&rdquo;.</p>
+<p>Voici la troisième et dernière étape de l&#39;installation du CMS, vous allez créer votre compte administrateur qui vous permettra d&#39;accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton &ldquo;Suivant&rdquo;.</p>
 
 <h2 id="installation-termin-e">Installation terminée</h2>
 
@@ -262,63 +262,63 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 <aside class="alert alert-warning">
   <h3>Compatibilité</h3>
   <p>Les plugins sont compatibles à partir de la version 1.7.10</p>
-  <p><small><em>Des problèmes de compatibilités peuvent survenir avec Cauldron.</em></small></p>
+  <p><small><em>Des problèmes de compatibilité peuvent survenir avec Cauldron.</em></small></p>
 </aside>
 
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (Boutique, Classement factions, Vote…)</em> <br>
-  - BungeeCord : <em>Connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
-  - Ping : <em>Connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (La <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - BungeeCord : <em>connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
+  - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
 <h2 id="configuration-pr-alable">Configuration préalable</h2>
 
 <p>Rendez-vous sur la page de liaison site-serveur sur le panel admin de votre CMS.
-Vous devez dans un premier temps configurer le temps d’exécution maximum (appelé aussi timeout), il est conseillé de mettre 1 (secondes).</p>
+Vous devez dans un premier temps configurer le temps d’exécution maximum (appelé aussi timeout), il est conseillé de mettre 1 (seconde).</p>
 
 <p><img src="http://pic.eywek.fr/491537.png" /></p>
 
 <aside class="alert alert-info">
-Vous avez a côté 2 boutons pour désactiver la fonctionnalité (mettra automatiquement le statut du serveur à éteint) si vous ne souhaiter pas utiliser la liaison site-serveur. Et un autre bouton pour activer/désactiver le cache sur la “bannière” (Permet que le message affiché sur le site (joueurs connectés, MOTD…) soit stocké pendant quelques minutes permettant d’éviter la surcharge de commande au serveur)
+Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra automatiquement le statut du serveur à : éteint) si vous ne souhaitez pas utiliser la liaison site-serveur. Et un autre bouton pour activer/désactiver le cache sur la “bannière” (permet que le message affiché sur le site (joueurs connectés, MOTD…) soit stocké pendant quelques minutes permettant d’éviter la surcharge de commande au serveur).
 </aside>
 
 <h2 id="liaison-un-serveur-bukkit-spigot">Liaison à un serveur Bukkit/Spigot</h2>
 
 <p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">cette adresse</a>.
-Une fois le plugin téléchargé, placez-le dans votre dossier plugins de votre serveur et <strong>redémarrez celui-ci</strong>.
+Une fois le plugin téléchargé, placez-le dans votre dossier <code class="prettyprint">plugins</code> de votre serveur et <strong>redémarrez celui-ci</strong>.
 Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.
-Quand votre serveur est en ligne, configurez le port que va utiliser le plugin pour communiquer avec le site, pour cela tapez la commande <code class="prettyprint">/mineweb port PORT</code> en remplaçant bien sur <strong>PORT</strong> par un port <strong>disponible</strong>, <strong>non utilisé</strong> et <strong>ouvert</strong>.</p>
+Quand votre serveur est en ligne, configurez le port que va utiliser le plugin pour communiquer avec le site, pour cela tapez la commande <code class="prettyprint">/mineweb port PORT</code> en remplaçant bien sûr <code class="prettyprint">__PORT__</code> par un port <strong>disponible</strong>, <strong>non utilisé</strong> et <strong>ouvert</strong>.</p>
 
 <aside class="alert alert-info">
-Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft quels ports sont disponibles. Si vous utilisez un Dédié ou un VPS, essayez par exemple des ports comme 4343 ou ou 26178.
+Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft quels ports sont disponibles. Si vous utilisez un serveur dédié ou un VPS, essayez par exemple des ports comme 4343 ou 26178.
 </aside>
 
-<p>Une fois que cette commande est effectuée tapez <code class="prettyprint">/mineweb setup</code>. Et rendez-vous sur la page de liaison site-serveur dans le panel admin.</p>
+<p>Une fois que cette commande est effectuée, tapez <code class="prettyprint">/mineweb setup</code> et rendez-vous sur la page de liaison site-serveur dans le panel admin.</p>
 
 <p>Maintenant que vous avez configuré le serveur vous pouvez <strong>ajouter un serveur</strong> et remplir les informations nécessaires :</p>
 
 <ul>
-<li>Type de la connexion, donc mettez <em>Par défaut</em>.</li>
-<li>Nom par le nom affiché.</li>
-<li>IP par l’ip (ou domaine) sans le port.</li>
-<li>Port configuré par le port que vous avez tapé juste avant.</li>
+<li><code class="prettyprint">Type de la connexion</code>, donc mettez <em>Par défaut</em>.</li>
+<li><code class="prettyprint">Nom</code> par le nom affiché.</li>
+<li><code class="prettyprint">IP</code> par l’ip (ou domaine) sans le port.</li>
+<li><code class="prettyprint">Port configuré</code> par le port que vous avez tapé juste avant.</li>
 </ul>
 
-<p>Cliquez ensuite sur Connexion pour tester la connexion, si celle-ci échoue, votre <strong>port n’est pas ouvert</strong> ou <strong>non disponible</strong>.</p>
+<p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion, si celle-ci échoue, votre <strong>port n’est pas ouvert</strong> ou <strong>non disponible</strong>.</p>
 
 <h2 id="liaison-un-serveur-bungeecord">Liaison à un serveur BungeeCord</h2>
 
-<p>Même processus que pour la liaison Bukkit/Spigot mais avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a> et vous devez mettre comme type de connexion <em>Bungeecord</em>.</p>
+<p>Même processus que pour la liaison Bukkit/Spigot mais avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a> et vous devez mettre comme type de connexion <code class="prettyprint">Bungeecord</code>.</p>
 
 <h2 id="liaison-par-ping">Liaison par Ping</h2>
 
 <p>Vous n’avez pas besoin de plugin pour cette liaison, il vous suffit juste de configurer un serveur comme ceci depuis la page de liaison :</p>
 
 <ul>
-<li>Type de la connexion, donc mettez <em>Ping</em>.</li>
-<li>Nom par le nom affiché.</li>
-<li>IP par l’ip (ou domaine) <strong>sans le port</strong>.</li>
+<li><code class="prettyprint">Type</code> de la connexion, donc mettez <em>Ping</em>.</li>
+<li><code class="prettyprint">Nom</code> par le nom affiché.</li>
+<li><code class="prettyprint">IP</code> par l’ip (ou domaine) <strong>sans le port</strong>.</li>
 <li>Port de votre serveur (25565 par défaut si vous n’avez pas de port).</li>
 </ul>
 
@@ -328,7 +328,7 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft 
 
 <p>Dans un premier temps, vérifiez que vous n&#39;avez pas d&rsquo;<strong>erreur dans la console</strong> de votre serveur en rapport avec le plugin MineWeb.</p>
 
-<p>Dans un second temps, vérifiez que le <strong>port</strong> que vous avez configuré est <strong>ouvert</strong> et <strong>non utilisé</strong> (demandez à votre hébergeur minecraft si vous ne savez pas lequel utiliser).</p>
+<p>Dans un second temps, vérifiez que le <strong>port</strong> que vous avez configuré est <strong>ouvert</strong> et <strong>non utilisé</strong> (demandez à votre hébergeur Minecraft si vous ne savez pas lequel utiliser).</p>
 
 <p>Ensuite, essayez de <strong>redémarrer votre serveur</strong> juste après avoir fait les commandes, puis testez la connexion à nouveau.</p>
 
@@ -347,7 +347,7 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft 
 
 <h3 id="introduction">Introduction</h3>
 
-<p>Un plugin (aussi appelé <em>extension</em>), c’est des <strong>fichiers</strong> qui sont ajoutés à votre CMS pour y ajouter plusieurs <strong>fonctionnalités</strong> ou modifier certains <strong>comportement</strong> par défaut. Différents plugins “officiels” sont <em>déjà disponibles</em> sur le site de MineWeb. D’autres peuvent être <em>développés par la communauté</em> et c’est le but de ce tutoriel.</p>
+<p>Un plugin (aussi appelé <em>extension</em>), est un ensemble de <strong>fichiers</strong> qui sont ajoutés à votre CMS pour y ajouter plusieurs <strong>fonctionnalités</strong> ou modifier certains <strong>comportements</strong> par défaut. Différents plugins “officiels” sont <em>déjà disponibles</em> sur le site de MineWeb. D’autres peuvent être <em>développés par la communauté</em> et c’est le but de ce tutoriel.</p>
 
 <h2 id="cr-ation">Création</h2>
 
@@ -360,29 +360,29 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft 
 <p>Une fois ce dossier créé, il faut créer différents autres dossiers et fichiers :</p>
 
 <ul>
-<li>Config/</li>
-<li>Controller/</li>
-<li>Controller/Component/</li>
-<li>Model/</li>
-<li>Model/Behavior</li>
-<li>View/</li>
-<li>View/Helper/</li>
-<li>View/Layouts</li>
-<li>lang/</li>
-<li>SQL/</li>
+<li><code class="prettyprint">Config/</code></li>
+<li><code class="prettyprint">Controller/</code></li>
+<li><code class="prettyprint">Controller/Component/</code></li>
+<li><code class="prettyprint">Model/</code></li>
+<li><code class="prettyprint">Model/Behavior</code></li>
+<li><code class="prettyprint">View/</code></li>
+<li><code class="prettyprint">View/Helper/</code></li>
+<li><code class="prettyprint">View/Layouts</code></li>
+<li><code class="prettyprint">lang/</code></li>
+<li><code class="prettyprint">SQL/</code></li>
 </ul>
 
 <p>C’est tout pour les dossiers, il nous reste maintenant encore des fichiers à créer tels que :</p>
 
 <ul>
-<li>Config/bootstrap.php</li>
-<li>Config/routes.php</li>
-<li>config.json</li>
+<li><code class="prettyprint">Config/bootstrap.php</code></li>
+<li><code class="prettyprint">Config/routes.php</code></li>
+<li><code class="prettyprint">config.json</code></li>
 </ul>
 
 <h3 id="explications-et-configuration">Explications et configuration</h3>
 
-<p>Maintenant que vous avez créé tout ces fichiers, nous allons passer à la configuration de votre plugin. Pour cela, ouvrez le fichier <strong>config.json</strong>, c&#39;est dans ce fichier que toute la configuration sera située.</p>
+<p>Maintenant que vous avez créé tous ces fichiers, nous allons passer à la configuration de votre plugin. Pour cela, ouvrez le fichier <strong>config.json</strong>, c&#39;est dans ce fichier que toute la configuration sera située.</p>
 
 <blockquote>
 <p>Configuration par défaut (à remplir)</p>
@@ -413,13 +413,13 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur minecraft 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Maintenant, vous allez pouvoir configurer. Remplacez <strong>NAME</strong> par le <em>nom de votre plugin</em>, <strong>SLUG</strong> par le <em>nom du dossier</em> et puis AUTHOR par votre pseudo.
+<p>Maintenant, vous allez pouvoir configurer. Remplacez <strong>NAME</strong> par le <em>nom de votre plugin</em>, <strong>SLUG</strong> par le <em>nom du dossier</em> et puis <strong>AUTHOR</strong> par votre pseudo.
 Ensuite voici une explication des autres lignes :</p>
 
 <ul>
-<li>nav : Si votre plugin est affiché ou non dans la barre de navigation (<strong>Boolean</strong>),</li>
-<li>admin : Si votre plugin a besoin de fichiers pour l’administrer (<strong>Boolean</strong>),</li>
-<li>admin_group_menu : Si votre plugin a besoin de fichiers pour l’administrer, le nom de la section de liens dans le panel admin (<strong>String</strong>)<em>(Optionnel)</em>,</li>
+<li><code class="prettyprint">nav</code> : si votre plugin est affiché ou non dans la barre de navigation (<strong>boolean</strong>),</li>
+<li><code class="prettyprint">admin</code> : si votre plugin a besoin de fichiers pour l’administrer (<strong>boolean</strong>),</li>
+<li><code class="prettyprint">admin_group_menu</code> : si votre plugin a besoin de fichiers pour l’administrer, le nom de la section de liens dans le panel admin (<strong>string</strong>) <em>(optionnel)</em>,</li>
 </ul>
 
 <table><thead>
@@ -447,21 +447,21 @@ Ensuite voici une explication des autres lignes :</p>
 </tbody></table>
 
 <ul>
-<li>admin_name : Si votre plugin a besoin de fichiers pour l’administrer, le nom du lien dans le panel admin (<strong>String</strong>),</li>
-<li>admin_icon : Si votre plugin a besoin de fichiers pour l’administrer, le nom de l&#39;icone FontAwesome qui doit précéder le nom de l&#39;onglet (<strong>String</strong>)(Optionnel),</li>
-<li>admin_route : Si votre plugin a besoin de fichiers pour l’administrer, la route du controller admin (<strong>String</strong>),</li>
-<li>version : La version de votre plugin (<strong>Double</strong>),</li>
-<li>apiID : L’ID du plugin, ce champ est à remplir par la valeur -1 (<em>Sera automatiquement rempli après</em>),</li>
-<li>useEvents : Si votre plugin utilise les événements disponible sur le CMS (<strong>Boolean</strong>),</li>
-<li>permissions : Les permissions de votre plugin (voir plus tard) (<strong>Array</strong>)</li>
+<li><code class="prettyprint">admin_name</code> : si votre plugin a besoin de fichiers pour l’administrer, le nom du lien dans le panel admin (<strong>string</strong>),</li>
+<li><code class="prettyprint">admin_icon</code> : si votre plugin a besoin de fichiers pour l’administrer, le nom de l&#39;icone FontAwesome qui doit précéder le nom de l&#39;onglet (<strong>string</strong>) <em>(optionnel)</em>,</li>
+<li><code class="prettyprint">admin_route</code> : si votre plugin a besoin de fichiers pour l’administrer, la route du controller admin (<strong>string</strong>),</li>
+<li><code class="prettyprint">version</code> : la version de votre plugin (<strong>double</strong>),</li>
+<li><code class="prettyprint">apiID</code> : l’ID du plugin, ce champ est à remplir par la valeur -1 <em>(sera automatiquement rempli après)</em>,</li>
+<li><code class="prettyprint">useEvents</code> : si votre plugin utilise les événements disponible sur le CMS (<strong>boolean</strong>),</li>
+<li><code class="prettyprint">permissions</code> : les permissions de votre plugin (voir plus tard) (<strong>array</strong>)</li>
 </ul>
 
 <h3 id="les-sous-menu-du-panel-admin">Les sous-menu du panel admin</h3>
 
-<p>Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d&#39;ajouter la clé <code class="prettyprint">admin_menus</code> dans la configuration du plugin juste après <code class="prettyprint">admin_icon</code> (Et donc la clé <code class="prettyprint">admin_route</code> devient optionnelle).</p>
+<p>Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d&#39;ajouter la clé <code class="prettyprint">admin_menus</code> dans la configuration du plugin juste après <code class="prettyprint">admin_icon</code> (et donc la clé <code class="prettyprint">admin_route</code> devient optionnelle).</p>
 
 <blockquote>
-<p>Associez-lui comme valeur un tableau avec vos sous-lien, comme ceci par exemple :</p>
+<p>Associez-lui comme valeur un tableau avec vos sous-liens, comme ceci par exemple :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"NAME"</span><span class="p">,</span><span class="w">
@@ -514,11 +514,11 @@ Ensuite voici une explication des autres lignes :</p>
 
 <h2 id="les-tables-sql">Les tables SQL</h2>
 
-<p>Les tables dont vous avez besoin pour votre plugin vont être générées automatiquement par un Shell.
-Dans un premier temps, toutes les tables de votre plugin doivent être préfixé par le nom de votre plugin.
+<p>Les tables dont vous avez besoin pour votre plugin vont être générées automatiquement par un shell.
+Dans un premier temps, toutes les tables de votre plugin doivent être préfixées par le nom de votre plugin.
 Par exemple, pour le plugin Shop les tables doivent être préfixés par <strong>shop__</strong>.</p>
 
-<p>Pour générer vos tables automatiquement dans un schema (qui sera <strong>indispensable</strong> pour avoir un plugin valide) il vous faut vous rendre sur le ssh de votre VPS/Ordinateur/Dédié pour pouvoir utiliser la console de CakePHP. Il vous faut ensuite vous rendre dans le dossier contenant les fichiers du CMS puis, il vous faudra taper
+<p>Pour générer vos tables automatiquement dans un schema (qui sera <strong>indispensable</strong> pour avoir un plugin valide) il vous faut vous rendre sur le SSH de votre serveur dédié/VPS/ordinateur pour pouvoir utiliser la console de CakePHP. Il vous faut ensuite vous rendre dans le dossier contenant les fichiers du CMS puis, il vous faudra taper
 <code class="prettyprint">app/Console/cake schema generate plugin-shop</code>
 Un fichier <em>schema.php</em> sera automatiquement créé dans le dossier SQL de votre plugin.</p>
 
@@ -573,8 +573,8 @@ Un fichier <em>schema.php</em> sera automatiquement créé dans le dossier SQL d
 
 <h3 id="fonctions">Fonctions</h3>
 
-<p>Tout comme les variables, certaines méthodes/fonctions sont disponibles pour vous permettre d’interagir avec les plugins installés.
-Tout d’abord vous avez la fonction <strong>loadPlugins()</strong> qui vous retournera tout comme la variable <strong>$pluginsLoaded</strong> (voir ci-dessous) les plugins chargés et installés, cette méthode/fonction vous donne simplement les données à jour si celle-ci ont été modifiés depuis le chargement du Component des plugins.</p>
+<p>Tout comme les variables, certaines méthodes/fonctions sont disponibles pour vous permettre d’intéragir avec les plugins installés.
+Tout d’abord vous avez la fonction <strong>loadPlugins()</strong> qui vous retournera tout comme la variable <strong>$pluginsLoaded</strong> (voir ci-dessous) les plugins chargés et installés, cette méthode/fonction vous donne simplement les données à jour si celles-ci ont été modifiées depuis le chargement du Component des plugins.</p>
 
 <p>Vous avez ensuite la fonction <strong>getPluginConfig($slug)</strong> qui vous retourne le JSON de la configuration d’un plugin. Vous devez <strong>spécifier</strong> le <strong>slug du plugin</strong>, par exemple, pour Boutique c’est Shop.</p>
 
@@ -590,14 +590,14 @@ Tout d’abord vous avez la fonction <strong>loadPlugins()</strong> qui vous ret
 <li><strong>findPluginsByAuthor(<em>$author</em>)</strong></li>
 </ul>
 
-<p>Qui vous retournerons ou <strong>un objet</strong> contenant les données du/des plugin(s) trouvé(s) (selon la fonction) avec comme clé l’ID du plugin. Ou la fonction vous retournera <strong>objet vide</strong> si aucun plugin ne correspond à la recherche.</p>
+<p>Ces fonctions vous retourneront soit <strong>un objet</strong> contenant les données du/des plugin(s) trouvé(s) (selon la fonction) avec comme clé l’ID du plugin, soit un <strong>objet vide</strong> si aucun plugin ne correspond à la recherche.</p>
 
 <h3 id="variables">Variables</h3>
 
-<p>Les plugins sont chargés dès le chargement de votre site, en effet le CMS <strong>installe automatiquement</strong> les plugins qui sont valides dans le dossier <em>/app/Plugin/</em> et qui ne sont pas encore présent dans la base de données. Et celui-ci <strong>supprime</strong> aussi <strong>automatiquement</strong> les plugins qui sont encore en base de données mais plus dans le dossier.</p>
+<p>Les plugins sont chargés dès le chargement de votre site, en effet le CMS <strong>installe automatiquement</strong> les plugins qui sont valides dans le dossier <em>/app/Plugin/</em> et qui ne sont pas encore présents dans la base de données. Et celui-ci <strong>supprime</strong> aussi <strong>automatiquement</strong> les plugins qui sont encore en base de données mais plus dans le dossier.</p>
 
 <p>Après ces opérations effectuées, le CMS <strong>rafraichi les permissions</strong> (pour pouvoir supprimer/ajouter les permissions des plugins installés/supprimés).
-Une fois cela fais, vous pouvez accèder à une variable automatiquement initialisée nommée <strong>$pluginsLoaded</strong>. Celle-ci contient les différents plugins chargés et installés en base de données.</p>
+Une fois cela fait, vous pouvez accèder à une variable automatiquement initialisée nommée <strong>$pluginsLoaded</strong>. Celle-ci contient les différents plugins chargés et installés en base de données.</p>
 
 <blockquote>
 <p>Vous pouvez l’utilisez comme ceci :</p>
@@ -694,11 +694,10 @@ Une fois cela fais, vous pouvez accèder à une variable automatiquement initial
 }
 </code></pre>
 
-<p>Les plugins sont différencier avec un <strong>ID</strong> propre à eux-même qui se compose comme ceci : <em>auteur.slug.apiID</em>
-Où le slug est le nom du dossier de votre plugin.</p>
+<p>Les plugins sont différenciés avec un <strong>ID</strong> propre à eux-même qui se compose comme ceci : <em>auteur.slug.apiID</em> où le slug est le nom du dossier de votre plugin.</p>
 
-<p>Vous avez aussi accès aux variables <strong>$pluginsInFolder</strong> et <strong>$pluginsInDB</strong> qui vous retourne un array des plugins contenus dans leur dossier ou en base de données (donc installés).
-Ces listes <strong>ne sont pas rafraîchi</strong> après la suppression et/ou installation de nouveaux plugins. Il y a donc de forte chance que celles-ci ne soient pas à jour.</p>
+<p>Vous avez aussi accès aux variables <strong>$pluginsInFolder</strong> et <strong>$pluginsInDB</strong> qui vous retournent un array des plugins contenus dans leurs dossiers ou en base de données (donc installés).
+Ces listes <strong>ne sont pas rafraîchies</strong> après la suppression et/ou installation de nouveaux plugins. Il y a donc de fortes chances que celles-ci ne soient pas à jour.</p>
 
 <h2 id="utiliser-les-events">Utiliser les events</h2>
 
@@ -753,94 +752,94 @@ Exemple :</p>
 <h3 id="global">Global</h3>
 
 <ul>
-<li><strong>requestPage</strong> : Appelé lors de chaque requête sans données particulières.</li>
-<li><strong>onPostRequest</strong> : Appelé lors d’une requête POST sans données particulières.</li>
-<li><strong>onLoadPage</strong> : Appelé lors de chaque chargement de page dans le beforeRender sans données particulières.</li>
-<li><strong>onLoadAdminPanel</strong> : Appelé lors de chaque chargement de page admin (prefix) dans le beforeRender sans données particulières.</li>
+<li><strong>requestPage</strong> : appelé lors de chaque requête sans données particulières.</li>
+<li><strong>onPostRequest</strong> : appelé lors d’une requête POST sans données particulières.</li>
+<li><strong>onLoadPage</strong> : appelé lors de chaque chargement de page dans le beforeRender sans données particulières.</li>
+<li><strong>onLoadAdminPanel</strong> : appelé lors de chaque chargement de page admin (prefix) dans le beforeRender sans données particulières.</li>
 </ul>
 
 <h3 id="fonction-particuli-re">Fonction particulière</h3>
 
 <ul>
-<li><strong>beforeEncodePassword</strong> : Appelé avant chaque encodage de mot de passe avec le pseudo et le mot de passe en données.</li>
-<li><strong>beforeSendMail</strong> : Appelé avant chaque envoie d’email avec le message et la configuration en données.</li>
-<li><strong>beforeUploadImage</strong> : Appelé avant chaque upload d’image avec la requête et le nom de l’image voulu en données.</li>
+<li><strong>beforeEncodePassword</strong> : appelé avant chaque encodage de mot de passe avec le pseudo et le mot de passe en données.</li>
+<li><strong>beforeSendMail</strong> : appelé avant chaque envoi d’email avec le message et la configuration en données.</li>
+<li><strong>beforeUploadImage</strong> : appelé avant chaque upload d’image avec la requête et le nom de l’image voulu en données.</li>
 </ul>
 
 <h3 id="news">News</h3>
 
 <ul>
-<li><strong>beforeAddComment</strong> : Appelé avant que le commentaire ne soit enregistré avec le contenu, l’ID de la news et les infos de l’utilisateur en données.</li>
-<li><strong>beforeLike</strong> : Appelé avant que le like ne soit enregistré avec l’ID de la news et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDislike</strong> : Appelé avant que le like ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeleteComment</strong> : Appelé avant que le commentaire ne soit supprimé avec l’ID du commentaire, l’ID de la news et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeleteNews</strong> : Appelé avant que la news ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.</li>
-<li><strong>beforeAddNews</strong> : Appelé avant que la news ne soit enregistré avec le contenu de la requête et les infos de l’utilisateur en données.</li>
-<li><strong>beforeEditNews</strong> : Appelé avant que la news ne soit enregistré avec le contenu de la requête, l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeAddComment</strong> : appelé avant que le commentaire ne soit enregistré avec le contenu, l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeLike</strong> : appelé avant que le like ne soit enregistré avec l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDislike</strong> : appelé avant que le like ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteComment</strong> : appelé avant que le commentaire ne soit supprimé avec l’ID du commentaire, l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteNews</strong> : appelé avant que la news ne soit supprimé avec l’ID de la news et les infos de l’utilisateur en données.</li>
+<li><strong>beforeAddNews</strong> : appelé avant que la news ne soit enregistré avec le contenu de la requête et les infos de l’utilisateur en données.</li>
+<li><strong>beforeEditNews</strong> : appelé avant que la news ne soit enregistré avec le contenu de la requête, l’ID de la news et les infos de l’utilisateur en données.</li>
 </ul>
 
 <h3 id="user">User</h3>
 
 <ul>
-<li><strong>onLogin</strong> : Appelé à chaque login avec l’utilisateur et register (boolean) comme données.</li>
-<li><strong>beforeRegister</strong> : Appelé avant l’enregistrement d’un utilisateur (après la validation) avec les données de la requête comme données.</li>
-<li><strong>beforeConfirmAccount</strong> : Appelé avant la confirmation en base de donnée de l’utilisateur avec l’ID de l’utilisateur et manual si confirmé par un administrateur comme données.</li>
-<li><strong>beforeSendResetPassMail</strong> : Appelé avant l’envoie de l’email permettant la rénitialisation du mot de passe avec l’ID de l’utilisateur et clé de reset comme données</li>
-<li><strong>beforeResetPassword</strong> : Appelé avant l’enregistrement du nouveau mot de passe avec l’ID de l’utilisateur et le nouveau mot de passe comme données.
-onLogout : Appelé pendant la déconnexion avec la session “user” comme données.</li>
-<li><strong>beforeUpdatePassword</strong> : Appelé avant l’enregistrement du nouveau mot de passe avec l’utilisateur et le nouveau mot de passe encodé comme données.</li>
-<li><strong>beforeUpdateEmail</strong> : Appelé avant l’enregistrement du nouvel email avec l’utilisateur et le nouveau email comme données.</li>
-<li><strong>beforeSendPoints</strong> : Appelé avant l’enregistrement de la transaction avec l’utilisateur, le nouveau solde de l’utilisateur, à qui sont transféré les points et combien comme données.</li>
-<li><strong>beforeEditUser</strong> : Appelé avant que les données ne soit enregistrées avec l’ID de l’utilisateur, les données et password_updated comme données.</li>
-<li><strong>beforeDeleteUser</strong> : Avant que l’utilisateur ne soit supprimé avec ses informations comme données.</li>
+<li><strong>onLogin</strong> : appelé à chaque login avec l’utilisateur et register (boolean) comme données.</li>
+<li><strong>beforeRegister</strong> : appelé avant l’enregistrement d’un utilisateur (après la validation) avec les données de la requête comme données.</li>
+<li><strong>beforeConfirmAccount</strong> : appelé avant la confirmation en base de donnée de l’utilisateur avec l’ID de l’utilisateur et manual si confirmé par un administrateur comme données.</li>
+<li><strong>beforeSendResetPassMail</strong> : appelé avant l’envoi de l’email permettant la réinitialisation du mot de passe avec l’ID de l’utilisateur et clé de reset comme données</li>
+<li><strong>beforeResetPassword</strong> : appelé avant l’enregistrement du nouveau mot de passe avec l’ID de l’utilisateur et le nouveau mot de passe comme données.</li>
+<li><strong>onLogout</strong> : appelé pendant la déconnexion avec la session “user” comme données.</li>
+<li><strong>beforeUpdatePassword</strong> : appelé avant l’enregistrement du nouveau mot de passe avec l’utilisateur et le nouveau mot de passe encodé comme données.</li>
+<li><strong>beforeUpdateEmail</strong> : appelé avant l’enregistrement du nouvel email avec l’utilisateur et le nouveau email comme données.</li>
+<li><strong>beforeSendPoints</strong> : appelé avant l’enregistrement de la transaction avec l’utilisateur, le nouveau solde de l’utilisateur, à qui sont transféré les points et combien comme données.</li>
+<li><strong>beforeEditUser</strong> : appelé avant que les données ne soit enregistrées avec l’ID de l’utilisateur, les données et <code class="prettyprint">password_updated</code> comme données.</li>
+<li><strong>beforeDeleteUser</strong> : appelé avant que l’utilisateur ne soit supprimé avec ses informations comme données.</li>
 </ul>
 
 <h3 id="plugin-shop">[PLUGIN] Shop</h3>
 
 <ul>
-<li><strong>onBuy</strong> : Appelé à chaque achat avant tout enregistrement avec les articles, le prix total et les infos de l’user comme données.</li>
-<li><strong>beforeEditItem</strong> : Appelé avant que les modifications de l’article ne soit enregistrés avec les infos et l’utilisateur en données.</li>
-<li><strong>beforeAddItem</strong> : Appelé avant que les modifications de l’article ne soit enregistrés avec les infos et l’utilisateur en données.</li>
-<li><strong>beforeAddCategory</strong> : Appelé avant l’enregistrement de la catégorie avec le nom de la catégorie et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeleteItem</strong> : Appelé avant la suppression de l’article avec l’ID de l’article et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeleteCategory</strong> : Appelé avant la suppression de la catégorie avec l’ID de la catégorie et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeletePaypalOffer</strong> : Appelé avant la suppression de l’offre PayPal avec l’ID de l’offre et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeleteStarpassOffer</strong> : Appelé avant la suppression de l’offre StarPass avec l’ID de l’offre et les infos de l’utilisateur en données.</li>
-<li><strong>beforeAddVoucher</strong> : Appelé avant l’enregistrement du code promo avec les données et les infos de l’utilisateur en données.</li>
-<li><strong>beforeDeleteVoucher</strong> : Appelé avant la suppression du code promo avec l’ID du code et les infos de l’utilisateur en données.</li>
+<li><strong>onBuy</strong> : appelé à chaque achat avant tout enregistrement avec les articles, le prix total et les infos de l’user comme données.</li>
+<li><strong>beforeEditItem</strong> : appelé avant que les modifications de l’article ne soit enregistrées avec les infos et l’utilisateur en données.</li>
+<li><strong>beforeAddItem</strong> : appelé avant que les modifications de l’article ne soit enregistrées avec les infos et l’utilisateur en données.</li>
+<li><strong>beforeAddCategory</strong> : appelé avant l’enregistrement de la catégorie avec le nom de la catégorie et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteItem</strong> : appelé avant la suppression de l’article avec l’ID de l’article et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteCategory</strong> : appelé avant la suppression de la catégorie avec l’ID de la catégorie et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeletePaypalOffer</strong> : appelé avant la suppression de l’offre PayPal avec l’ID de l’offre et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteStarpassOffer</strong> : appelé avant la suppression de l’offre StarPass avec l’ID de l’offre et les infos de l’utilisateur en données.</li>
+<li><strong>beforeAddVoucher</strong> : appelé avant l’enregistrement du code promo avec les données et les infos de l’utilisateur en données.</li>
+<li><strong>beforeDeleteVoucher</strong> : appelé avant la suppression du code promo avec l’ID du code et les infos de l’utilisateur en données.</li>
 </ul>
 
 <h3 id="plugin-vote">[PLUGIN] Vote</h3>
 
 <ul>
-<li><strong>onVote</strong> : Appelé pendant le vote (après l’enregistrement du vote, avant les récompenses) avec le choix du moyen de récompense (now/later), le site, la config et les infos de l’utilisateur en données.</li>
-<li><strong>beforeReceiveRewards</strong> : Appelé avant le gain des récompenses avec les récompenses, le type et les infos de l’utilisateur en données.</li>
-<li><strong>beforeGetWaitingReward</strong> : Appelé avant que la récompense en attente ne soit donné avec l’utilisateur en données.</li>
-<li><strong>beforeResetVotes</strong> : Appelé avant que tous les votes ne soit rénitialisés avec les infos de l’utilisateur en données.</li>
+<li><strong>onVote</strong> : appelé pendant le vote (après l’enregistrement du vote, avant les récompenses) avec le choix du moyen de récompense (now/later), le site, la config et les infos de l’utilisateur en données.</li>
+<li><strong>beforeReceiveRewards</strong> : appelé avant le gain des récompenses avec les récompenses, le type et les infos de l’utilisateur en données.</li>
+<li><strong>beforeGetWaitingReward</strong> : appelé avant que la récompense en attente ne soit donnée avec l’utilisateur en données.</li>
+<li><strong>beforeResetVotes</strong> : appelé avant que tous les votes ne soit rénitialisés avec les infos de l’utilisateur en données.</li>
 </ul>
 
 <h2 id="utiliser-les-modules">Utiliser les modules</h2>
 
 <h3 id="c-39-est-quoi">C&#39;est quoi ?</h3>
 
-<p>Les modules permettent aux développeurs de plugins d&#39;ajouter du <strong>code HTML</strong> ou du <strong>code PHP</strong> &hellip; facilement depuis des <strong>pages du CMS</strong>.</p>
+<p>Les modules permettent aux développeurs de plugins d&#39;ajouter du <strong>code HTML</strong>, <strong>code PHP</strong>, etc&hellip; facilement depuis des <strong>pages du CMS</strong>.</p>
 
 <h3 id="liste-des-modules">Liste des modules</h3>
 
 <p>Les modules disponibles sont :</p>
 
 <ul>
-<li>user_profile <em>Profil d&#39;utilisateur</em></li>
-<li>user_profile_messages <em>Profil d&#39;utilisateur (haut de page)</em></li>
-<li>admin_user_edit <em>Modification admin d&#39;un utilisateur (bas de page)</em></li>
-<li>admin_user_edit_form <em>Modification admin d&#39;un utilisateur (dans le formulaire)</em></li>
-<li>home <em>Accueil</em></li>
-<li>news <em>Page affichant une news</em></li>
+<li><code class="prettyprint">user_profile</code> <em>profil d&#39;utilisateur</em></li>
+<li><code class="prettyprint">user_profile_messages</code> <em>profil d&#39;utilisateur (haut de page)</em></li>
+<li><code class="prettyprint">admin_user_edit</code> <em>modification admin d&#39;un utilisateur (bas de page)</em></li>
+<li><code class="prettyprint">admin_user_edit_form</code> <em>modification admin d&#39;un utilisateur (dans le formulaire)</em></li>
+<li><code class="prettyprint">home</code> <em>accueil</em></li>
+<li><code class="prettyprint">news</code> <em>page affichant une news</em></li>
 </ul>
 
 <h3 id="comment-les-utiliser">Comment les utiliser ?</h3>
 
-<p>Pour utiliser un module dans votre <strong>plugin</strong>, il vous suffit de créer un dossier <em>/Modules/</em> dans le dossier de votre plugin. Il vous faut ensuite <strong>créer</strong> un fichier nommé par le <strong>nom du module</strong> que vous voulez utilisez et avec l&#39;extension <strong>.ctp</strong>.</p>
+<p>Pour utiliser un module dans votre <strong>plugin</strong>, il vous suffit de créer un dossier <em>/Modules/</em> dans le dossier de votre plugin. Il vous faut ensuite <strong>créer</strong> un fichier nommé par le <strong>nom du module</strong> que vous voulez utiliser et avec l&#39;extension <strong>.ctp</strong>.</p>
 
 <p>Par exemple pour utiliser le module <em>user_profile</em> il vous faut créer le fichier <em>/Modules/user_profile.ctp</em>.</p>
 
@@ -852,9 +851,9 @@ onLogout : Appelé pendant la déconnexion avec la session “user” comme donn
 
 <p>Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l&#39;apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles sur le site de MineWeb. D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.</p>
 
-<p>Il faut savoir que les thèmes sont une couche supplémentaire, c&#39;est à dire que si votre thème ne s&#39;occupe pas d&#39;une page du site, c&#39;est le thème par défaut qui prendra la relève.</p>
+<p>Il faut savoir que les thèmes sont une couche supplémentaire, c&#39;est-à-dire que si votre thème ne s&#39;occupe pas d&#39;une page du site, c&#39;est le thème par défaut qui prendra la relève.</p>
 
-<aside class="alert alert-info">Il est important et même presque indispensable d'avoir des connaissances en HTML/CSS voir JS et PHP pour pouvoir faire son propre thème.</aside>
+<aside class="alert alert-info">Il est important et même presque indispensable d'avoir des connaissances en HTML/CSS voire JS et PHP pour pouvoir faire son propre thème.</aside>
 
 <h2 id="cr-ation-des-dossiers-amp-fichiers">Création des dossiers &amp; fichiers</h2>
 
@@ -863,20 +862,22 @@ onLogout : Appelé pendant la déconnexion avec la session “user” comme donn
 <p>Une fois ce dossier créé, il faut créer différents autres dossiers et fichiers :</p>
 
 <ul>
-<li>Config/</li>
-<li>Layouts/</li>
-<li>webroot/
+<li><code class="prettyprint">Config/</code></li>
+<li><code class="prettyprint">Layouts/</code></li>
+<li><code class="prettyprint">webroot/</code>
 
 <ul>
-<li>css/</li>
-<li>js/</li>
-<li>img/</li>
+<li><code class="prettyprint">css/</code></li>
+<li><code class="prettyprint">js/</code></li>
+<li><code class="prettyprint">img/</code></li>
 </ul></li>
 </ul>
 
 <p>C’est tout pour les dossiers, il nous reste maintenant encore des fichiers à créer tels que :</p>
 
-<p>Config/config.json.</p>
+<ul>
+<li><code class="prettyprint">Config/config.json</code></li>
+</ul>
 
 <h2 id="utilisation-de-la-configuration">Utilisation de la configuration</h2>
 
@@ -893,22 +894,22 @@ onLogout : Appelé pendant la déconnexion avec la session “user” comme donn
 </span></code></pre>
 
 <p>Vous allez devoir configurer les informations les plus importantes.
-Tout d&#39;abord le <em>name</em> qui est le nom de votre thème, vous pouvez à cet endroit écrire le nom de votre thème en français, avec des accents, espaces ou autre si vous le souhaitez. Ce nom sera affiché sur le panel admin du CMS. (Exemple: Démonstration)
-Après, il faut configurer le <em>slug</em>, il faut ici insérer le nom du dossier du thème précédemment choisi (exemple: Demo).
+Tout d&#39;abord le <em>name</em> qui est le nom de votre thème, vous pouvez à cet endroit écrire le nom de votre thème en français, avec des accents, espaces ou autre si vous le souhaitez. Ce nom sera affiché sur le panel admin du CMS. (exemple : Démonstration).
+Après, il faut configurer le <em>slug</em>, il faut ici insérer le nom du dossier du thème précédemment choisi (exemple : Demo).
 Pour la colonne <em>author</em>, mettez ici votre pseudo.
-Pour la <em>version</em> du thème, la version doit être au format 0.0.0 comme expliqué <a href="http://semver.org">ici</a>.
+Pour la <em>version</em> du thème, la version doit être au format X.Y.Z comme expliqué <a href="http://semver.org">ici</a>.
 Pour <em>apiID</em>, laissez ceci à 0, ne vous en souciez pas, il sera automatiquement rempli quand vous soumettrez votre thème au market de mineweb.org.
 Ne vous occupez pas non plus de <em>configurations</em> et <em>supported</em>, nous verrons cela plus tard.</p>
 
 <h2 id="modifier-la-disposition-globale-du-site">Modifier la disposition globale du site</h2>
 
-<p>Nous allons dans cet étape voir comment modifier la disposition du site, tous les éléments qui seront affichés sur chaque page (head, footer &hellip;)
+<p>Nous allons dans cette étape voir comment modifier la disposition du site, tous les éléments qui seront affichés sur chaque page (head, footer&hellip;).
 Pour modifier ceci, il vous faut créer un fichier <em>default.ctp</em> dans le dossier <em>Layouts</em>.</p>
 
-<aside class="alert alert-info">A savoir que les fichiers de vue (modification de la structure HTML) ont tous comme extension **.ctp** et non **.html** ou **.php** mais vous pouvez quand même y insérer de l'HTML ou du php.</aside>
+<aside class="alert alert-info">A savoir que les fichiers de vue (modification de la structure HTML) ont tous comme extension **.ctp** et non **.html** ou **.php** mais vous pouvez quand même y insérer de l'HTML ou du PHP.</aside>
 
-<p>Pour le contenu du fichier <em>default.ctp</em> vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier <em>default.ctp</em> se trouverai alors dans <em>/app/View/Layouts/default.ctp</em>).
-Certaines parties de code contenu dans le <em>default.ctp</em> doivent être conservées, comme par exemple ceci en fin de page :</p>
+<p>Pour le contenu du fichier <em>default.ctp</em> vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier <em>default.ctp</em> se trouverait alors dans <em>/app/View/Layouts/default.ctp</em>).
+Certaines parties de code contenues dans le <em>default.ctp</em> doivent être conservées, comme par exemple ceci en fin de page :</p>
 <pre class="highlight html"><code><span class="cp">&lt;?= $this-&gt;Html-&gt;script('app.js') ?&gt;</span>
 <span class="cp">&lt;?= $this-&gt;Html-&gt;script('form.js') ?&gt;</span>
 <span class="nt">&lt;script&gt;</span>
@@ -948,7 +949,7 @@ Certaines parties de code contenu dans le <em>default.ctp</em> doivent être con
 
 <h2 id="modifier-les-diff-rentes-pages">Modifier les différentes pages</h2>
 
-<p>Pour modifier les différentes pages du CMS il vous faudra créer un dossier avec le nom du Controller et un fichier <em>.ctp</em> avec le nom de l&#39;action. Si vous ne comprenez pas ou que vous ne pouvez pas vous embêter, prenez exemples sur des thèmes déjà fait (<em>app/View/Themed</em> si vous en avez téléchargé depuis votre panel admin) ou sur le thème de base  (<em>app/View/</em>).</p>
+<p>Pour modifier les différentes pages du CMS il vous faudra créer un dossier avec le nom du Controller et un fichier <em>.ctp</em> avec le nom de l&#39;action. Si vous ne comprenez pas ou que vous ne pouvez pas vous embêter, prenez exemple sur des thèmes déjà fait (<em>app/View/Themed</em> si vous en avez téléchargé depuis votre panel admin) ou sur le thème de base (<em>app/View/</em>).</p>
 
 <p>Par exemple, pour modifier la page affichée quand vous lisez une news/un article, il vous faudra créer un fichier <strong>News/index.ctp</strong> et y insérer le contenu que vous souhaitez selon le modèle du thème par défaut (pour utiliser les bonnes variables).</p>
 
@@ -958,7 +959,7 @@ Certaines parties de code contenu dans le <em>default.ctp</em> doivent être con
 
 <p>Pour modifier les pages d&#39;un plugin il vous faudra tout comme à l&#39;étape précédente créer un dossier avec le nom du Controller et un fichier avec le nom de l&#39;action, <strong>sauf que</strong> il vous faudra placer ce dossier dans un autre dossier appelé <em>Plugin</em>.</p>
 
-<aside class="alert alert-info">Pour créer vos fichiers/dossiers, référez vous aux plugins en eux-mêmes, situés dans <em>app/Plugin/</em>, leurs fichiers <em>.ctp</em> seront dans le dossier <em>View</em>.</aside>
+<aside class="alert alert-info">Pour créer vos fichiers/dossiers, référez-vous aux plugins en eux-mêmes, situés dans <em>app/Plugin/</em>, leurs fichiers <em>.ctp</em> seront dans le dossier <em>View</em>.</aside>
 
 <p>Il est mieux aussi de <strong>préciser dans la configuration</strong> si vous <em>supporter</em> (stylisé) des plugins. Pour cela, revenons dans le fichier <em>Config/config.json</em> et nous allons toucher à <em>supported</em>. En effet, vous aller devoir écrire l&rsquo;<em>ID</em> du plugin et la ou les versions supportées. Par exemple :</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -979,20 +980,20 @@ Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>A ce moment là, vous indiquez que votre thème supporte uniquement les versions du plugin &ldquo;Boutique&rdquo; au dessus et incluant la 1.0.0.</p>
+<p>À ce moment-là, vous indiquez que votre thème supporte uniquement les versions du plugin &ldquo;Boutique&rdquo; au dessus et incluant la 1.0.0.</p>
 
-<h2 id="utiliser-des-fichiers-css-js-ou-images-personnalis-s">Utiliser des fichiers CSS, JS ou images personnalisés</h2>
+<h2 id="utiliser-des-fichiers-css-js-ou-images-personnalis-es">Utiliser des fichiers CSS, JS ou images personnalisées</h2>
 
-<p>Il est utile quand vous créer un thème de pouvoir utiliser des fichiers CSS/JS personnalisés ou même des images.
+<p>Il est utile quand vous créez un thème de pouvoir utiliser des fichiers CSS/JS personnalisés ou même des images.
 Pour cela, il vous suffit de créer un dossier <em>webroot</em> contenant les sous-dossiers :</p>
 
 <ul>
-<li>css</li>
-<li>js</li>
-<li>img</li>
+<li><code class="prettyprint">css</code></li>
+<li><code class="prettyprint">js</code></li>
+<li><code class="prettyprint">img</code></li>
 </ul>
 
-<p>Ces donc dans ces dossiers que vous glisserez vos fichiers.
+<p>C&#39;est donc dans ces dossiers que vous glisserez vos fichiers.
 Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichiers <em>.ctp</em> :</p>
 <pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s1">'NomDuDossierDuTheme.votrefichier.css'</span><span class="p">)</span> <span class="cp">?&gt;</span>
 </code></pre>
@@ -1007,7 +1008,7 @@ Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichi
 
 <h2 id="la-personnalisation">La personnalisation</h2>
 
-<aside class="alert alert-warning">En cours de rédaction &hellip; (Vous pouvez vous référer au thème existant comme &ldquo;Universal&rdquo;.)</aside>
+<aside class="alert alert-warning">En cours de rédaction&hellip; (vous pouvez vous référer au thème existant comme &ldquo;Universal&rdquo;)</aside>
 
       </div>
       <div class="dark-box">
