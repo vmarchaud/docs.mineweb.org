@@ -908,37 +908,152 @@ Pour modifier ceci, il vous faut créer un fichier <em>default.ctp</em> dans le 
 
 <aside class="alert alert-info">A savoir que les fichiers de vue (modification de la structure HTML) ont tous comme extension **.ctp** et non **.html** ou **.php** mais vous pouvez quand même y insérer de l'HTML ou du PHP.</aside>
 
-<p>Pour le contenu du fichier <em>default.ctp</em> vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier <em>default.ctp</em> se trouverait alors dans <em>/app/View/Layouts/default.ctp</em>).
-Certaines parties de code contenues dans le <em>default.ctp</em> doivent être conservées, comme par exemple ceci en fin de page :</p>
-<pre class="highlight html"><code><span class="cp">&lt;?= $this-&gt;Html-&gt;script('app.js') ?&gt;</span>
-<span class="cp">&lt;?= $this-&gt;Html-&gt;script('form.js') ?&gt;</span>
-<span class="nt">&lt;script&gt;</span>
-<span class="c1">// Config FORM/APP.JS</span>
+<p>Pour le contenu du fichier <em>default.ctp</em> vous pouvez prendre exemple sur les thèmes déjà existants ou sur le thème par défaut (le fichier <em>default.ctp</em> se trouverait alors dans <em>/app/View/Layouts/default.ctp</em>).</p>
 
-<span class="kd">var</span> <span class="nx">LIKE_URL</span> <span class="o">=</span> <span class="s2">"&lt;?= $this-&gt;Html-&gt;url(array('controller' =&gt; 'news', 'action' =&gt; 'like')) ?&gt;"</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">DISLIKE_URL</span> <span class="o">=</span> <span class="s2">"&lt;?= $this-&gt;Html-&gt;url(array('controller' =&gt; 'news', 'action' =&gt; 'dislike')) ?&gt;"</span><span class="p">;</span>
+<p>Dans ce fichier, on repère plusieurs grandes parties:</p>
 
-<span class="kd">var</span> <span class="nx">LOADING_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('GLOBAL__LOADING') ?&gt;"</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">ERROR_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('GLOBAL__ERROR') ?&gt;"</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">INTERNAL_ERROR_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('ERROR__INTERNAL_ERROR') ?&gt;"</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">FORBIDDEN_ERROR_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('ERROR__FORBIDDEN') ?&gt;"</span>
-<span class="kd">var</span> <span class="nx">SUCCESS_MSG</span> <span class="o">=</span> <span class="s2">"&lt;?= $Lang-&gt;get('GLOBAL__SUCCESS') ?&gt;"</span><span class="p">;</span>
+<ul>
+<li>L&#39;entête</li>
+<li>La barre de navigation</li>
+<li>Le contenu</li>
+<li>Le footer</li>
+<li>Les scripts</li>
+</ul>
 
-<span class="kd">var</span> <span class="nx">CSRF_TOKEN</span> <span class="o">=</span> <span class="s2">"&lt;?= $csrfToken ?&gt;"</span><span class="p">;</span>
+<h3 id="l-39-en-t-te">L&#39;en-tête</h3>
+
+<p>Elle constitue les données nécessaires au chargement de la page. L&#39;entête doit contenir tous les liens vers les fichiers CSS de votre thème, le titre de la page, ainsi que diverses méta-données. Le tout doit être englobé dans une balise <code class="prettyprint">&lt;head&gt;</code></p>
+
+<p>Pour inclure vos fichiers CSS et JS, utilisez les fonctions suivantes:
+<code class="prettyprint">php
+&lt;?= $this-&gt;Html-&gt;css(&#39;NomDuDossierDuTheme.votrefichier.css&#39;); ?&gt;
+&lt;?= $this-&gt;Html-&gt;script(&#39;NomDuDossierDuTheme.votrefichier.js&#39;) ?&gt;
+</code>
+Bien entendu, les fichiers CSS et JS nécessaires doivent être ajoutés dans les dossiers correspondants du <code class="prettyprint">webroot</code>.</p>
+
+<p>Variables utiles:
+ - <code class="prettyprint">$website_name</code> - le nom du site défini dans la configuration du CMS
+ - <code class="prettyprint">$title_for_layout</code> - le nom de la page actuelle</p>
+
+<h3 id="la-barre-de-navigation">La barre de navigation</h3>
+
+<p>La barre de navigation est une partie délicate des thèmes. Elle doit être générée par la configuration du CMS, et demande certaines connaissances en PHP pour être bien comprise.
+Si vous n&#39;êtes pas un adepte du PHP, vous pouvez essayer d&#39;utiliser le code déjà présent de certains thèmes pour l&#39;adapter au votre.</p>
+
+<table><thead>
+<tr>
+<th>Fonction ou variable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(&#39;/&#39;) ?&gt;</code></td>
+<td>Donne l&#39;URL de l&#39;accueil du site</td>
+</tr>
+<tr>
+<td><code class="prettyprint">&lt;?= $Lang-&gt;get(&#39;GLOBAL__HOME&#39;) ?&gt;</code></td>
+<td>Retourne le mot &lsquo;Accueil&rsquo; (ou sa traduction)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">$isConnected</code></td>
+<td>Vrai si l&#39;utilisateur est connecté.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;profile&#39;, &#39;action&#39; =&gt; &#39;index&#39;, &#39;plugin&#39; =&gt; false)) ?&gt;</code></td>
+<td>Donne l&#39;URL de la page de profil</td>
+</tr>
+<tr>
+<td><code class="prettyprint">$Permissions-&gt;can(&#39;ACCESS_DASHBOARD</code>); ?&gt;`</td>
+<td>Vrai si l&#39;utilisateur peut accéder au panel d&#39;administration. Vous pouvez, de cette manière, vérifier toutes les permissions possibles d&#39;un utilisateur.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;admin&#39;, &#39;action&#39; =&gt; &#39;index&#39;, &#39;plugin&#39; =&gt; false, &#39;admin&#39; =&gt; true)) ?&gt;</code></td>
+<td>Donne l&#39;URL du panel d&#39;administration.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;user&#39;, &#39;action&#39; =&gt; &#39;logout&#39;, &#39;plugin&#39; =&gt; false)) ?&gt;</code></td>
+<td>Donne l&#39;URL permettant de se déconnecter.</td>
+</tr>
+</tbody></table>
+
+<p>La génération se fait à partir du code suivant (exemple):</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span> <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$nav</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="cp">?&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$nav</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">if</span><span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'submenu'</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">here</span> <span class="o">==</span> <span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'url'</span><span class="p">])</span> <span class="p">{</span> <span class="cp">?&gt;</span><span class="s"> active</span><span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">&lt;?=</span> <span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'url'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span> <span class="cp">?&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+                <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">role=</span><span class="s">"menu"</span><span class="nt">&gt;</span>
+                <span class="cp">&lt;?php</span>
+                <span class="nv">$submenu</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'submenu'</span><span class="p">]);</span>
+                <span class="k">foreach</span> <span class="p">(</span><span class="nv">$submenu</span> <span class="k">as</span> <span class="nv">$k</span> <span class="o">=&gt;</span> <span class="nv">$v</span><span class="p">)</span> <span class="p">{</span>
+                <span class="cp">?&gt;</span>
+                    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">&lt;?=</span> <span class="nb">rawurldecode</span><span class="p">(</span><span class="nb">rawurldecode</span><span class="p">(</span><span class="nv">$v</span><span class="p">))</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$value</span><span class="p">[</span><span class="s1">'Navbar'</span><span class="p">][</span><span class="s1">'open_new_tab'</span><span class="p">])</span> <span class="o">?</span> <span class="s1">' target="_blank"'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span><span class="cp">&lt;?=</span> <span class="nb">rawurldecode</span><span class="p">(</span><span class="nb">str_replace</span><span class="p">(</span><span class="s1">'+'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="nv">$k</span><span class="p">))</span> <span class="cp">?&gt;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Il est conseillé de prendre pour exemple un thème déjà existant afin de comprendre les différentes variables et fonctions utilisées habituellement.</p>
+
+<h3 id="le-contenu">Le contenu</h3>
+
+<p>Votre layout doit contenir un emplacement qui accueillera le contenu des pages.
+Pour récupérer tout le contenu qui doit être affiché, utilisez la fonction suivante:
+<code class="prettyprint">php
+&lt;?= $this-&gt;fetch(&#39;content&#39;); ?&gt;
+</code>
+<aside class="alert alert-warning">Votre thème doit gérer la mise en page des plugins. Vous devez admettre que les plugins ne proposent aucune mise en page particulière au départ (vous pourrez modifier chaque plugin individuellement).</aside>
+Aidez-vous de la classe <code class="prettyprint">container</code> ou <code class="prettyprint">container-fluid</code> de Bootstrap afin d&#39;organiser le contenu sur la page.</p>
+<pre class="highlight php"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">'content'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+
+<aside class="alert alert-info">Vous pouvez tester votre mise en page avec le plugin Banlist ou FactionRanking.</aside>
+
+<h3 id="les-scripts">Les scripts</h3>
+
+<p>Les scripts sont généralement chargés en fin de page.
+Pour charger un script JS depuis votre thème, utilisez la fonction suivante:</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'NomDuDossierDuTheme.votrefichier.js'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Certaines parties de code contenues dans le <em>default.ctp</em> doivent être conservées, comme par exemple ceci en fin de page :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'app.js'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'form.js'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;script&gt;</span><span class="err">
+// Config FORM/APP.JS
+
+var LIKE_URL = "</span><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'news'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'like'</span><span class="p">))</span> <span class="cp">?&gt;</span><span class="err">";
+var DISLIKE_URL = "</span><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'news'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'dislike'</span><span class="p">))</span> <span class="cp">?&gt;</span><span class="err">";
+
+var LOADING_MSG = "</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'GLOBAL__LOADING'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="err">";
+var ERROR_MSG = "</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'GLOBAL__ERROR'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="err">";
+var INTERNAL_ERROR_MSG = "</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'ERROR__INTERNAL_ERROR'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="err">";
+var FORBIDDEN_ERROR_MSG = "</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'ERROR__FORBIDDEN'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="err">"
+var SUCCESS_MSG = "</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'GLOBAL__SUCCESS'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="err">";
+
+var CSRF_TOKEN = "</span><span class="cp">&lt;?=</span> <span class="nv">$csrfToken</span> <span class="cp">?&gt;</span><span class="err">"</span><span class="p">;</span>
 <span class="nt">&lt;/script&gt;</span>
 
-<span class="cp">&lt;?php if(isset($google_analytics) &amp;&amp; !empty($google_analytics)) { ?&gt;</span>
-  <span class="nt">&lt;script&gt;</span>
-    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">o</span><span class="p">,</span><span class="nx">g</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">a</span><span class="p">,</span><span class="nx">m</span><span class="p">){</span><span class="nx">i</span><span class="p">[</span><span class="s1">'GoogleAnalyticsObject'</span><span class="p">]</span><span class="o">=</span><span class="nx">r</span><span class="p">;</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="o">=</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="o">||</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="p">(</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">q</span><span class="o">=</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">q</span><span class="o">||</span><span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)},</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span><span class="nx">a</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">o</span><span class="p">),</span>
-    <span class="nx">m</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">o</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="nx">a</span><span class="p">.</span><span class="nx">async</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">a</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">g</span><span class="p">;</span><span class="nx">m</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">m</span><span class="p">)</span>
-    <span class="p">})(</span><span class="nb">window</span><span class="p">,</span><span class="nb">document</span><span class="p">,</span><span class="s1">'script'</span><span class="p">,</span><span class="s1">'//www.google-analytics.com/analytics.js'</span><span class="p">,</span><span class="s1">'ga'</span><span class="p">);</span>
+<span class="cp">&lt;?php</span> <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$google_analytics</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$google_analytics</span><span class="p">))</span> <span class="p">{</span> <span class="cp">?&gt;</span>
+  <span class="nt">&lt;script&gt;</span><span class="err">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <span class="nx">ga</span><span class="p">(</span><span class="s1">'create'</span><span class="p">,</span> <span class="s1">'&lt;?= $google_analytics ?&gt;'</span><span class="p">,</span> <span class="s1">'auto'</span><span class="p">);</span>
-    <span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="s1">'pageview'</span><span class="p">);</span>
+    ga('create', '</span><span class="cp">&lt;?=</span> <span class="nv">$google_analytics</span> <span class="cp">?&gt;</span><span class="s1">', '</span><span class="nx">auto</span><span class="s1">');
+    ga('</span><span class="nx">send</span><span class="s1">', '</span><span class="nx">pageview</span><span class="err">'</span><span class="p">);</span>
   <span class="nt">&lt;/script&gt;</span>
-<span class="cp">&lt;?php } ?&gt;</span>
-<span class="cp">&lt;?= (isset($configuration_end_code)) ? $configuration_end_code : '' ?&gt;</span>
+<span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span>
+<span class="cp">&lt;?=</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$configuration_end_code</span><span class="p">))</span> <span class="o">?</span> <span class="nv">$configuration_end_code</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span>
 </code></pre>
 
 <blockquote>
@@ -946,6 +1061,19 @@ Certaines parties de code contenues dans le <em>default.ctp</em> doivent être c
 </blockquote>
 
 <p>Ce code permet de faire fonctionner correctement MineWeb notamment les formulaires en AJAX ou d&#39;afficher les paramètres configurées sur le panel admin.</p>
+
+<h2 id="les-l-ments">Les éléments</h2>
+
+<p>Le dossier <code class="prettyprint">Elements</code> sert à charger différentes parties de votre thème quand vous en avez besoin, à la manière de modules que vous pouvez ajouter.
+Par exemple, on peut y créer un fichier <code class="prettyprint">navbar.ctp</code>, et y ajouter tout le code de notre barre de navigation.
+Pour ajouter la barre de navigation, il suffit d&#39;utiliser le code suivant sur n&#39;importe quelle page (dans notre cas, dans le fichier de layout <code class="prettyprint">default.ctp</code>):
+<code class="prettyprint">php
+&lt;?= $this-&gt;element(&#39;navbar&#39;); ?&gt;
+</code>
+Le code de la barre de navigation sera alors inséré à l&#39;endroit choisi.</p>
+
+<p>Il est recommandé de séparer les parties où le code est assez imposant (par exemple, la barre de navigation). Cela vous permettra d&#39;isoler au mieux les différents bugs que vous pouvez rencontrer, d&#39;éviter une fausse manipulation sur l&#39;ensemble du code, et surtout d&#39;avoir un espace de travail plus aéré. On peut par exemple créer un élément pour le slider, le footer, la sidebar, etc.
+Vous pouvez aussi, de cette manière, remplacer certains éléments chargés par le CMS ou différents plugins (comme le modal de connexion/inscription).</p>
 
 <h2 id="modifier-les-diff-rentes-pages">Modifier les différentes pages</h2>
 
@@ -1006,9 +1134,97 @@ Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichi
 <p>Vous pouvez avoir plus d&#39;informations <a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html">ici</a>.</p>
 </blockquote>
 
-<h2 id="la-personnalisation">La personnalisation</h2>
+<h2 id="page-de-personnalisation">Page de personnalisation</h2>
 
-<aside class="alert alert-warning">En cours de rédaction&hellip; (vous pouvez vous référer au thème existant comme &ldquo;Universal&rdquo;)</aside>
+<p>Votre thème peut proposer une page de personnalisation, qui permet à l&#39;administrateur de modifier certains aspects de votre thème, tels que la favicon, le logo, le style de navigation, etc.
+Les modifications faites sur la page de personnalisation seront sauvegardées dans le fichier <code class="prettyprint">config.json</code>. Vous n&#39;avez pas besoin de modifier ce fichier pour créer votre page.</p>
+
+<p>Il vous faut pour cela créer un fichier <code class="prettyprint">view.ctp</code> dans le dossier <code class="prettyprint">Config</code> du thème.
+Comme d&#39;habitude, prenez pour exemple la page de personnalisation d&#39;un thème déjà existant. Copiez-collez le fichier pour être sûr d&#39;avoir la bonne structure.</p>
+
+<p>Chaque champ de votre page sera sauvegardé si sa valeur est définie et valide.
+Le nom d&#39;un champ correspondra à son entrée dans la configuration du thème c&#39;est-à-dire que:</p>
+<pre class="highlight html"><code><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"monOption"</span> <span class="na">value=</span><span class="s">"&lt;?= $config['monOption']"</span><span class="nt">&gt;</span>
+</code></pre>
+
+<p>aura pour nom &#39;monOption&rsquo; et sera accessible dans toutes les pages de votre thème grâce à la variable <code class="prettyprint">$theme_config[&#39;monOption&#39;]</code>.
+<aside class="alert alert-warning">Comme vous pouvez le voir, le nom de la variable est <code class="prettyprint">$config[&#39;monOption&#39;]</code> dans la page de personnalisation. Cette variable n&#39;existe que sur cette page, tout comme la variable <code class="prettyprint">$theme_config</code> n&#39;existe pas dans la personnalisation.</aside></p>
+
+<p>Libre à vous de choisir les différents types de champs dont vous avez besoin dans la configuration du thème.</p>
+
+<h3 id="uploader-un-logo">Uploader un logo</h3>
+
+<p>Réferez-vous au thème Universal pour voir de quelle manière est uploadé le logo sur la page de personnalisation.
+Insérez ce PHP au début de votre page:</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="nv">$form_input</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'THEME__UPLOAD_LOGO'</span><span class="p">));</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">'logo'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$config</span><span class="p">[</span><span class="s1">'logo'</span><span class="p">])</span> <span class="p">{</span>
+  <span class="nv">$form_input</span><span class="p">[</span><span class="s1">'img'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$config</span><span class="p">[</span><span class="s1">'logo'</span><span class="p">];</span>
+  <span class="nv">$form_input</span><span class="p">[</span><span class="s1">'filename'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'theme_logo.png'</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Lorsque vous souhaitez afficher l&#39;élément permettant d&#39;envoyer le logo, utilisez:</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">element</span><span class="p">(</span><span class="s1">'form.input.upload.img'</span><span class="p">,</span> <span class="nv">$form_input</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Vous pourrez trouver ci-dessous des exemples d&#39;options.</p>
+
+<h3 id="champ-de-s-lection">Champ de sélection</h3>
+
+<p>Voici un exemple d&#39;une option où plusieurs choix sont possibles:
+<code class="prettyprint">php
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Désactiver le Slider&lt;/label&gt;
+    &lt;select name=&quot;slider_enabled&quot; class=&quot;form-control&quot;&gt;
+        &lt;option value=&quot;true&quot;&lt;?= ($config[&#39;slider_enabled&#39;] == &quot;true&quot;) ? &#39; selected&#39; : &#39;&#39; ?&gt;&gt;Oui&lt;/option&gt;
+      &lt;option value=&quot;false&quot;&lt;?= ($config[&#39;slider_enabled&#39;] == &quot;false&quot;) ? &#39; selected&#39; : &#39;&#39; ?&gt;&gt;Non&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+</code></p>
+
+<h3 id="champ-choix-multiples">Champ à choix multiples</h3>
+<pre class="highlight php"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Couleur de navigation<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;small&gt;</span>Couleur générale de la navigation<span class="nt">&lt;/small&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"nav-color"</span> <span class="na">class=</span><span class="s">"form-control"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#ba2222"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#ba2222"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Rouge<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#0f1bab"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#0f1bab"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Bleu foncé<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#129cc5"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#129cc5"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Bleu cyan<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#c54c12"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#c54c12"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Orange<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#c5b712"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#c5b712"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Jaune<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#9112c5"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#9112c5"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Violet<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#3ec512"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#3ec512"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Vert clair<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"#175f00"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$theme_config</span><span class="p">[</span><span class="s1">'nav-color'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#175f00"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Vert foncé<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+
+<h3 id="champ-html">Champ HTML</h3>
+
+<p>Pour afficher un module d&#39;édition HTML, vous devez inclure le code suivant en haut de votre page, permettant de charger le plugin JavaScript TinyMCE:</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'admin/tinymce/tinymce.min.js'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Vous devez ensuite charger le plugin sur un élément donné.</p>
+<pre class="highlight html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>HTML Supplémentaire de la sidebar<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Ajoutez ici votre propre HTML à ajouter en bas de la sidebar.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+        <span class="nx">tinymce</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+                <span class="na">selector</span><span class="p">:</span> <span class="s2">"#sidebar_code"</span><span class="p">,</span>
+                <span class="na">height</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="na">width</span> <span class="p">:</span> <span class="s1">'100%'</span><span class="p">,</span>
+                <span class="na">language</span> <span class="p">:</span> <span class="s1">'fr_FR'</span><span class="p">,</span>
+                <span class="na">plugins</span><span class="p">:</span> <span class="s2">"textcolor code image link"</span><span class="p">,</span>
+                <span class="na">toolbar</span><span class="p">:</span> <span class="s2">"fontselect bold italic link image forecolor alignleft aligncenter alignright alignjustify cut copy paste bullist numlist code"</span>
+         <span class="p">});</span>
+        <span class="nt">&lt;/script&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"sidebar_code"</span> <span class="na">name=</span><span class="s">"sidebar_code"</span> <span class="na">cols=</span><span class="s">"30"</span> <span class="na">rows=</span><span class="s">"10"</span><span class="nt">&gt;</span><span class="cp">&lt;?= $config['sidebar_code']; ?&gt;</span><span class="nt">&lt;/textarea&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
 
       </div>
       <div class="dark-box">
