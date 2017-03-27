@@ -67,11 +67,12 @@ Dans ce fichier, on repère plusieurs grandes parties:
  - Le footer
  - Les scripts
 
-### L'en-tête
+### L'entête
 
 Elle constitue les données nécessaires au chargement de la page. L'entête doit contenir tous les liens vers les fichiers CSS de votre thème, le titre de la page, ainsi que diverses méta-données. Le tout doit être englobé dans une balise `<head>`
 
 Pour inclure vos fichiers CSS et JS, utilisez les fonctions suivantes:
+
 ```php
 <?= $this->Html->css('NomDuDossierDuTheme.votrefichier.css'); ?>
 <?= $this->Html->script('NomDuDossierDuTheme.votrefichier.js') ?>
@@ -88,13 +89,13 @@ Si vous n'êtes pas un adepte du PHP, vous pouvez essayer d'utiliser le code dé
 
 | Fonction ou variable | Description |
 |----------------------|-------------|
-| `<?= $this->Html->url('/') ?>` | Donne l'URL de l'accueil du site |
-| `<?= $Lang->get('GLOBAL__HOME') ?>` | Retourne le mot 'Accueil' (ou sa traduction) |
+| `$this->Html->url('/')` | Donne l'URL de l'accueil du site |
+| `$Lang->get('GLOBAL__HOME')` | Retourne le mot 'Accueil' (ou sa traduction) |
 | `$isConnected` | Vrai si l'utilisateur est connecté.|
-| `<?= $this->Html->url(array('controller' => 'profile', 'action' => 'index', 'plugin' => false)) ?>`| Donne l'URL de la page de profil|
-| `$Permissions->can('ACCESS_DASHBOARD`); ?>` | Vrai si l'utilisateur peut accéder au panel d'administration. Vous pouvez, de cette manière, vérifier toutes les permissions possibles d'un utilisateur. |
-| `<?= $this->Html->url(array('controller' => 'admin', 'action' => 'index', 'plugin' => false, 'admin' => true)) ?>` | Donne l'URL du panel d'administration.|
-| `<?= $this->Html->url(array('controller' => 'user', 'action' => 'logout', 'plugin' => false)) ?>` | Donne l'URL permettant de se déconnecter.|
+| `$this->Html->url(array('controller' => 'profile', 'action' => 'index', 'plugin' => false))`| Donne l'URL de la page de profil|
+| `$Permissions->can('ACCESS_DASHBOARD'); ?>` | Vrai si l'utilisateur peut accéder au panel d'administration. Vous pouvez, de cette manière, vérifier toutes les permissions possibles d'un utilisateur. |
+| `$this->Html->url(array('controller' => 'admin', 'action' => 'index', 'plugin' => false, 'admin' => true))` | Donne l'URL du panel d'administration.|
+| `$this->Html->url(array('controller' => 'user', 'action' => 'logout', 'plugin' => false))` | Donne l'URL permettant de se déconnecter.|
 
 La génération se fait à partir du code suivant (exemple):
 
@@ -125,10 +126,12 @@ Il est conseillé de prendre pour exemple un thème déjà existant afin de comp
 ### Le contenu
 Votre layout doit contenir un emplacement qui accueillera le contenu des pages.
 Pour récupérer tout le contenu qui doit être affiché, utilisez la fonction suivante:
+
 ```php
 <?= $this->fetch('content'); ?>
 ```
 <aside class="alert alert-warning">Votre thème doit gérer la mise en page des plugins. Vous devez admettre que les plugins ne proposent aucune mise en page particulière au départ (vous pourrez modifier chaque plugin individuellement).</aside>
+
 Aidez-vous de la classe `container` ou `container-fluid` de Bootstrap afin d'organiser le contenu sur la page.
 
 ```php
@@ -189,6 +192,7 @@ Ce code permet de faire fonctionner correctement MineWeb notamment les formulair
 Le dossier `Elements` sert à charger différentes parties de votre thème quand vous en avez besoin, à la manière de modules que vous pouvez ajouter.
 Par exemple, on peut y créer un fichier `navbar.ctp`, et y ajouter tout le code de notre barre de navigation.
 Pour ajouter la barre de navigation, il suffit d'utiliser le code suivant sur n'importe quelle page (dans notre cas, dans le fichier de layout `default.ctp`):
+
 ```php
 <?= $this->element('navbar'); ?>
 ```
@@ -307,6 +311,7 @@ Vous pourrez trouver ci-dessous des exemples d'options.
 
 ### Champ de sélection
 Voici un exemple d'une option où plusieurs choix sont possibles:
+
 ```php
 <div class="form-group">
 	<label>Désactiver le Slider</label>
@@ -318,6 +323,7 @@ Voici un exemple d'une option où plusieurs choix sont possibles:
 ```
 
 ### Champ à choix multiples
+
 ```php
 <div class="form-group">
 	<label>Couleur de navigation</label>
