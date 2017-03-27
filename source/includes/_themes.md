@@ -86,22 +86,19 @@ Variables utiles:
 La barre de navigation est une partie délicate des thèmes. Elle doit être générée par la configuration du CMS, et demande certaines connaissances en PHP pour être bien comprise.
 Si vous n'êtes pas un adepte du PHP, vous pouvez essayer d'utiliser le code déjà présent de certains thèmes pour l'adapter au votre.
 
-#### Fonctions et variables utiles
-
-|                                                                                                                    |Fonction ou variable                                                                                                                                                          |Description
-|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| `<?= $this->Html->url('/') ?>`                                                                                     | Donne l'URL de l'accueil du site                                                                                                                         | 
-| `<?= $Lang->get('GLOBAL__HOME') ?>`                                                                                | Retourne le mot 'Accueil' (ou sa traduction)                                                                                                             | 
-| `$isConnected`                                                                                                     | Vrai si l'utilisateur est connecté.                                                                                                                      | 
-| `<?= $this->Html->url(array('controller' => 'profile', 'action' => 'index', 'plugin' => false)) ?>`                | Donne l'URL de la page de profil                                                                                                                         | 
-| `$Permissions->can('ACCESS_DASHBOARD`); ?>`                                                                        | Vrai si l'utilisateur peut accéder au panel d'administration. Vous pouvez, de cette manière, vérifier toutes les permissions possibles d'un utilisateur. | 
-| `<?= $this->Html->url(array('controller' => 'admin', 'action' => 'index', 'plugin' => false, 'admin' => true)) ?>` | Donne l'URL du panel d'administration.                                                                                                                   | 
-| `<?= $this->Html->url(array('controller' => 'user', 'action' => 'logout', 'plugin' => false)) ?>`                  | Donne l'URL permettant de se déconnecter.                                                                                                                | 
+| Fonction ou variable | Description |
+|----------------------|-------------|
+| `<?= $this->Html->url('/') ?>` | Donne l'URL de l'accueil du site |
+| `<?= $Lang->get('GLOBAL__HOME') ?>` | Retourne le mot 'Accueil' (ou sa traduction) |
+| `$isConnected` | Vrai si l'utilisateur est connecté.|
+| `<?= $this->Html->url(array('controller' => 'profile', 'action' => 'index', 'plugin' => false)) ?>`| Donne l'URL de la page de profil|
+| `$Permissions->can('ACCESS_DASHBOARD`); ?>` | Vrai si l'utilisateur peut accéder au panel d'administration. Vous pouvez, de cette manière, vérifier toutes les permissions possibles d'un utilisateur. |
+| `<?= $this->Html->url(array('controller' => 'admin', 'action' => 'index', 'plugin' => false, 'admin' => true)) ?>` | Donne l'URL du panel d'administration.|
+| `<?= $this->Html->url(array('controller' => 'user', 'action' => 'logout', 'plugin' => false)) ?>` | Donne l'URL permettant de se déconnecter.|
 
 La génération se fait à partir du code suivant (exemple):
 
-```html
-<?php
+```php
 <?php if(!empty($nav)): ?>
 	<?php $i = 0; ?>
 	<?php foreach ($nav as $key => $value): ?>
@@ -122,7 +119,6 @@ La génération se fait à partir du code suivant (exemple):
 		<?php endif; ?>
 	<?php endforeach; ?>
 <?php endif; ?>
-?>
 ```
 Il est conseillé de prendre pour exemple un thème déjà existant afin de comprendre les différentes variables et fonctions utilisées habituellement.
 
@@ -135,7 +131,7 @@ Pour récupérer tout le contenu qui doit être affiché, utilisez la fonction s
 <aside class="alert alert-warning">Votre thème doit gérer la mise en page des plugins. Vous devez admettre que les plugins ne proposent aucune mise en page particulière au départ (vous pourrez modifier chaque plugin individuellement).</aside>
 Aidez-vous de la classe `container` ou `container-fluid` de Bootstrap afin d'organiser le contenu sur la page.
 
-```html
+```php
 <div class="container">
 	<?= $this->fetch('content'); ?>
 </div>
@@ -152,7 +148,7 @@ Pour charger un script JS depuis votre thème, utilisez la fonction suivante:
 
 Certaines parties de code contenues dans le _default.ctp_ doivent être conservées, comme par exemple ceci en fin de page :
 
-```html
+```php
 <?= $this->Html->script('app.js') ?>
 <?= $this->Html->script('form.js') ?>
 <script>
@@ -276,16 +272,20 @@ Comme d'habitude, prenez pour exemple la page de personnalisation d'un thème d�
 
 Chaque champ de votre page sera sauvegardé si sa valeur est définie et valide.
 Le nom d'un champ correspondra à son entrée dans la configuration du thème c'est-à-dire que:
+
 ```html
 <input class="form-control" type="text" name="monOption" value="<?= $config['monOption']">
 ```
+
 aura pour nom 'monOption' et sera accessible dans toutes les pages de votre thème grâce à la variable `$theme_config['monOption']`.
 <aside class="alert alert-warning">Comme vous pouvez le voir, le nom de la variable est `$config['monOption']` dans la page de personnalisation. Cette variable n'existe que sur cette page, tout comme la variable `$theme_config` n'existe pas dans la personnalisation.</aside>
+
 Libre à vous de choisir les différents types de champs dont vous avez besoin dans la configuration du thème.
 
 ### Uploader un logo
 Réferez-vous au thème Universal pour voir de quelle manière est uploadé le logo sur la page de personnalisation.
 Insérez ce PHP au début de votre page:
+
 ```php
 <?php
 $form_input = array('title' => $Lang->get('THEME__UPLOAD_LOGO'));
@@ -296,6 +296,7 @@ if(isset($config['logo']) && $config['logo']) {
 }
 ?>
 ```
+
 Lorsque vous souhaitez afficher l'élément permettant d'envoyer le logo, utilisez:
 
 ```php
@@ -306,7 +307,7 @@ Vous pourrez trouver ci-dessous des exemples d'options.
 
 ### Champ de sélection
 Voici un exemple d'une option où plusieurs choix sont possibles:
-```html
+```php
 <div class="form-group">
 	<label>Désactiver le Slider</label>
 	<select name="slider_enabled" class="form-control">
@@ -317,7 +318,7 @@ Voici un exemple d'une option où plusieurs choix sont possibles:
 ```
 
 ### Champ à choix multiples
-```html
+```php
 <div class="form-group">
 	<label>Couleur de navigation</label>
 	<small>Couleur générale de la navigation</small>
@@ -336,11 +337,13 @@ Voici un exemple d'une option où plusieurs choix sont possibles:
 
 ### Champ HTML
 Pour afficher un module d'édition HTML, vous devez inclure le code suivant en haut de votre page, permettant de charger le plugin JavaScript TinyMCE:
+
 ```php
 <?= $this->Html->script('admin/tinymce/tinymce.min.js'); ?>
 ```
 
 Vous devez ensuite charger le plugin sur un élément donné.
+
 ```html
 <div class="form-group">
 	<label>HTML Supplémentaire de la sidebar</label>
