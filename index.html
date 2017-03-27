@@ -920,16 +920,16 @@ Pour modifier ceci, il vous faut créer un fichier <em>default.ctp</em> dans le 
 <li>Les scripts</li>
 </ul>
 
-<h3 id="l-39-en-t-te">L&#39;en-tête</h3>
+<h3 id="l-39-ent-te">L&#39;entête</h3>
 
 <p>Elle constitue les données nécessaires au chargement de la page. L&#39;entête doit contenir tous les liens vers les fichiers CSS de votre thème, le titre de la page, ainsi que diverses méta-données. Le tout doit être englobé dans une balise <code class="prettyprint">&lt;head&gt;</code></p>
 
-<p>Pour inclure vos fichiers CSS et JS, utilisez les fonctions suivantes:
-<code class="prettyprint">php
-&lt;?= $this-&gt;Html-&gt;css(&#39;NomDuDossierDuTheme.votrefichier.css&#39;); ?&gt;
-&lt;?= $this-&gt;Html-&gt;script(&#39;NomDuDossierDuTheme.votrefichier.js&#39;) ?&gt;
-</code>
-Bien entendu, les fichiers CSS et JS nécessaires doivent être ajoutés dans les dossiers correspondants du <code class="prettyprint">webroot</code>.</p>
+<p>Pour inclure vos fichiers CSS et JS, utilisez les fonctions suivantes:</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s1">'NomDuDossierDuTheme.votrefichier.css'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+<span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'NomDuDossierDuTheme.votrefichier.js'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Bien entendu, les fichiers CSS et JS nécessaires doivent être ajoutés dans les dossiers correspondants du <code class="prettyprint">webroot</code>.</p>
 
 <p>Variables utiles:
  - <code class="prettyprint">$website_name</code> - le nom du site défini dans la configuration du CMS
@@ -947,11 +947,11 @@ Si vous n&#39;êtes pas un adepte du PHP, vous pouvez essayer d&#39;utiliser le 
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(&#39;/&#39;) ?&gt;</code></td>
+<td><code class="prettyprint">$this-&gt;Html-&gt;url(&#39;/&#39;)</code></td>
 <td>Donne l&#39;URL de l&#39;accueil du site</td>
 </tr>
 <tr>
-<td><code class="prettyprint">&lt;?= $Lang-&gt;get(&#39;GLOBAL__HOME&#39;) ?&gt;</code></td>
+<td><code class="prettyprint">$Lang-&gt;get(&#39;GLOBAL__HOME&#39;)</code></td>
 <td>Retourne le mot &lsquo;Accueil&rsquo; (ou sa traduction)</td>
 </tr>
 <tr>
@@ -959,19 +959,19 @@ Si vous n&#39;êtes pas un adepte du PHP, vous pouvez essayer d&#39;utiliser le 
 <td>Vrai si l&#39;utilisateur est connecté.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;profile&#39;, &#39;action&#39; =&gt; &#39;index&#39;, &#39;plugin&#39; =&gt; false)) ?&gt;</code></td>
+<td><code class="prettyprint">$this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;profile&#39;, &#39;action&#39; =&gt; &#39;index&#39;, &#39;plugin&#39; =&gt; false))</code></td>
 <td>Donne l&#39;URL de la page de profil</td>
 </tr>
 <tr>
-<td><code class="prettyprint">$Permissions-&gt;can(&#39;ACCESS_DASHBOARD</code>); ?&gt;`</td>
+<td><code class="prettyprint">$Permissions-&gt;can(&#39;ACCESS_DASHBOARD&#39;); ?&gt;</code></td>
 <td>Vrai si l&#39;utilisateur peut accéder au panel d&#39;administration. Vous pouvez, de cette manière, vérifier toutes les permissions possibles d&#39;un utilisateur.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;admin&#39;, &#39;action&#39; =&gt; &#39;index&#39;, &#39;plugin&#39; =&gt; false, &#39;admin&#39; =&gt; true)) ?&gt;</code></td>
+<td><code class="prettyprint">$this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;admin&#39;, &#39;action&#39; =&gt; &#39;index&#39;, &#39;plugin&#39; =&gt; false, &#39;admin&#39; =&gt; true))</code></td>
 <td>Donne l&#39;URL du panel d&#39;administration.</td>
 </tr>
 <tr>
-<td><code class="prettyprint">&lt;?= $this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;user&#39;, &#39;action&#39; =&gt; &#39;logout&#39;, &#39;plugin&#39; =&gt; false)) ?&gt;</code></td>
+<td><code class="prettyprint">$this-&gt;Html-&gt;url(array(&#39;controller&#39; =&gt; &#39;user&#39;, &#39;action&#39; =&gt; &#39;logout&#39;, &#39;plugin&#39; =&gt; false))</code></td>
 <td>Donne l&#39;URL permettant de se déconnecter.</td>
 </tr>
 </tbody></table>
@@ -1004,12 +1004,13 @@ Si vous n&#39;êtes pas un adepte du PHP, vous pouvez essayer d&#39;utiliser le 
 <h3 id="le-contenu">Le contenu</h3>
 
 <p>Votre layout doit contenir un emplacement qui accueillera le contenu des pages.
-Pour récupérer tout le contenu qui doit être affiché, utilisez la fonction suivante:
-<code class="prettyprint">php
-&lt;?= $this-&gt;fetch(&#39;content&#39;); ?&gt;
-</code>
+Pour récupérer tout le contenu qui doit être affiché, utilisez la fonction suivante:</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">'content'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</code></pre>
+
 <aside class="alert alert-warning">Votre thème doit gérer la mise en page des plugins. Vous devez admettre que les plugins ne proposent aucune mise en page particulière au départ (vous pourrez modifier chaque plugin individuellement).</aside>
-Aidez-vous de la classe <code class="prettyprint">container</code> ou <code class="prettyprint">container-fluid</code> de Bootstrap afin d&#39;organiser le contenu sur la page.</p>
+
+<p>Aidez-vous de la classe <code class="prettyprint">container</code> ou <code class="prettyprint">container-fluid</code> de Bootstrap afin d&#39;organiser le contenu sur la page.</p>
 <pre class="highlight php"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
     <span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">'content'</span><span class="p">);</span> <span class="cp">?&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -1066,11 +1067,11 @@ var CSRF_TOKEN = "</span><span class="cp">&lt;?=</span> <span class="nv">$csrfTo
 
 <p>Le dossier <code class="prettyprint">Elements</code> sert à charger différentes parties de votre thème quand vous en avez besoin, à la manière de modules que vous pouvez ajouter.
 Par exemple, on peut y créer un fichier <code class="prettyprint">navbar.ctp</code>, et y ajouter tout le code de notre barre de navigation.
-Pour ajouter la barre de navigation, il suffit d&#39;utiliser le code suivant sur n&#39;importe quelle page (dans notre cas, dans le fichier de layout <code class="prettyprint">default.ctp</code>):
-<code class="prettyprint">php
-&lt;?= $this-&gt;element(&#39;navbar&#39;); ?&gt;
-</code>
-Le code de la barre de navigation sera alors inséré à l&#39;endroit choisi.</p>
+Pour ajouter la barre de navigation, il suffit d&#39;utiliser le code suivant sur n&#39;importe quelle page (dans notre cas, dans le fichier de layout <code class="prettyprint">default.ctp</code>):</p>
+<pre class="highlight php"><code><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">element</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</code></pre>
+
+<p>Le code de la barre de navigation sera alors inséré à l&#39;endroit choisi.</p>
 
 <p>Il est recommandé de séparer les parties où le code est assez imposant (par exemple, la barre de navigation). Cela vous permettra d&#39;isoler au mieux les différents bugs que vous pouvez rencontrer, d&#39;éviter une fausse manipulation sur l&#39;ensemble du code, et surtout d&#39;avoir un espace de travail plus aéré. On peut par exemple créer un élément pour le slider, le footer, la sidebar, etc.
 Vous pouvez aussi, de cette manière, remplacer certains éléments chargés par le CMS ou différents plugins (comme le modal de connexion/inscription).</p>
@@ -1174,16 +1175,15 @@ Insérez ce PHP au début de votre page:</p>
 
 <h3 id="champ-de-s-lection">Champ de sélection</h3>
 
-<p>Voici un exemple d&#39;une option où plusieurs choix sont possibles:
-<code class="prettyprint">php
-&lt;div class=&quot;form-group&quot;&gt;
-    &lt;label&gt;Désactiver le Slider&lt;/label&gt;
-    &lt;select name=&quot;slider_enabled&quot; class=&quot;form-control&quot;&gt;
-        &lt;option value=&quot;true&quot;&lt;?= ($config[&#39;slider_enabled&#39;] == &quot;true&quot;) ? &#39; selected&#39; : &#39;&#39; ?&gt;&gt;Oui&lt;/option&gt;
-      &lt;option value=&quot;false&quot;&lt;?= ($config[&#39;slider_enabled&#39;] == &quot;false&quot;) ? &#39; selected&#39; : &#39;&#39; ?&gt;&gt;Non&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/div&gt;
-</code></p>
+<p>Voici un exemple d&#39;une option où plusieurs choix sont possibles:</p>
+<pre class="highlight php"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Désactiver le Slider<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"slider_enabled"</span> <span class="na">class=</span><span class="s">"form-control"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"true"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">'slider_enabled'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"true"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Oui<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"false"</span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">'slider_enabled'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"false"</span><span class="p">)</span> <span class="o">?</span> <span class="s1">' selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="nt">&gt;</span>Non<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
 
 <h3 id="champ-choix-multiples">Champ à choix multiples</h3>
 <pre class="highlight php"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
