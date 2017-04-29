@@ -876,7 +876,7 @@ Notez que vous n'êtes pas obligé d'utiliser les fichiers de traductions, même
 
 ###Téléchargement
 
-Je vous laisse télécharger le plugin afin de récupérer les codes : (lien du plugin)[]
+Je vous laisse télécharger le plugin afin de récupérer les codes : [lien du plugin](https://i.phpierre.fr/Mineweb/Tutorial.zip)
 
 Il vous suffit d'extraire le .zip et de le mettre dans /app/Plugin. Vous allez ensuite dans placer le contenu extrait dans app/Plugin. Et allez sur la page de gestion des plugins,  si cela ne marche pas , videz votre cache : /app/tmp/
 
