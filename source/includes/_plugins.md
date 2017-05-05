@@ -453,3 +453,433 @@ Pour utiliser un module dans votre __plugin__, il vous suffit de créer un dossi
 Par exemple pour utiliser le module _user_profile_ il vous faut créer le fichier _/Modules/user_profile.ctp_.
 
 Dans ce fichier, vous pouvez ajouter le code que vous souhaitez, __HTML__, __PHP__ ou encore __JS__ ou __CSS__.
+
+## Exemple d'un plugin
+
+Je vais avec vous, développer un plugin vous présentant le développement sous Mineweb avec le framework Cakephp 2.x .
+
+Arborescence du plugin :
+
+- `app/Plugin/`
+     - `Tutorial/`
+        - `Config/`
+          - `bootstrap.php`
+          - `routes.php`
+        - `Controller/`
+          - `TutorialAppController.php`
+          - `TutorialController`
+        - `Model/`
+          - `Info.php`
+          - `TutorialAppModel.php`
+        - `SQL/`
+          - `schema.php`
+        - `View/`
+          - `Tutorial/`
+               - `admin_index.ctp`
+               - `index.ctp`
+        - `lang/`
+          - `en_US.json`
+          - `fr_FR.json`
+        - `config.json`
+      
+Dans un premier temps, nous allons créer les routes du plugin. Celles-ci permettent que nous puissions relier les divers arguments de l'url aux controleurs.
+
+Pour des raisons de conventions, vous aurez remarqué que nous ne fermons pas nos balises PHP avec ?>. Cela évite de multiples problèmes et vous familiarise avec les frameworks PHP.  
+
+Si vous voulez plus d'information, je vous conseille ces liens : [StackOverflow](http://stackoverflow.com/questions/4410704/why-would-one-omit-the-close-tag/4499749#4499749) ainsi que les recommandations [PHP-Fig](http://www.php-fig.org/psr/psr-2/)
+
+###Les routes
+
+Allons ensemble dans notre fichier `Config/routes.php` et écrivons ceci :
+
+```php
+<?php
+Router::connect('/tutorial', ['controller' => 'tutorial', 'action' => 'index', 'plugin' => 'tutorial']);
+
+```    
+
+Notre plugin possède donc une route, lorsqu'un utilisateur ira sur monsite.fr/tutorial, la route s'occupera de rediriger notre visiteur dans le plugin tutorial, à notre controleur Tutorial puis à notre fonction index.
+
+### Les contrôleurs
+
+Ensuite, nous allons créer un contrôleur parent, celui-ci n'est pas obligatoire pour développer un plugin, mais si l'architecture de votre plugin fait que vous devez avoir plusieurs contrôleurs avec des fonctions communes aux deux, vous pourrez facilement joindre vos fonctions.
+
+```php
+<?php
+class TutorialAppController extends AppController {
+    // Vos fonctions communes ici
+    
+    protected function math($x, $y, $z){
+        return ($x*$x)*$y-$z;
+    }
+}
+
+```  
+
+<br />
+
+Voici donc notre contrôleur principal, je vous ai mis quelques exemples de code ainsi que des commentaires.
+
+<br />
+
+```php
+<?php
+class TutorialController extends TutorialAppController{
+    public function index(){
+
+        // Chargement du Model Tutorial
+        $this->loadModel('Tutorial.Info');
+
+        //On enregistre dans $datas le contenu de toute la table tutorial
+        $datas = $this->Info->find('all');
+
+        //On passe la variable à la vue afin de pouvoir la réutiliser dans index.ctp
+        $this->set(compact('datas'));
+
+        //Pour passer plusieurs variable à la vue :
+        //$this->set(compact('datas', 'variable', 'infos'));
+        
+        //Pour donner un titre à votre page : Dans le html <title> Titre <title>
+        $this->set('title_for_layout', 'Titre');
+    }
+}
+```
+
+### Les modèles
+
+Les modèles sont des fichiers qui permettent l'interaction entre nos contrôleurs et notre base de données.
+
+Dans notre fichier `Model/TutorialAppModel.php` et écrivons ceci :
+
+```php
+<?php
+class TutorialAppModel extends AppModel{
+    public $tablePrefix = 'tutorial__';
+}
+```
+
+<br />
+
+Cela nous permet de définir un préfix à notre table. Tous les modèles du plugin l'utiliseront. Il nous reste plus qu'à créer notre modèle.
+
+Pour cela, créez un fichier `Model/Tutorial.php` et écrivez ceci :
+
+```php
+<?php
+class Info extends TutorialAppModel{
+
+}
+```
+
+<br />
+
+Pour l'instant, il est vide, oui, car j'ai directement fait ma requête SQL depuis `Controller/TutorialController.php`.
+
+Mais nous aurions pu faire ceci :
+
+```php
+<?php
+class TutorialController extends TutorialAppController{
+    public function index(){
+        $this->loadModel('Tutorial.Info');
+
+        //Appel de la fonction présent dans notre modèle.
+        $datas = $this->Info->get();
+
+        $this->set(compact('datas'));
+    }
+}
+```
+<br />
+
+Ainsi que dans depuis `Model/Tutorial.php`.
+
+<br />
+
+```php
+<?php
+class Info extends TutorialAppModel{
+    public function get(){
+        return $this->find('all');
+    }
+}
+```
+
+### Les schémas / migrations
+
+Les schémas / migrations selon les frameworks sont-ce qui permet à l'application de créer des bases de données, les supprimer afin qu'une base de données soit créer à l'exécution.
+
+Voici celui utilisé pour le tutoriel :
+
+```php
+<?php
+class TutorialAppSchema extends CakeSchema {
+
+    public $file = 'schema.php';
+
+    public function before($event = []) {
+        return true;
+    }
+
+    public function after($event = []) {}
+
+    public $tutorial__infos = [
+        'id' => ['type' => 'integer', 'null' => false, 'default' => null, 'length' => 8, 'unsigned' => false, 'key' => 'primary'],
+        'pseudo' => ['type' => 'string', 'null' => false, 'default' => null, 'length' => 30, 'unsigned' => false],
+        'date' => ['type' => 'datetime', 'null' => false, 'default' => null]
+    ];
+}
+```
+
+<br />
+
+Je vous conseille de toujours avoir un champ ID dans votre base de données, cela vous évitera des problèmes futures dans la conception de votre plugin.
+
+### Les vues 
+
+Pour finir, il nous reste la vue, c'est là où l'on met notre code html.
+
+Grâce a notre variable $datas transmise, nous pouvons la récupérer afin de l'afficher sous forme de tableau.
+
+<br />
+
+```php
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section>
+                    <div id="text-page">
+                        <table class="table">
+                            <thead>
+                                <th><?= $Lang->get('TUTORIAL__ID'); ?></th>
+                                <th><?= $Lang->get('TUTORIAL__PSEUDO'); ?></th>
+                                <th><?= $Lang->get('TUTORIAL__DATE'); ?></th>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($datas as $data): ?>
+                                    <tr>
+                                        <td><?= $data['Info']['id']; ?></td>
+                                        <td><?= $data['Info']['pseudo']; ?></td>
+                                        <td><?= $data['Info']['date']; ?></td>
+                                    </tr>
+                               <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+<br />
+
+Le fichier admin_index.ctp est la page d'accueil de notre plugin sur la panel d'administration. Je ne vous explique pas car il s'agit de html basique avec une boucle pour afficher les données.
+
+Juste le data-ajax="true"pour envoyer notre formulaire en ajax
+
+<br />
+
+```php
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= $Lang->get('TUTORIAL__ADD') ?></h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="" method="post" data-ajax="true">
+                                <div class="form-group">
+                                    <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary center-block"><?= $Lang->get('GLOBAL__SUBMIT'); ?></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-responsive dataTable">
+                                <thead>
+                                <tr>
+                                    <th><?= $Lang->get('TUTORIAL__PSEUDO') ?></th>
+                                    <th><?= $Lang->get('TUTORIAL__DATE') ?></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($datas as $data): ?>
+                                        <tr>
+                                            <td><?= $data['Info']['pseudo']; ?></td>
+                                            <td><?= $this->Time->format($data['Info']['date'], '%H:%M, %e %B %Y'); ?></td>
+                                            <td><a onclick="confirmDel('/admin/tutorial/tutorial/delete/<?= $data['Info']['id']; ?>')" class="btn btn-danger"><?= $Lang->get('GLOBAL__DELETE') ?></a></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+<br />
+
+Une fois fait cela, il faut donc dans notre contrôleur principal, mettre le code pour notre parti admin. Voici le rendu final :
+
+<br />
+
+```php
+<?php
+class TutorialController extends TutorialAppController{
+
+    public function index(){
+
+        // Chargement du Model Tutorial
+        $this->loadModel('Tutorial.Info');
+
+        //On enregistre dans $datas le contenu de toute la table tutorial
+        $datas = $this->Info->find('all');
+
+        //On passe la variable à la vue afin de pouvoir la réutiliser dans index.ctp
+        $this->set(compact('datas'));
+
+        //Pour passer plusieurs variable à la vue :
+        //$this->set(compact('datas', 'variable', 'infos'));
+
+        //Pour donner un titre à votre page : Dans le html <title> Titre <title>
+        $this->set('title_for_layout', 'Titre');
+    }
+
+    public function admin_index(){
+        //Important pour permettre seulements aux admins du site d'y avoir accès.
+        if($this->isConnected AND $this->User->isAdmin()){
+            $this->loadModel('Tutorial.Info');
+
+            //Si la requete est de type ajax
+            if($this->request->is('ajax')){
+                //Vu que c'est en ajax, nous n'avons pas besoin du layout
+                $this->autoRender = null;
+
+                //Je récupère le champs name="pseudo"
+                $pseudo = $this->request->data['pseudo'];
+                $date = date('Y-m-d H:i:s');
+
+                $this->Info->add($pseudo, $date);
+                
+                //Envoi réponse en ajax
+                $this->response->body(json_encode(array('statut' => true, 'msg' => $this->Lang->get('GLOBAL__SUCCESS'))));
+            }else{
+                //Je déclare le thème du panel admin
+                $this->layout = 'admin';
+
+                //Je récupère les données de ma base.
+                $datas = $this->Info->get();
+
+                $this->set(compact('datas'));
+            }
+        }else {
+            //Sinon on redirige notre visiteur indiscret vers la page d'accueil
+            $this->redirect('/');
+        }
+    }
+
+    public function admin_delete($id){
+        if($this->isConnected AND $this->User->isAdmin()){
+            $this->autoRender = null;
+
+            $this->loadModel('Tutorial.Info');
+
+            //J'utilise _delete() car delete() existe déjà avec cakephp
+            $this->Info->_delete($id);
+
+            //Redirection vers notre page
+            $this->redirect('/admin/tutorial');
+        }else {
+            $this->redirect('/');
+        }
+    }
+}
+```
+
+<br />
+
+Et notre model final :
+
+<br />
+
+```php
+<?php
+class Info extends TutorialAppModel{
+
+    public function get(){
+        return $this->find('all');
+    }
+
+    public function _delete($id){
+        return $this->delete($id);
+    }
+
+    public function add($pseudo, $date){
+        $this->create();
+        $this->set(['pseudo' => $pseudo, 'date' => $date]);
+        return $this->save();
+    }
+}
+```
+
+
+### Les fichiers de langues
+
+Vous aurez pu remarquer `$Lang->get()`, en effet mes textes sont rangés dans un fichier de traduction, voici sa structure :
+
+`lang/fr_FR.json`
+
+<br />
+
+```json
+{
+  "TUTORIAL__ID": "ID",
+  "TUTORIAL__PSEUDO": "Pseudo",
+  "TUTORIAL__DATE": "Date"
+}
+```
+
+<br />
+
+`lang/en_US.json`
+
+<br />
+
+```json
+{}
+```
+
+<br />
+
+Si vous ne mettez pas deux accolades dedans, votre plugin ne fonctionnera pas correctement.
+
+Notez que vous n'êtes pas obligé d'utiliser les fichiers de traductions, même si vous ne mettez rien dedans, veillez à les créer et à écrire ceci dedans : `{}`
+
+###Téléchargement
+
+Je vous laisse télécharger le plugin afin de récupérer les codes : [lien du plugin](https://i.phpierre.fr/Mineweb/Tutorial.zip)
+
+Il vous suffit d'extraire le .zip et de le mettre dans /app/Plugin. Vous allez ensuite dans placer le contenu extrait dans app/Plugin. Et allez sur la page de gestion des plugins,  si cela ne marche pas , videz votre cache : /app/tmp/
+
+##Utilisation avancé
+
+Dans le dossier `Config/` se trouve un fichier nommé `bootstrap.php`, je vous redirige vers ce lien [Documentation CakePHP](https://book.cakephp.org/2.0/fr/development/configuration.html#bootstrapping-cakephp) pour savoir à quoi sert t-il.
