@@ -225,6 +225,53 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 
 <p>Une fois l&#39;installation du CMS complétée vous pouvez passer à l&#39;utilisation du CMS en lui-même. Pour configurer votre CMS il vous faut vous connecter en cliquant sur le bouton en haut à gauche de la barre de navigation. Vous cliquez sur connexion puis entrez vos informations pour vous connecter. Vous cliquez ensuite sur Panel administrateur, vous serez redirigé et vous pourrez ensuite cliquer sur <em>Général</em> puis <em>Préférences générales</em>.</p>
 
+<h2 id="liste-des-plugins">Liste des plugins</h2>
+
+<p>Si vous avez acheté un plugin présent dans la liste ci-dessous, l’installation de votre plugin se fera manuellement grâce à une url
+<aside class="alert alert-warning">
+<p>N&#39;oubliez pas de remplacer votresite.fr par l&#39;url de votre propre site web.</p>
+</aside></p>
+
+<table><thead>
+<tr>
+<th>Plugin</th>
+<th>Lien</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Liste des membres</td>
+<td>votresite.fr/admin/plugin/install/24/ListMembers</td>
+</tr>
+<tr>
+<td>Status des serveurs</td>
+<td>votresite.fr/admin/plugin/install/36/Status</td>
+</tr>
+<tr>
+<td>Staff</td>
+<td>votresite.fr/admin/plugin/install/42/Staff</td>
+</tr>
+<tr>
+<td>XenBridge - Beta</td>
+<td>votresite.fr/admin/plugin/install/44/XenBridge</td>
+</tr>
+<tr>
+<td>Forum</td>
+<td>votresite.fr/admin/plugin/install/48/Forum</td>
+</tr>
+<tr>
+<td>Stats</td>
+<td>votresite.fr/admin/plugin/install/52/Stats</td>
+</tr>
+<tr>
+<td>ChangeLog</td>
+<td>votresite.fr/admin/plugin/install/54/ChangeLog</td>
+</tr>
+<tr>
+<td>Partenaire</td>
+<td>votresite.fr/admin/plugin/install/62/Partenaire</td>
+</tr>
+</tbody></table>
+
 <h2 id="aide-externe-et-probl-mes-fr-quents">Aide externe et problèmes fréquents</h2>
 
 <h3 id="probl-me-avec-ioncube">Problème avec ionCube</h3>
@@ -844,6 +891,437 @@ Exemple :</p>
 <p>Par exemple pour utiliser le module <em>user_profile</em> il vous faut créer le fichier <em>/Modules/user_profile.ctp</em>.</p>
 
 <p>Dans ce fichier, vous pouvez ajouter le code que vous souhaitez, <strong>HTML</strong>, <strong>PHP</strong> ou encore <strong>JS</strong> ou <strong>CSS</strong>.</p>
+
+<h2 id="exemple-d-39-un-plugin">Exemple d&#39;un plugin</h2>
+
+<p>Je vais avec vous, développer un plugin vous présentant le développement sous Mineweb avec le framework Cakephp 2.x .</p>
+
+<p>Arborescence du plugin :</p>
+
+<ul>
+<li><code class="prettyprint">app/Plugin/</code>
+
+<ul>
+<li><code class="prettyprint">Tutorial/</code>
+
+<ul>
+<li><code class="prettyprint">Config/</code>
+
+<ul>
+<li><code class="prettyprint">bootstrap.php</code></li>
+<li><code class="prettyprint">routes.php</code></li>
+</ul></li>
+<li><code class="prettyprint">Controller/</code>
+
+<ul>
+<li><code class="prettyprint">TutorialAppController.php</code></li>
+<li><code class="prettyprint">TutorialController</code></li>
+</ul></li>
+<li><code class="prettyprint">Model/</code>
+
+<ul>
+<li><code class="prettyprint">Info.php</code></li>
+<li><code class="prettyprint">TutorialAppModel.php</code></li>
+</ul></li>
+<li><code class="prettyprint">SQL/</code>
+
+<ul>
+<li><code class="prettyprint">schema.php</code></li>
+</ul></li>
+<li><code class="prettyprint">View/</code>
+
+<ul>
+<li><code class="prettyprint">Tutorial/</code>
+
+<ul>
+<li><code class="prettyprint">admin_index.ctp</code></li>
+<li><code class="prettyprint">index.ctp</code></li>
+</ul></li>
+</ul></li>
+<li><code class="prettyprint">lang/</code>
+
+<ul>
+<li><code class="prettyprint">en_US.json</code></li>
+<li><code class="prettyprint">fr_FR.json</code></li>
+</ul></li>
+<li><code class="prettyprint">config.json</code></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Dans un premier temps, nous allons créer les routes du plugin. Celles-ci permettent que nous puissions relier les divers arguments de l&#39;url aux controleurs.</p>
+
+<p>Pour des raisons de conventions, vous aurez remarqué que nous ne fermons pas nos balises PHP avec ?&gt;. Cela évite de multiples problèmes et vous familiarise avec les frameworks PHP.  </p>
+
+<p>Si vous voulez plus d&#39;information, je vous conseille ces liens : <a href="http://stackoverflow.com/questions/4410704/why-would-one-omit-the-close-tag/4499749#4499749">StackOverflow</a> ainsi que les recommandations <a href="http://www.php-fig.org/psr/psr-2/">PHP-Fig</a></p>
+
+<h3 id="les-routes">Les routes</h3>
+
+<p>Allons ensemble dans notre fichier <code class="prettyprint">Config/routes.php</code> et écrivons ceci :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">connect</span><span class="p">(</span><span class="s1">'/tutorial'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'tutorial'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">,</span> <span class="s1">'plugin'</span> <span class="o">=&gt;</span> <span class="s1">'tutorial'</span><span class="p">]);</span>
+
+</code></pre>
+
+<p>Notre plugin possède donc une route, lorsqu&#39;un utilisateur ira sur monsite.fr/tutorial, la route s&#39;occupera de rediriger notre visiteur dans le plugin tutorial, à notre controleur Tutorial puis à notre fonction index.</p>
+
+<h3 id="les-contr-leurs">Les contrôleurs</h3>
+
+<p>Ensuite, nous allons créer un contrôleur parent, celui-ci n&#39;est pas obligatoire pour développer un plugin, mais si l&#39;architecture de votre plugin fait que vous devez avoir plusieurs contrôleurs avec des fonctions communes aux deux, vous pourrez facilement joindre vos fonctions.</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">TutorialAppController</span> <span class="k">extends</span> <span class="nx">AppController</span> <span class="p">{</span>
+    <span class="c1">// Vos fonctions communes ici
+</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">math</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nv">$z</span><span class="p">){</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nv">$x</span><span class="o">*</span><span class="nv">$x</span><span class="p">)</span><span class="o">*</span><span class="nv">$y</span><span class="o">-</span><span class="nv">$z</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+
+<p><br /></p>
+
+<p>Voici donc notre contrôleur principal, je vous ai mis quelques exemples de code ainsi que des commentaires.</p>
+
+<p><br /></p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">TutorialController</span> <span class="k">extends</span> <span class="nx">TutorialAppController</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+
+        <span class="c1">// Chargement du Model Tutorial
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Tutorial.Info'</span><span class="p">);</span>
+
+        <span class="c1">//On enregistre dans $datas le contenu de toute la table tutorial
+</span>        <span class="nv">$datas</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Info</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span>
+
+        <span class="c1">//On passe la variable à la vue afin de pouvoir la réutiliser dans index.ctp
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nb">compact</span><span class="p">(</span><span class="s1">'datas'</span><span class="p">));</span>
+
+        <span class="c1">//Pour passer plusieurs variable à la vue :
+</span>        <span class="c1">//$this-&gt;set(compact('datas', 'variable', 'infos'));
+</span>
+        <span class="c1">//Pour donner un titre à votre page : Dans le html &lt;title&gt; Titre &lt;title&gt;
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'title_for_layout'</span><span class="p">,</span> <span class="s1">'Titre'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3 id="les-mod-les">Les modèles</h3>
+
+<p>Les modèles sont des fichiers qui permettent l&#39;interaction entre nos contrôleurs et notre base de données.</p>
+
+<p>Dans notre fichier <code class="prettyprint">Model/TutorialAppModel.php</code> et écrivons ceci :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">TutorialAppModel</span> <span class="k">extends</span> <span class="nx">AppModel</span><span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$tablePrefix</span> <span class="o">=</span> <span class="s1">'tutorial__'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Cela nous permet de définir un préfix à notre table. Tous les modèles du plugin l&#39;utiliseront. Il nous reste plus qu&#39;à créer notre modèle.</p>
+
+<p>Pour cela, créez un fichier <code class="prettyprint">Model/Tutorial.php</code> et écrivez ceci :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Info</span> <span class="k">extends</span> <span class="nx">TutorialAppModel</span><span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Pour l&#39;instant, il est vide, oui, car j&#39;ai directement fait ma requête SQL depuis <code class="prettyprint">Controller/TutorialController.php</code>.</p>
+
+<p>Mais nous aurions pu faire ceci :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">TutorialController</span> <span class="k">extends</span> <span class="nx">TutorialAppController</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Tutorial.Info'</span><span class="p">);</span>
+
+        <span class="c1">//Appel de la fonction présent dans notre modèle.
+</span>        <span class="nv">$datas</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Info</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nb">compact</span><span class="p">(</span><span class="s1">'datas'</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Ainsi que dans depuis <code class="prettyprint">Model/Tutorial.php</code>.</p>
+
+<p><br /></p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Info</span> <span class="k">extends</span> <span class="nx">TutorialAppModel</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3 id="les-sch-mas-migrations">Les schémas / migrations</h3>
+
+<p>Les schémas / migrations selon les frameworks sont-ce qui permet à l&#39;application de créer des bases de données, les supprimer afin qu&#39;une base de données soit créer à l&#39;exécution.</p>
+
+<p>Voici celui utilisé pour le tutoriel :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">TutorialAppSchema</span> <span class="k">extends</span> <span class="nx">CakeSchema</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="nv">$file</span> <span class="o">=</span> <span class="s1">'schema.php'</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">before</span><span class="p">(</span><span class="nv">$event</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">after</span><span class="p">(</span><span class="nv">$event</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="nv">$tutorial__infos</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'integer'</span><span class="p">,</span> <span class="s1">'null'</span> <span class="o">=&gt;</span> <span class="kc">false</span><span class="p">,</span> <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">'length'</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'unsigned'</span> <span class="o">=&gt;</span> <span class="kc">false</span><span class="p">,</span> <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'primary'</span><span class="p">],</span>
+        <span class="s1">'pseudo'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span> <span class="s1">'null'</span> <span class="o">=&gt;</span> <span class="kc">false</span><span class="p">,</span> <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">'length'</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">'unsigned'</span> <span class="o">=&gt;</span> <span class="kc">false</span><span class="p">],</span>
+        <span class="s1">'date'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'datetime'</span><span class="p">,</span> <span class="s1">'null'</span> <span class="o">=&gt;</span> <span class="kc">false</span><span class="p">,</span> <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="kc">null</span><span class="p">]</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Je vous conseille de toujours avoir un champ ID dans votre base de données, cela vous évitera des problèmes futures dans la conception de votre plugin.</p>
+
+<h3 id="les-vues">Les vues</h3>
+
+<p>Pour finir, il nous reste la vue, c&#39;est là où l&#39;on met notre code html.</p>
+
+<p>Grâce a notre variable $datas transmise, nous pouvons la récupérer afin de l&#39;afficher sous forme de tableau.</p>
+
+<p><br /></p>
+<pre class="highlight php"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;section&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"text-page"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;thead&gt;</span>
+                                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'TUTORIAL__ID'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'TUTORIAL__PSEUDO'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="nt">&lt;/th&gt;</span>
+                                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'TUTORIAL__DATE'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;/thead&gt;</span>
+                            <span class="nt">&lt;tbody&gt;</span>
+                                <span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$datas</span> <span class="k">as</span> <span class="nv">$data</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+                                    <span class="nt">&lt;tr&gt;</span>
+                                        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'Info'</span><span class="p">][</span><span class="s1">'id'</span><span class="p">];</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'Info'</span><span class="p">][</span><span class="s1">'pseudo'</span><span class="p">];</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'Info'</span><span class="p">][</span><span class="s1">'date'</span><span class="p">];</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                    <span class="nt">&lt;/tr&gt;</span>
+                               <span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+                            <span class="nt">&lt;/tbody&gt;</span>
+                        <span class="nt">&lt;/table&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/section&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Le fichier admin_index.ctp est la page d&#39;accueil de notre plugin sur la panel d&#39;administration. Je ne vous explique pas car il s&#39;agit de html basique avec une boucle pour afficher les données.</p>
+
+<p>Juste le data-ajax=&ldquo;true&quot;pour envoyer notre formulaire en ajax</p>
+
+<p><br /></p>
+<pre class="highlight php"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-header with-border"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"box-title"</span><span class="nt">&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'TUTORIAL__ADD'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="nt">&lt;/h3&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-body"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">data-ajax=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"pseudo"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Pseudo"</span> <span class="nt">/&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary center-block"</span><span class="nt">&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'GLOBAL__SUBMIT'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="nt">&lt;/button&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/form&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-body"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-responsive dataTable"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;thead&gt;</span>
+                                <span class="nt">&lt;tr&gt;</span>
+                                    <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'TUTORIAL__PSEUDO'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="nt">&lt;/th&gt;</span>
+                                    <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'TUTORIAL__DATE'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="nt">&lt;/th&gt;</span>
+                                    <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+                                <span class="nt">&lt;/tr&gt;</span>
+                                <span class="nt">&lt;/thead&gt;</span>
+                                <span class="nt">&lt;tbody&gt;</span>
+                                    <span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$datas</span> <span class="k">as</span> <span class="nv">$data</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+                                        <span class="nt">&lt;tr&gt;</span>
+                                            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'Info'</span><span class="p">][</span><span class="s1">'pseudo'</span><span class="p">];</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Time</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'Info'</span><span class="p">][</span><span class="s1">'date'</span><span class="p">],</span> <span class="s1">'%H:%M, %e %B %Y'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+                                            <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">onclick=</span><span class="s">"confirmDel('/admin/tutorial/tutorial/delete/</span><span class="cp">&lt;?=</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'Info'</span><span class="p">][</span><span class="s1">'id'</span><span class="p">];</span> <span class="cp">?&gt;</span><span class="s">')"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'GLOBAL__DELETE'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+                                        <span class="nt">&lt;/tr&gt;</span>
+                                    <span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+                                <span class="nt">&lt;/tbody&gt;</span>
+                            <span class="nt">&lt;/table&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Une fois fait cela, il faut donc dans notre contrôleur principal, mettre le code pour notre parti admin. Voici le rendu final :</p>
+
+<p><br /></p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">TutorialController</span> <span class="k">extends</span> <span class="nx">TutorialAppController</span><span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+
+        <span class="c1">// Chargement du Model Tutorial
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Tutorial.Info'</span><span class="p">);</span>
+
+        <span class="c1">//On enregistre dans $datas le contenu de toute la table tutorial
+</span>        <span class="nv">$datas</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Info</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span>
+
+        <span class="c1">//On passe la variable à la vue afin de pouvoir la réutiliser dans index.ctp
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nb">compact</span><span class="p">(</span><span class="s1">'datas'</span><span class="p">));</span>
+
+        <span class="c1">//Pour passer plusieurs variable à la vue :
+</span>        <span class="c1">//$this-&gt;set(compact('datas', 'variable', 'infos'));
+</span>
+        <span class="c1">//Pour donner un titre à votre page : Dans le html &lt;title&gt; Titre &lt;title&gt;
+</span>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'title_for_layout'</span><span class="p">,</span> <span class="s1">'Titre'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">admin_index</span><span class="p">(){</span>
+        <span class="c1">//Important pour permettre seulements aux admins du site d'y avoir accès.
+</span>        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isConnected</span> <span class="nx">AND</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">isAdmin</span><span class="p">()){</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Tutorial.Info'</span><span class="p">);</span>
+
+            <span class="c1">//Si la requete est de type ajax
+</span>            <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">is</span><span class="p">(</span><span class="s1">'ajax'</span><span class="p">)){</span>
+                <span class="c1">//Vu que c'est en ajax, nous n'avons pas besoin du layout
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">autoRender</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+                <span class="c1">//Je récupère le champs name="pseudo"
+</span>                <span class="nv">$pseudo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="s1">'pseudo'</span><span class="p">];</span>
+                <span class="nv">$date</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y-m-d H:i:s'</span><span class="p">);</span>
+
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Info</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$pseudo</span><span class="p">,</span> <span class="nv">$date</span><span class="p">);</span>
+
+                <span class="c1">//Envoi réponse en ajax
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">(</span><span class="nb">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'statut'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">'msg'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Lang</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'GLOBAL__SUCCESS'</span><span class="p">))));</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="c1">//Je déclare le thème du panel admin
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">layout</span> <span class="o">=</span> <span class="s1">'admin'</span><span class="p">;</span>
+
+                <span class="c1">//Je récupère les données de ma base.
+</span>                <span class="nv">$datas</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Info</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nb">compact</span><span class="p">(</span><span class="s1">'datas'</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//Sinon on redirige notre visiteur indiscret vers la page d'accueil
+</span>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">admin_delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isConnected</span> <span class="nx">AND</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">isAdmin</span><span class="p">()){</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">autoRender</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Tutorial.Info'</span><span class="p">);</span>
+
+            <span class="c1">//J'utilise _delete() car delete() existe déjà avec cakephp
+</span>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Info</span><span class="o">-&gt;</span><span class="na">_delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+            <span class="c1">//Redirection vers notre page
+</span>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">'/admin/tutorial'</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><br /></p>
+
+<p>Et notre model final :</p>
+
+<p><br /></p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Info</span> <span class="k">extends</span> <span class="nx">TutorialAppModel</span><span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">'all'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">_delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$pseudo</span><span class="p">,</span> <span class="nv">$date</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">([</span><span class="s1">'pseudo'</span> <span class="o">=&gt;</span> <span class="nv">$pseudo</span><span class="p">,</span> <span class="s1">'date'</span> <span class="o">=&gt;</span> <span class="nv">$date</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<h3 id="les-fichiers-de-langues">Les fichiers de langues</h3>
+
+<p>Vous aurez pu remarquer <code class="prettyprint">$Lang-&gt;get()</code>, en effet mes textes sont rangés dans un fichier de traduction, voici sa structure :</p>
+
+<p><code class="prettyprint">lang/fr_FR.json</code></p>
+
+<p><br /></p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"TUTORIAL__ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"TUTORIAL__PSEUDO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pseudo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"TUTORIAL__DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Date"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><br /></p>
+
+<p><code class="prettyprint">lang/en_US.json</code></p>
+
+<p><br /></p>
+<pre class="highlight json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+
+<p><br /></p>
+
+<p>Si vous ne mettez pas deux accolades dedans, votre plugin ne fonctionnera pas correctement.</p>
+
+<p>Notez que vous n&#39;êtes pas obligé d&#39;utiliser les fichiers de traductions, même si vous ne mettez rien dedans, veillez à les créer et à écrire ceci dedans : <code class="prettyprint">{}</code></p>
+
+<h3 id="t-l-chargement">Téléchargement</h3>
+
+<p>Je vous laisse télécharger le plugin afin de récupérer les codes : <a href="files/Tutorial.zip">lien du plugin</a></p>
+
+<p>Il vous suffit d&#39;extraire le .zip et de le mettre dans /app/Plugin. Vous allez ensuite dans placer le contenu extrait dans app/Plugin. Et allez sur la page de gestion des plugins,  si cela ne marche pas , videz votre cache : /app/tmp/</p>
+
+<h2 id="utilisation-avanc">Utilisation avancé</h2>
+
+<p>Dans le dossier <code class="prettyprint">Config/</code> se trouve un fichier nommé <code class="prettyprint">bootstrap.php</code>, je vous redirige vers ce lien <a href="https://book.cakephp.org/2.0/fr/development/configuration.html#bootstrapping-cakephp">Documentation CakePHP</a> pour savoir à quoi sert t-il.</p>
 
           <h1 id="cr-er-des-th-mes">Créer des thèmes</h1>
 
