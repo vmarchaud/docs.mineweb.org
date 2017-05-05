@@ -481,7 +481,7 @@ Arborescence du plugin :
           - `en_US.json`
           - `fr_FR.json`
         - `config.json`
-      
+
 Dans un premier temps, nous allons créer les routes du plugin. Celles-ci permettent que nous puissions relier les divers arguments de l'url aux controleurs.
 
 Pour des raisons de conventions, vous aurez remarqué que nous ne fermons pas nos balises PHP avec ?>. Cela évite de multiples problèmes et vous familiarise avec les frameworks PHP.  
@@ -508,7 +508,7 @@ Ensuite, nous allons créer un contrôleur parent, celui-ci n'est pas obligatoir
 <?php
 class TutorialAppController extends AppController {
     // Vos fonctions communes ici
-    
+
     protected function math($x, $y, $z){
         return ($x*$x)*$y-$z;
     }
@@ -538,7 +538,7 @@ class TutorialController extends TutorialAppController{
 
         //Pour passer plusieurs variable à la vue :
         //$this->set(compact('datas', 'variable', 'infos'));
-        
+
         //Pour donner un titre à votre page : Dans le html <title> Titre <title>
         $this->set('title_for_layout', 'Titre');
     }
@@ -635,7 +635,7 @@ class TutorialAppSchema extends CakeSchema {
 
 Je vous conseille de toujours avoir un champ ID dans votre base de données, cela vous évitera des problèmes futures dans la conception de votre plugin.
 
-### Les vues 
+### Les vues
 
 Pour finir, il nous reste la vue, c'est là où l'on met notre code html.
 
@@ -779,7 +779,7 @@ class TutorialController extends TutorialAppController{
                 $date = date('Y-m-d H:i:s');
 
                 $this->Info->add($pseudo, $date);
-                
+
                 //Envoi réponse en ajax
                 $this->response->body(json_encode(array('statut' => true, 'msg' => $this->Lang->get('GLOBAL__SUCCESS'))));
             }else{
@@ -876,7 +876,7 @@ Notez que vous n'êtes pas obligé d'utiliser les fichiers de traductions, même
 
 ###Téléchargement
 
-Je vous laisse télécharger le plugin afin de récupérer les codes : [lien du plugin](https://i.phpierre.fr/Mineweb/Tutorial.zip)
+Je vous laisse télécharger le plugin afin de récupérer les codes : [lien du plugin](/files/Tutorial.zip)
 
 Il vous suffit d'extraire le .zip et de le mettre dans /app/Plugin. Vous allez ensuite dans placer le contenu extrait dans app/Plugin. Et allez sur la page de gestion des plugins,  si cela ne marche pas , videz votre cache : /app/tmp/
 
