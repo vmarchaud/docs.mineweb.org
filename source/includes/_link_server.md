@@ -76,3 +76,5 @@ Si la connexion échoue toujours, contactez le [support](http://mineweb.org/supp
 - Avez-vous fait toutes les commandes indiquées dans la doc ?
 - Aucune erreur dans la console ?
 - Avez-vous essayé de rédemarrer le serveur après avoir fait les commandes ?
+- Fournissez-nous des logs de démarrage sur pastebin.com
+- Fournissez-nous le fichier db.yml du plugin sur pastebin.com
