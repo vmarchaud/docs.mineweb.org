@@ -5,7 +5,7 @@ language_tabs:
   - php
 
 toc_footers:
-  - <a href='http://mineweb.org'>Retour sur mineweb.org</a>
+  - <a href='https://mineweb.org'>Retour sur mineweb.org</a>
   - <a href='https://github.com/tripit/slate'>Documentation powered by Slate</a>
 
 includes:
@@ -31,7 +31,7 @@ MineWeb est développé sous un framework PHP nommé **CakePHP** permettant un d
 
 Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 
-*   Version PHP supérieure ou égale à 5.4 (< 7.0.0)
+*   Version PHP supérieure ou égale à 5.6
 *   PDO activé
 *   cURL activé
 *   Réécriture d'URL
@@ -39,10 +39,10 @@ Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 *   La librairie GD2
 *   La possibilité d'ouvrir un zip
 *   La possibilité d'ouvrir un site à distance
-*   ionCube Loader version 5.4
+*   ionCube Loader
 *   OpenSSL
 
-Pour plus de simplicité vous pouvez télécharger le **fichier de compatibilité** [ici](http://mineweb.org/files/compatibilite.zip). Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.
+Pour plus de simplicité vous pouvez télécharger le **fichier de compatibilité** [ici](https://docs.mineweb.org/files/compatibilite.zip). Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.
 
 ## Licence hébergée MineWeb
 

@@ -1,5 +1,10 @@
 # Créer un plugin
 
+<aside class="alert alert-warning">
+  <b>Nouveau:</b> Pour les plugins personnalisés, vous êtes maintenant obligé de passer par l'<a href="https://mineweb.org/developer/custom">API de MineWeb</a> pour vérifier votre plugin et que le CMS puisse le charger.<br>
+  <small>Note: <em>Les licences de développement chargent le plugin même si celui-ci n'a pas été vérifié.</em></small>
+</aside>
+
 ### Introduction
 
 Un plugin (aussi appelé _extension_), est un ensemble de __fichiers__ qui sont ajoutés à votre CMS pour y ajouter plusieurs __fonctionnalités__ ou modifier certains __comportements__ par défaut. Différents plugins “officiels” sont _déjà disponibles_ sur le site de MineWeb. D’autres peuvent être _développés par la communauté_ et c’est le but de ce tutoriel.

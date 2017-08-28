@@ -1,5 +1,10 @@
 # Créer des thèmes
 
+<aside class="alert alert-warning">
+  <b>Nouveau:</b> Pour les thèmes personnalisés, vous êtes maintenant obligé de passer par l'<a href="https://mineweb.org/developer/custom">API de MineWeb</a> pour vérifier votre thème et que le CMS puisse le charger.<br>
+  <small>Note: <em>Les licences de développement chargent le thème même si celui-ci n'a pas été vérifié.</em></small>
+</aside>
+
 ## Introduction
 
 Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l'apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles sur le site de MineWeb. D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.
