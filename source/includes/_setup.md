@@ -31,25 +31,6 @@ Voici la troisième et dernière étape de l'installation du CMS, vous allez cr�
 
 Une fois l'installation du CMS complétée vous pouvez passer à l'utilisation du CMS en lui-même. Pour configurer votre CMS il vous faut vous connecter en cliquant sur le bouton en haut à gauche de la barre de navigation. Vous cliquez sur connexion puis entrez vos informations pour vous connecter. Vous cliquez ensuite sur Panel administrateur, vous serez redirigé et vous pourrez ensuite cliquer sur _Général_ puis _Préférences générales_.
 
-## Liste des plugins 
-
-Si vous avez acheté un plugin présent dans la liste ci-dessous, l’installation de votre plugin se fera manuellement grâce à une url
-<aside class="alert alert-warning">
-<p>N'oubliez pas de remplacer votresite.fr par l'url de votre propre site web.</p>
-</aside>
-
-| Plugin                  |     Lien                                                    |
-| ------------------------|  ---------------------------------------------------------  |
-| Liste des membres       |        votresite.fr/admin/plugin/install/24/ListMembers     |
-| Status des serveurs     |        votresite.fr/admin/plugin/install/36/Status          |
-| Staff                   |        votresite.fr/admin/plugin/install/42/Staff           |
-| XenBridge - Beta        |        votresite.fr/admin/plugin/install/44/XenBridge       |
-| Forum                   |        votresite.fr/admin/plugin/install/48/Forum           |
-| Stats                   |        votresite.fr/admin/plugin/install/52/Stats           |
-| ChangeLog               |        votresite.fr/admin/plugin/install/54/ChangeLog       |
-| Partenaire              |        votresite.fr/admin/plugin/install/62/Partenaire      |    
-
-
 ## Aide externe et problèmes fréquents
 
 ### Problème avec ionCube
