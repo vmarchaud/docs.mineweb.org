@@ -232,13 +232,13 @@ Il est mieux aussi de **préciser dans la configuration** si vous _supporter_ (s
 ```
 
 Vous pouvez voir que l'_ID_ du plugin est spécial, en effet celui-ci se compose de la manière suivante : **auteur.nomdudossier.apiID**, vous pouvez donc trouver cet ID vous même facilement en regardant l'intérieur du _config.json_ d'un plugin.
-Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très bien la faire précéder d'un outil de comparaison. Comme ceci :
+Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très bien la faire précéder d'un outil de comparaison (cf. le semantic versionning donc les outils sont ^ / ~ / >= / <=). Comme ceci :
 
 ```json
 {
 	...
     "supported": {
-	    "eywek.shop.1": ">= 1.0.0"
+	    "eywek.shop.1": ">=1.0.0"
     }
 }
 ```

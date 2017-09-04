@@ -46,12 +46,6 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
 {
   "name":"NAME",
   "slug":"SLUG",
-  "nav":true,
-  "admin":true,
-  "admin_group_menu":"customisation",
-  "admin_name":"Boutique",
-  "admin_icon":"shopping-cart",
-  "admin_route": "/admin/shop",
   "author":"AUTHOR",
   "version":"0.1.0",
   "apiID":1,
@@ -64,7 +58,7 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
     }
   },
   "requirements" : {
-    "CMS" : ">= 1.1.0"
+    "CMS" : "^1.0.0"
   }
 }
 ```
@@ -72,28 +66,64 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
 Maintenant, vous allez pouvoir configurer. Remplacez __NAME__ par le _nom de votre plugin_, __SLUG__ par le _nom du dossier_ et puis __AUTHOR__ par votre pseudo.
 Ensuite voici une explication des autres lignes :
 
-- `nav` : si votre plugin est affiché ou non dans la barre de navigation (__boolean__),
-- `admin` : si votre plugin a besoin de fichiers pour l’administrer (__boolean__),
-- `admin_group_menu` : si votre plugin a besoin de fichiers pour l’administrer, le nom de la section de liens dans le panel admin (__string__) _(optionnel)_,
-
-Valeur | Explication
---------- | -------
-`general` | Correspondant au menu 'Général' du panel admin
-`customisation` | Correspondant au menu 'Personnalisation' du panel admin
-`server` | Correspondant au menu 'Serveur' du panel admin
-`other` / `default` | Correspondant au menu 'Autres' du panel admin
-
-- `admin_name` : si votre plugin a besoin de fichiers pour l’administrer, le nom du lien dans le panel admin (__string__),
-- `admin_icon` : si votre plugin a besoin de fichiers pour l’administrer, le nom de l'icone FontAwesome qui doit précéder le nom de l'onglet (__string__) _(optionnel)_,
-- `admin_route` : si votre plugin a besoin de fichiers pour l’administrer, la route du controller admin (__string__),
 - `version` : la version de votre plugin (__double__),
 - `apiID` : l’ID du plugin, ce champ est à remplir par la valeur -1 _(sera automatiquement rempli après)_,
 - `useEvents` : si votre plugin utilise les événements disponible sur le CMS (__boolean__),
 - `permissions` : les permissions de votre plugin (voir plus tard) (__array__)
+- `requirements` : les pré-requis de votre plugin : vous devez spécifier comme clé un autre ID de plugin (au format _auteur.slug.apiID_) ou CMS et comme valeur une version correcte (cf. le semantic versionning donc préfixée ou non par ^ / ~ / >= / <=). Si un des pré-requis n'est pas rempli, le plugin ne sera pas installé sur le CMS.
 
-### Les sous-menu du panel admin
+### Les liens de la barre de navigation
 
-Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d'ajouter la clé `admin_menus` dans la configuration du plugin juste après `admin_icon` (et donc la clé `admin_route` devient optionnelle).
+Si votre plugin dispose d'une route publique (pouvant être accessible pour n'importe quel utilisateur) il peut être important de configurer lesquelles de ces routes peuvent être ajoutées sur la barre de navigation depuis le panel admin. Pour cela, il vous suffit d'ajouter la clé `navbar_routes` dans le fichier `config.json`.
+Cette clé doit contenir un objet avec comme clé le nom de la route et comme valeur la route.
+
+> Exemple
+
+```json
+{
+	"name":"Boutique",
+	"slug":"shop",
+  "admin_menus": {},
+  "navbar_routes": {
+    "Boutique": "/shop"
+  },
+	"author":"Eywek",
+	"version":"1.0.0",
+	"apiID":1,
+	"useEvents":true,
+	"permissions" : {
+		"available" : [],
+		"default" : {
+			"0" : [],
+			"2" : []
+		}
+	},
+	"requirements" : {
+		"CMS" : "^1.0.0"
+	}
+}
+
+```
+
+### Les menus panel admin
+
+Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d'ajouter la clé `admin_menus` dans la configuration du plugin.
+La clé sera le nom du menu, vous pouvez utilisez des noms déjà utilisés pour placer votre menu en tant que sous-menu d'un déjà présent (comme sur l'exemple). Vous pouvez alors ajouter un index pour être après tel ou tel sous-menu
+Les clés du panel admin sont les suivantes
+
+Valeur | Explication
+--------- | -------
+`Dashboard` | Correspondant au menu 'Dashboard' du panel admin
+`GLOBAL__ADMIN_GENERAL` | Correspondant au menu 'Général' du panel admin
+`GLOBAL__CUSTOMIZE` | Correspondant au menu 'Personnalisation' du panel admin
+`SERVER__TITLE` | Correspondant au menu 'Serveur' du panel admin
+`GLOBAL__ADMIN_OTHER_TITLE` | Correspondant au menu 'Autres' du panel admin
+`STATS__TITLE` | Correspondant au menu 'Statistiques' du panel admin
+`MAINTENANCE__TITLE` | Correspondant au menu 'Maintenance' du panel admin
+`GLOBAL__UPDATE` | Correspondant au menu 'Mise à jour' du panel admin
+`HELP__TITLE` | Correspondant au menu 'Aide' du panel admin
+
+La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` (et optionnelement `permission` et `index`)
 
 > Associez-lui comme valeur un tableau avec vos sous-liens, comme ceci par exemple :
 
@@ -101,31 +131,34 @@ Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec d
 {
   "name":"NAME",
   "slug":"SLUG",
-  "nav":true,
-  "admin":true,
-  "admin_group_menu":"customisation",
-  "admin_name":"Boutique",
-  "admin_icon":"shopping-cart",
-  "admin_menus": [
-  	{
-  		"name": "Gérer les articles",
-  		"icon": "shopping-basket",
-  		"url": "/admin/shop",
-  		"permission": "SHOP__ADMIN_MANAGE_ITEMS"
-  	},
-  	{
-  		"name": "Gérer les promotions",
-  		"icon": "percent",
-  		"url": "/admin/shop/shop/vouchers",
-  		"permission": "SHOP__ADMIN_MANAGE_VOUCHERS"
-  	},
-  	{
-  		"name": "Gérer les paiements",
-  		"icon": "credit-card",
-  		"url": "/admin/shop/payment",
-  		"permission": "SHOP__ADMIN_MANAGE_PAYMENT"
-  	}
-  ],
+  "admin_menus": {
+    "GLOBAL__CUSTOMIZE": {
+      "Boutique": {
+        "index": 1,
+        "icon": "shopping-cart",
+        "menu": {
+          "Gérer les articles": {
+            "icon": "shopping-basket",
+            "permission": "SHOP__ADMIN_MANAGE_ITEMS",
+            "route": "/admin/shop"
+          },
+          "Gérer les promotions": {
+            "icon": "percent",
+            "permission": "SHOP__ADMIN_MANAGE_VOUCHERS",
+            "route": "/admin/shop/shop/vouchers"
+          },
+          "Gérer les paiements": {
+            "icon": "credit-card",
+            "permission": "SHOP__ADMIN_MANAGE_PAYMENT",
+            "route": "/admin/shop/payment"
+          }
+        }
+      }
+    }
+  },
+  "navbar_routes": {
+    "Boutique": "/shop"
+  },
   "author":"AUTHOR",
   "version":"0.1.0",
   "apiID":1,
@@ -138,10 +171,57 @@ Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec d
     }
   },
   "requirements" : {
-    "CMS" : ">= 1.1.0"
+    "CMS" : "^1.0.0"
   }
 }
 ```
+
+```json
+{
+  "name":"NAME",
+  "slug":"SLUG",
+  "admin_menus": {
+    "Boutique": {
+      "index": 1,
+      "icon": "shopping-cart",
+      "menu": {
+        "Gérer les articles": {
+          "icon": "shopping-basket",
+          "permission": "SHOP__ADMIN_MANAGE_ITEMS",
+          "menu": {
+            "Gérer les promotions": {
+              "icon": "percent",
+              "permission": "SHOP__ADMIN_MANAGE_VOUCHERS",
+              "route": "/admin/shop/shop/vouchers"
+            }
+          }
+        },
+        "Gérer les paiements": {
+          "icon": "credit-card",
+          "permission": "SHOP__ADMIN_MANAGE_PAYMENT",
+          "route": "/admin/shop/payment"
+        }
+      }
+    }
+  },
+  "navbar_routes": {
+    "Boutique": "/shop"
+  },
+  "author":"AUTHOR",
+  "version":"0.1.0",
+  "apiID":1,
+  "useEvents":true,
+  "permissions" : {
+    "available" : [],
+    "default" : {
+      "0" : [],
+      "2" : []
+    }
+  },
+  "requirements" : {
+    "CMS" : "^1.0.0"
+  }
+}
 
 > La clé `permission` dans chaque lien est optionnelle, elle permet d'afficher le lien seulement si la permission est accordée au groupe de l'utilisateur.
 
@@ -210,13 +290,9 @@ Vous avez ensuite la fonction __getPluginConfig($slug)__ qui vous retourne le JS
 
 Vous pouvez savoir si un plugin est installé avec __isInstalled(*$id*)__, qui retourne un __boolean__, sachant que _$id_ est l’ID au format _auteur.nom.apiID_.
 
-Vous pouvez rechercher un plugin avec différentes fonctions :
+Vous pouvez rechercher un plugin avec cette fonction :
 
-- __findPluginsByName(*$name*)__
-- __findPluginBySlug(*$slug*)__
-- __findPluginByApiID(*$apiid*)__
-- __findPluginByID(*$id*)__
-- __findPluginsByAuthor(*$author*)__
+- __findPlugin(*$key*, *$value*)__
 
 Ces fonctions vous retourneront soit __un objet__ contenant les données du/des plugin(s) trouvé(s) (selon la fonction) avec comme clé l’ID du plugin, soit un __objet vide__ si aucun plugin ne correspond à la recherche.
 
