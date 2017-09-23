@@ -45,7 +45,6 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
 ```json
 {
   "name":"NAME",
-  "slug":"SLUG",
   "author":"AUTHOR",
   "version":"0.1.0",
   "apiID":1,
@@ -63,7 +62,7 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
 }
 ```
 
-Maintenant, vous allez pouvoir configurer. Remplacez __NAME__ par le _nom de votre plugin_, __SLUG__ par le _nom du dossier_ et puis __AUTHOR__ par votre pseudo.
+Maintenant, vous allez pouvoir configurer. Remplacez __NAME__ par le _nom de votre plugin_ et puis __AUTHOR__ par votre pseudo.
 Ensuite voici une explication des autres lignes :
 
 - `version` : la version de votre plugin (__double__),
@@ -82,7 +81,6 @@ Cette clé doit contenir un objet avec comme clé le nom de la route et comme va
 ```json
 {
 	"name":"Boutique",
-	"slug":"shop",
   "admin_menus": {},
   "navbar_routes": {
     "Boutique": "/shop"
@@ -130,7 +128,6 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
 ```json
 {
   "name":"NAME",
-  "slug":"SLUG",
   "admin_menus": {
     "GLOBAL__CUSTOMIZE": {
       "Boutique": {
@@ -179,7 +176,6 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
 ```json
 {
   "name":"NAME",
-  "slug":"SLUG",
   "admin_menus": {
     "Boutique": {
       "index": 1,
