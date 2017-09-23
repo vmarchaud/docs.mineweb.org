@@ -110,7 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='http://mineweb.org'>Retour sur mineweb.org</a></li>
+            <li><a href='https://mineweb.org'>Retour sur mineweb.org</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation powered by Slate</a></li>
           <li style="position: absolute;bottom: 10px;font-size: 0.85em;"><a href="#" onClick="activeRightExample(this)">Passer le code à droite de l'écran</a></li>
           <script type="text/javascript">
@@ -152,7 +152,7 @@
 <p>Pour installer le CMS MineWeb votre hébergeur <strong>doit</strong> avoir :</p>
 
 <ul>
-<li>  Version PHP supérieure ou égale à 5.4 (&lt; 7.0.0)</li>
+<li>  Version PHP supérieure ou égale à 5.6</li>
 <li>  PDO activé</li>
 <li>  cURL activé</li>
 <li>  Réécriture d&#39;URL</li>
@@ -160,11 +160,11 @@
 <li>  La librairie GD2</li>
 <li>  La possibilité d&#39;ouvrir un zip</li>
 <li>  La possibilité d&#39;ouvrir un site à distance</li>
-<li>  ionCube Loader version 5.4</li>
+<li>  ionCube Loader</li>
 <li>  OpenSSL</li>
 </ul>
 
-<p>Pour plus de simplicité vous pouvez télécharger le <strong>fichier de compatibilité</strong> <a href="http://mineweb.org/files/compatibilite.zip">ici</a>. Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.</p>
+<p>Pour plus de simplicité vous pouvez télécharger le <strong>fichier de compatibilité</strong> <a href="https://docs.mineweb.org/files/compatibilite.zip">ici</a>. Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.</p>
 
 <h2 id="licence-h-berg-e-mineweb">Licence hébergée MineWeb</h2>
 
@@ -225,53 +225,6 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 
 <p>Une fois l&#39;installation du CMS complétée vous pouvez passer à l&#39;utilisation du CMS en lui-même. Pour configurer votre CMS il vous faut vous connecter en cliquant sur le bouton en haut à gauche de la barre de navigation. Vous cliquez sur connexion puis entrez vos informations pour vous connecter. Vous cliquez ensuite sur Panel administrateur, vous serez redirigé et vous pourrez ensuite cliquer sur <em>Général</em> puis <em>Préférences générales</em>.</p>
 
-<h2 id="liste-des-plugins">Liste des plugins</h2>
-
-<p>Si vous avez acheté un plugin présent dans la liste ci-dessous, l’installation de votre plugin se fera manuellement grâce à une url
-<aside class="alert alert-warning">
-<p>N&#39;oubliez pas de remplacer votresite.fr par l&#39;url de votre propre site web.</p>
-</aside></p>
-
-<table><thead>
-<tr>
-<th>Plugin</th>
-<th>Lien</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Liste des membres</td>
-<td>votresite.fr/admin/plugin/install/24/ListMembers</td>
-</tr>
-<tr>
-<td>Status des serveurs</td>
-<td>votresite.fr/admin/plugin/install/36/Status</td>
-</tr>
-<tr>
-<td>Staff</td>
-<td>votresite.fr/admin/plugin/install/42/Staff</td>
-</tr>
-<tr>
-<td>XenBridge - Beta</td>
-<td>votresite.fr/admin/plugin/install/44/XenBridge</td>
-</tr>
-<tr>
-<td>Forum</td>
-<td>votresite.fr/admin/plugin/install/48/Forum</td>
-</tr>
-<tr>
-<td>Stats</td>
-<td>votresite.fr/admin/plugin/install/52/Stats</td>
-</tr>
-<tr>
-<td>ChangeLog</td>
-<td>votresite.fr/admin/plugin/install/54/ChangeLog</td>
-</tr>
-<tr>
-<td>Partenaire</td>
-<td>votresite.fr/admin/plugin/install/62/Partenaire</td>
-</tr>
-</tbody></table>
-
 <h2 id="aide-externe-et-probl-mes-fr-quents">Aide externe et problèmes fréquents</h2>
 
 <h3 id="probl-me-avec-ioncube">Problème avec ionCube</h3>
@@ -314,8 +267,7 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">plugin Bukkit/Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
-  - BungeeCord : <em>connexion à un serveur lié avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a>, permet l’utilisation de <strong>certaines fonctionnalités</strong> (affichage des joueurs, commandes, mais la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion)</em> <br>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://docs.mineweb.org/">plugin Bukkit/Spigot/Bungeecord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
   - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
@@ -324,24 +276,17 @@ Si vous obtenez des erreurs, voici leurs explications et résolutions.</p>
 <p>Rendez-vous sur la page de liaison site-serveur sur le panel admin de votre CMS.
 Vous devez dans un premier temps configurer le temps d’exécution maximum (appelé aussi timeout), il est conseillé de mettre 1 (seconde).</p>
 
-<p><img src="http://pic.eywek.fr/491537.png" /></p>
+<p><img src="https://docs.mineweb.org/images/server_timeout.png" /></p>
 
 <aside class="alert alert-info">
 Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra automatiquement le statut du serveur à : éteint) si vous ne souhaitez pas utiliser la liaison site-serveur. Et un autre bouton pour activer/désactiver le cache sur la “bannière” (permet que le message affiché sur le site (joueurs connectés, MOTD…) soit stocké pendant quelques minutes permettant d’éviter la surcharge de commande au serveur).
 </aside>
 
-<h2 id="liaison-un-serveur-bukkit-spigot">Liaison à un serveur Bukkit/Spigot</h2>
+<h2 id="liaison-un-serveur-par-d-faut">Liaison à un serveur (par défaut)</h2>
 
 <p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="http://mineweb.org/files/1.1-mineweb_bukkit.jar">cette adresse</a>.
 Une fois le plugin téléchargé, placez-le dans votre dossier <code class="prettyprint">plugins</code> de votre serveur et <strong>redémarrez celui-ci</strong>.
-Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.
-Quand votre serveur est en ligne, configurez le port que va utiliser le plugin pour communiquer avec le site, pour cela tapez la commande <code class="prettyprint">/mineweb port PORT</code> en remplaçant bien sûr <code class="prettyprint">__PORT__</code> par un port <strong>disponible</strong>, <strong>non utilisé</strong> et <strong>ouvert</strong>.</p>
-
-<aside class="alert alert-info">
-Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft quels ports sont disponibles. Si vous utilisez un serveur dédié ou un VPS, essayez par exemple des ports comme 4343 ou 26178.
-</aside>
-
-<p>Une fois que cette commande est effectuée, tapez <code class="prettyprint">/mineweb setup</code> et rendez-vous sur la page de liaison site-serveur dans le panel admin.</p>
+Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.</p>
 
 <p>Maintenant que vous avez configuré le serveur vous pouvez <strong>ajouter un serveur</strong> et remplir les informations nécessaires :</p>
 
@@ -349,14 +294,10 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft 
 <li><code class="prettyprint">Type de la connexion</code>, donc mettez <em>Par défaut</em>.</li>
 <li><code class="prettyprint">Nom</code> par le nom affiché.</li>
 <li><code class="prettyprint">IP</code> par l’ip (ou domaine) sans le port.</li>
-<li><code class="prettyprint">Port configuré</code> par le port que vous avez tapé juste avant.</li>
+<li><code class="prettyprint">Port</code> par le port de votre serveur (25565 par défaut si vous n’avez pas de port).</li>
 </ul>
 
-<p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion, si celle-ci échoue, votre <strong>port n’est pas ouvert</strong> ou <strong>non disponible</strong>.</p>
-
-<h2 id="liaison-un-serveur-bungeecord">Liaison à un serveur BungeeCord</h2>
-
-<p>Même processus que pour la liaison Bukkit/Spigot mais avec le <a href="http://mineweb.org/files/1.0.3-mineweb_bungee.jar">plugin BungeeCord</a> et vous devez mettre comme type de connexion <code class="prettyprint">Bungeecord</code>.</p>
+<p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion, si celle-ci échoue, rendez-vous sur <a href="https://docs.mineweb.org/#la-connexion-choue">cette section</a></p>
 
 <h2 id="liaison-par-ping">Liaison par Ping</h2>
 
@@ -366,7 +307,7 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft 
 <li><code class="prettyprint">Type</code> de la connexion, donc mettez <em>Ping</em>.</li>
 <li><code class="prettyprint">Nom</code> par le nom affiché.</li>
 <li><code class="prettyprint">IP</code> par l’ip (ou domaine) <strong>sans le port</strong>.</li>
-<li>Port de votre serveur (25565 par défaut si vous n’avez pas de port).</li>
+<li><code class="prettyprint">Port</code> par le port de votre serveur (25565 par défaut si vous n’avez pas de port).</li>
 </ul>
 
 <p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion.</p>
@@ -375,24 +316,26 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft 
 
 <p>Dans un premier temps, vérifiez que vous n&#39;avez pas d&rsquo;<strong>erreur dans la console</strong> de votre serveur en rapport avec le plugin MineWeb.</p>
 
-<p>Dans un second temps, vérifiez que le <strong>port</strong> que vous avez configuré est <strong>ouvert</strong> et <strong>non utilisé</strong> (demandez à votre hébergeur Minecraft si vous ne savez pas lequel utiliser).</p>
-
-<p>Ensuite, essayez de <strong>redémarrer votre serveur</strong> juste après avoir fait les commandes, puis testez la connexion à nouveau.</p>
+<p>Ensuite, essayez de <strong>redémarrer votre serveur</strong>.</p>
 
 <p>Si la connexion échoue toujours, contactez le <a href="http://mineweb.org/support">support</a> avec un maximum d&#39;explications et d&#39;informations, et répondez à ces questions :</p>
 
 <ul>
 <li>Quelle IP avez-vous mis ?</li>
 <li>Quel port ?</li>
-<li>Comment êtes-vous sûr que le port est ouvert ?</li>
-<li>Avez-vous fait toutes les commandes indiquées dans la doc ?</li>
 <li>Aucune erreur dans la console ?</li>
-<li>Avez-vous essayé de rédemarrer le serveur après avoir fait les commandes ?</li>
+<li>Avez-vous essayé de rédemarrer le serveur ?</li>
 <li>Fournissez-nous des logs de démarrage sur pastebin.com</li>
-<li>Fournissez-nous le fichier db.yml du plugin sur pastebin.com</li>
+<li>Fournissez-nous le fichier config.json du plugin sur pastebin.com</li>
+<li>Fournissez-nous le fichier mineweb.log du plugin sur pastebin.com</li>
 </ul>
 
           <h1 id="cr-er-un-plugin">Créer un plugin</h1>
+
+<aside class="alert alert-warning">
+  <b>Nouveau:</b> Pour les plugins personnalisés, vous êtes maintenant obligé de passer par l&rsquo;<a href="https://mineweb.org/developer/custom">API de MineWeb</a> pour vérifier votre plugin et que le CMS puisse le charger.<br>
+  <small>Note: <em>Les licences de développement chargent le plugin même si celui-ci n'a pas été vérifié.</em></small>
+</aside>
 
 <h3 id="introduction">Introduction</h3>
 
@@ -438,13 +381,6 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft 
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"NAME"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"SLUG"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"nav"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_group_menu"</span><span class="p">:</span><span class="s2">"customisation"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_name"</span><span class="p">:</span><span class="s2">"Boutique"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_icon"</span><span class="p">:</span><span class="s2">"shopping-cart"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"author"</span><span class="p">:</span><span class="s2">"AUTHOR"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"apiID"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -457,19 +393,59 @@ Si vous ne savez pas quel port utiliser, demandez à votre hébergeur Minecraft 
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"requirements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;= 1.1.0"</span><span class="w">
+    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Maintenant, vous allez pouvoir configurer. Remplacez <strong>NAME</strong> par le <em>nom de votre plugin</em>, <strong>SLUG</strong> par le <em>nom du dossier</em> et puis <strong>AUTHOR</strong> par votre pseudo.
+<p>Maintenant, vous allez pouvoir configurer. Remplacez <strong>NAME</strong> par le <em>nom de votre plugin</em> et puis <strong>AUTHOR</strong> par votre pseudo.
 Ensuite voici une explication des autres lignes :</p>
 
 <ul>
-<li><code class="prettyprint">nav</code> : si votre plugin est affiché ou non dans la barre de navigation (<strong>boolean</strong>),</li>
-<li><code class="prettyprint">admin</code> : si votre plugin a besoin de fichiers pour l’administrer (<strong>boolean</strong>),</li>
-<li><code class="prettyprint">admin_group_menu</code> : si votre plugin a besoin de fichiers pour l’administrer, le nom de la section de liens dans le panel admin (<strong>string</strong>) <em>(optionnel)</em>,</li>
+<li><code class="prettyprint">version</code> : la version de votre plugin (<strong>double</strong>),</li>
+<li><code class="prettyprint">apiID</code> : l’ID du plugin, ce champ est à remplir par la valeur -1 <em>(sera automatiquement rempli après)</em>,</li>
+<li><code class="prettyprint">useEvents</code> : si votre plugin utilise les événements disponible sur le CMS (<strong>boolean</strong>),</li>
+<li><code class="prettyprint">permissions</code> : les permissions de votre plugin (voir plus tard) (<strong>array</strong>)</li>
+<li><code class="prettyprint">requirements</code> : les pré-requis de votre plugin : vous devez spécifier comme clé un autre ID de plugin (au format <em>auteur.slug.apiID</em>) ou CMS et comme valeur une version correcte (cf. le semantic versionning donc préfixée ou non par ^ / ~ / &gt;= / &lt;=). Si un des pré-requis n&#39;est pas rempli, le plugin ne sera pas installé sur le CMS.</li>
 </ul>
+
+<h3 id="les-liens-de-la-barre-de-navigation">Les liens de la barre de navigation</h3>
+
+<p>Si votre plugin dispose d&#39;une route publique (pouvant être accessible pour n&#39;importe quel utilisateur) il peut être important de configurer lesquelles de ces routes peuvent être ajoutées sur la barre de navigation depuis le panel admin. Pour cela, il vous suffit d&#39;ajouter la clé <code class="prettyprint">navbar_routes</code> dans le fichier <code class="prettyprint">config.json</code>.
+Cette clé doit contenir un objet avec comme clé le nom de la route et comme valeur la route.</p>
+
+<blockquote>
+<p>Exemple</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Boutique"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_menus"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"navbar_routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Boutique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/shop"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"author"</span><span class="p">:</span><span class="s2">"Eywek"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apiID"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"useEvents"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"available"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nt">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"0"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nt">"2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"requirements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<h3 id="les-menus-panel-admin">Les menus panel admin</h3>
+
+<p>Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d&#39;ajouter la clé <code class="prettyprint">admin_menus</code> dans la configuration du plugin.
+La clé sera le nom du menu, vous pouvez utilisez des noms déjà utilisés pour placer votre menu en tant que sous-menu d&#39;un déjà présent (comme sur l&#39;exemple). Vous pouvez alors ajouter un index pour être après tel ou tel sous-menu
+Les clés du panel admin sont les suivantes</p>
 
 <table><thead>
 <tr>
@@ -478,68 +454,78 @@ Ensuite voici une explication des autres lignes :</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">general</code></td>
-<td>Correspondant au menu &lsquo;Général&rsquo; du panel admin</td>
+<td><code class="prettyprint">Dashboard</code></td>
+<td>Correspondant au menu &lsquo;Dashboard&rsquo; du panel admin</td>
 </tr>
 <tr>
-<td><code class="prettyprint">customisation</code></td>
+<td><code class="prettyprint">GLOBAL__ADMIN_GENERAL</code></td>
+<td>Correspondant au menu &#39;Général&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">GLOBAL__CUSTOMIZE</code></td>
 <td>Correspondant au menu &#39;Personnalisation&rsquo; du panel admin</td>
 </tr>
 <tr>
-<td><code class="prettyprint">server</code></td>
+<td><code class="prettyprint">SERVER__TITLE</code></td>
 <td>Correspondant au menu &#39;Serveur&rsquo; du panel admin</td>
 </tr>
 <tr>
-<td><code class="prettyprint">other</code> / <code class="prettyprint">default</code></td>
+<td><code class="prettyprint">GLOBAL__ADMIN_OTHER_TITLE</code></td>
 <td>Correspondant au menu &#39;Autres&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">STATS__TITLE</code></td>
+<td>Correspondant au menu &#39;Statistiques&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MAINTENANCE__TITLE</code></td>
+<td>Correspondant au menu &#39;Maintenance&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">GLOBAL__UPDATE</code></td>
+<td>Correspondant au menu &#39;Mise à jour&rsquo; du panel admin</td>
+</tr>
+<tr>
+<td><code class="prettyprint">HELP__TITLE</code></td>
+<td>Correspondant au menu &#39;Aide&rsquo; du panel admin</td>
 </tr>
 </tbody></table>
 
-<ul>
-<li><code class="prettyprint">admin_name</code> : si votre plugin a besoin de fichiers pour l’administrer, le nom du lien dans le panel admin (<strong>string</strong>),</li>
-<li><code class="prettyprint">admin_icon</code> : si votre plugin a besoin de fichiers pour l’administrer, le nom de l&#39;icone FontAwesome qui doit précéder le nom de l&#39;onglet (<strong>string</strong>) <em>(optionnel)</em>,</li>
-<li><code class="prettyprint">admin_route</code> : si votre plugin a besoin de fichiers pour l’administrer, la route du controller admin (<strong>string</strong>),</li>
-<li><code class="prettyprint">version</code> : la version de votre plugin (<strong>double</strong>),</li>
-<li><code class="prettyprint">apiID</code> : l’ID du plugin, ce champ est à remplir par la valeur -1 <em>(sera automatiquement rempli après)</em>,</li>
-<li><code class="prettyprint">useEvents</code> : si votre plugin utilise les événements disponible sur le CMS (<strong>boolean</strong>),</li>
-<li><code class="prettyprint">permissions</code> : les permissions de votre plugin (voir plus tard) (<strong>array</strong>)</li>
-</ul>
-
-<h3 id="les-sous-menu-du-panel-admin">Les sous-menu du panel admin</h3>
-
-<p>Vous pouvez, si vous le souhaitez, avoir un menu au niveau du panel admin avec des sous-liens (comme pour la boutique). Pour ceci, il vous suffit d&#39;ajouter la clé <code class="prettyprint">admin_menus</code> dans la configuration du plugin juste après <code class="prettyprint">admin_icon</code> (et donc la clé <code class="prettyprint">admin_route</code> devient optionnelle).</p>
+<p>La valeur doit ensuite être un objet contenu l&rsquo;<code class="prettyprint">icon</code>, la <code class="prettyprint">route</code> ou le <code class="prettyprint">menu</code> (et optionnelement <code class="prettyprint">permission</code> et <code class="prettyprint">index</code>)</p>
 
 <blockquote>
 <p>Associez-lui comme valeur un tableau avec vos sous-liens, comme ceci par exemple :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"NAME"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"SLUG"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"nav"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_group_menu"</span><span class="p">:</span><span class="s2">"customisation"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_name"</span><span class="p">:</span><span class="s2">"Boutique"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_icon"</span><span class="p">:</span><span class="s2">"shopping-cart"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_menus"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gérer les articles"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopping-basket"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_ITEMS"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gérer les promotions"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/shop/vouchers"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_VOUCHERS"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gérer les paiements"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit-card"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/payment"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_PAYMENT"</span><span class="w">
+  </span><span class="nt">"admin_menus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"GLOBAL__CUSTOMIZE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Boutique"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopping-cart"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"menu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"Gérer les articles"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopping-basket"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_ITEMS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"Gérer les promotions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_VOUCHERS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/shop/vouchers"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"Gérer les paiements"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit-card"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_PAYMENT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/payment"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"navbar_routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Boutique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/shop"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"author"</span><span class="p">:</span><span class="s2">"AUTHOR"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"apiID"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -552,42 +538,84 @@ Ensuite voici une explication des autres lignes :</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"requirements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;= 1.1.0"</span><span class="w">
+    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"NAME"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_menus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Boutique"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopping-cart"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"menu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"Gérer les articles"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopping-basket"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_ITEMS"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"menu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Gérer les promotions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_VOUCHERS"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/shop/vouchers"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"Gérer les paiements"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit-card"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOP__ADMIN_MANAGE_PAYMENT"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/shop/payment"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"navbar_routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Boutique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/shop"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="s2">"AUTHOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"apiID"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"useEvents"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"available"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"0"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"requirements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"CMS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<blockquote>
-<p>La clé <code class="prettyprint">permission</code> dans chaque lien est optionnelle, elle permet d&#39;afficher le lien seulement si la permission est accordée au groupe de l&#39;utilisateur.</p>
-</blockquote>
+</span><span class="err">&gt;</span><span class="w"> </span><span class="err">La</span><span class="w"> </span><span class="err">clé</span><span class="w"> </span><span class="err">`permission`</span><span class="w"> </span><span class="err">dans</span><span class="w"> </span><span class="err">chaque</span><span class="w"> </span><span class="err">lien</span><span class="w"> </span><span class="err">est</span><span class="w"> </span><span class="err">optionnelle,</span><span class="w"> </span><span class="err">elle</span><span class="w"> </span><span class="err">permet</span><span class="w"> </span><span class="err">d'afficher</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">lien</span><span class="w"> </span><span class="err">seulement</span><span class="w"> </span><span class="err">si</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="err">permission</span><span class="w"> </span><span class="err">est</span><span class="w"> </span><span class="err">accordée</span><span class="w"> </span><span class="err">au</span><span class="w"> </span><span class="err">groupe</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">l'utilisateur.</span><span class="w">
 
-<h2 id="les-tables-sql">Les tables SQL</h2>
+</span><span class="err">##</span><span class="w"> </span><span class="err">Les</span><span class="w"> </span><span class="err">tables</span><span class="w"> </span><span class="err">SQL</span><span class="w">
 
-<p>Les tables dont vous avez besoin pour votre plugin vont être générées automatiquement par un shell.
-Dans un premier temps, toutes les tables de votre plugin doivent être préfixées par le nom de votre plugin.
-Par exemple, pour le plugin Shop les tables doivent être préfixés par <strong>shop__</strong>.</p>
+</span><span class="err">Les</span><span class="w"> </span><span class="err">tables</span><span class="w"> </span><span class="err">dont</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">avez</span><span class="w"> </span><span class="err">besoin</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">votre</span><span class="w"> </span><span class="err">plugin</span><span class="w"> </span><span class="err">vont</span><span class="w"> </span><span class="err">être</span><span class="w"> </span><span class="err">générées</span><span class="w"> </span><span class="err">automatiquement</span><span class="w"> </span><span class="err">par</span><span class="w"> </span><span class="err">un</span><span class="w"> </span><span class="err">shell.</span><span class="w">
+</span><span class="err">Dans</span><span class="w"> </span><span class="err">un</span><span class="w"> </span><span class="err">premier</span><span class="w"> </span><span class="err">temps,</span><span class="w"> </span><span class="err">toutes</span><span class="w"> </span><span class="err">les</span><span class="w"> </span><span class="err">tables</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">votre</span><span class="w"> </span><span class="err">plugin</span><span class="w"> </span><span class="err">doivent</span><span class="w"> </span><span class="err">être</span><span class="w"> </span><span class="err">préfixées</span><span class="w"> </span><span class="err">par</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">nom</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">votre</span><span class="w"> </span><span class="err">plugin.</span><span class="w">
+</span><span class="err">Par</span><span class="w"> </span><span class="err">exemple,</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">plugin</span><span class="w"> </span><span class="err">Shop</span><span class="w"> </span><span class="err">les</span><span class="w"> </span><span class="err">tables</span><span class="w"> </span><span class="err">doivent</span><span class="w"> </span><span class="err">être</span><span class="w"> </span><span class="err">préfixés</span><span class="w"> </span><span class="err">par</span><span class="w"> </span><span class="err">__shop\_\___.</span><span class="w">
 
-<p>Pour générer vos tables automatiquement dans un schema (qui sera <strong>indispensable</strong> pour avoir un plugin valide) il vous faut vous rendre sur le SSH de votre serveur dédié/VPS/ordinateur pour pouvoir utiliser la console de CakePHP. Il vous faut ensuite vous rendre dans le dossier contenant les fichiers du CMS puis, il vous faudra taper
-<code class="prettyprint">app/Console/cake schema generate plugin-shop</code>
-Un fichier <em>schema.php</em> sera automatiquement créé dans le dossier SQL de votre plugin.</p>
+</span><span class="err">Pour</span><span class="w"> </span><span class="err">générer</span><span class="w"> </span><span class="err">vos</span><span class="w"> </span><span class="err">tables</span><span class="w"> </span><span class="err">automatiquement</span><span class="w"> </span><span class="err">dans</span><span class="w"> </span><span class="err">un</span><span class="w"> </span><span class="err">schema</span><span class="w"> </span><span class="err">(qui</span><span class="w"> </span><span class="err">sera</span><span class="w"> </span><span class="err">__indispensable__</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">avoir</span><span class="w"> </span><span class="err">un</span><span class="w"> </span><span class="err">plugin</span><span class="w"> </span><span class="err">valide)</span><span class="w"> </span><span class="err">il</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">faut</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">rendre</span><span class="w"> </span><span class="err">sur</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">SSH</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">votre</span><span class="w"> </span><span class="err">serveur</span><span class="w"> </span><span class="err">dédié/VPS/ordinateur</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">pouvoir</span><span class="w"> </span><span class="err">utiliser</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="err">console</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">CakePHP.</span><span class="w"> </span><span class="err">Il</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">faut</span><span class="w"> </span><span class="err">ensuite</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">rendre</span><span class="w"> </span><span class="err">dans</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">dossier</span><span class="w"> </span><span class="err">contenant</span><span class="w"> </span><span class="err">les</span><span class="w"> </span><span class="err">fichiers</span><span class="w"> </span><span class="err">du</span><span class="w"> </span><span class="err">CMS</span><span class="w"> </span><span class="err">puis,</span><span class="w"> </span><span class="err">il</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">faudra</span><span class="w"> </span><span class="err">taper</span><span class="w">
+</span><span class="err">`app/Console/cake</span><span class="w"> </span><span class="err">schema</span><span class="w"> </span><span class="err">generate</span><span class="w"> </span><span class="err">plugin-shop`</span><span class="w">
+</span><span class="err">Un</span><span class="w"> </span><span class="err">fichier</span><span class="w"> </span><span class="err">_schema.php_</span><span class="w"> </span><span class="err">sera</span><span class="w"> </span><span class="err">automatiquement</span><span class="w"> </span><span class="err">créé</span><span class="w"> </span><span class="err">dans</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">dossier</span><span class="w"> </span><span class="err">SQL</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">votre</span><span class="w"> </span><span class="err">plugin.</span><span class="w">
 
-<p>Si vous ne pouvez pas accéder à la console de CakePHP, vous pouvez toujours créer votre fichier <em>SQL/schema.php</em> <strong>manuellement</strong>.</p>
+</span><span class="err">Si</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">ne</span><span class="w"> </span><span class="err">pouvez</span><span class="w"> </span><span class="err">pas</span><span class="w"> </span><span class="err">accéder</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="err">console</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">CakePHP,</span><span class="w"> </span><span class="err">vous</span><span class="w"> </span><span class="err">pouvez</span><span class="w"> </span><span class="err">toujours</span><span class="w"> </span><span class="err">créer</span><span class="w"> </span><span class="err">votre</span><span class="w"> </span><span class="err">fichier</span><span class="w"> </span><span class="err">_SQL/schema.php_</span><span class="w"> </span><span class="err">__manuellement__.</span><span class="w">
 
-<blockquote>
-<p>Vous devez commençer le fichier comme ceci</p>
-</blockquote>
-<pre class="highlight php"><code><span class="cp">&lt;?php</span>
-<span class="k">class</span> <span class="nc">ShopAppSchema</span> <span class="k">extends</span> <span class="nx">CakeSchema</span> <span class="p">{</span>
+</span><span class="err">&gt;Vous</span><span class="w"> </span><span class="err">devez</span><span class="w"> </span><span class="err">commençer</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">fichier</span><span class="w"> </span><span class="err">comme</span><span class="w"> </span><span class="err">ceci</span><span class="w">
 
-    <span class="k">public</span> <span class="nv">$file</span> <span class="o">=</span> <span class="s1">'schema.php'</span><span class="p">;</span>
+</span><span class="err">```php</span><span class="w">
+</span><span class="err">&lt;?php</span><span class="w">
+</span><span class="err">class</span><span class="w"> </span><span class="err">ShopAppSchema</span><span class="w"> </span><span class="err">extends</span><span class="w"> </span><span class="err">CakeSchema</span><span class="w"> </span><span class="p">{</span><span class="w">
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">before</span><span class="p">(</span><span class="nv">$event</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="p">}</span>
+    </span><span class="err">public</span><span class="w"> </span><span class="err">$file</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">'schema.php';</span><span class="w">
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">after</span><span class="p">(</span><span class="nv">$event</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span> <span class="p">{}</span>
-<span class="p">}</span>
-</code></pre>
+    </span><span class="err">public</span><span class="w"> </span><span class="err">function</span><span class="w"> </span><span class="err">before($event</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">array())</span><span class="w"> </span><span class="err">{</span><span class="w">
+        </span><span class="err">return</span><span class="w"> </span><span class="err">true;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="err">public</span><span class="w"> </span><span class="err">function</span><span class="w"> </span><span class="err">after($event</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">array())</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
 
 <blockquote>
 <p>Il vous faut ensuite suivre la documentation <a href="http://book.cakephp.org/2.0/fr/console-and-shells/schema-management-and-migrations.html#ecrire-un-schema-cakephp-a-la-main">ici</a></p>
@@ -629,14 +657,10 @@ Tout d’abord vous avez la fonction <strong>loadPlugins()</strong> qui vous ret
 
 <p>Vous pouvez savoir si un plugin est installé avec <strong>isInstalled(<em>$id</em>)</strong>, qui retourne un <strong>boolean</strong>, sachant que <em>$id</em> est l’ID au format <em>auteur.nom.apiID</em>.</p>
 
-<p>Vous pouvez rechercher un plugin avec différentes fonctions :</p>
+<p>Vous pouvez rechercher un plugin avec cette fonction :</p>
 
 <ul>
-<li><strong>findPluginsByName(<em>$name</em>)</strong></li>
-<li><strong>findPluginBySlug(<em>$slug</em>)</strong></li>
-<li><strong>findPluginByApiID(<em>$apiid</em>)</strong></li>
-<li><strong>findPluginByID(<em>$id</em>)</strong></li>
-<li><strong>findPluginsByAuthor(<em>$author</em>)</strong></li>
+<li><strong>findPlugin(<em>$key</em>, <em>$value</em>)</strong></li>
 </ul>
 
 <p>Ces fonctions vous retourneront soit <strong>un objet</strong> contenant les données du/des plugin(s) trouvé(s) (selon la fonction) avec comme clé l’ID du plugin, soit un <strong>objet vide</strong> si aucun plugin ne correspond à la recherche.</p>
@@ -1327,6 +1351,11 @@ Exemple :</p>
 
           <h1 id="cr-er-des-th-mes">Créer des thèmes</h1>
 
+<aside class="alert alert-warning">
+  <b>Nouveau:</b> Pour les thèmes personnalisés, vous êtes maintenant obligé de passer par l&rsquo;<a href="https://mineweb.org/developer/custom">API de MineWeb</a> pour vérifier votre thème et que le CMS puisse le charger.<br>
+  <small>Note: <em>Les licences de développement chargent le thème même si celui-ci n'a pas été vérifié.</em></small>
+</aside>
+
 <h2 id="introduction">Introduction</h2>
 
 <p>Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l&#39;apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles sur le site de MineWeb. D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.</p>
@@ -1580,11 +1609,11 @@ Vous pouvez aussi, de cette manière, remplacer certains éléments chargés par
 </span></code></pre>
 
 <p>Vous pouvez voir que l&rsquo;<em>ID</em> du plugin est spécial, en effet celui-ci se compose de la manière suivante : <strong>auteur.nomdudossier.apiID</strong>, vous pouvez donc trouver cet ID vous même facilement en regardant l&#39;intérieur du <em>config.json</em> d&#39;un plugin.
-Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très bien la faire précéder d&#39;un outil de comparaison. Comme ceci :</p>
+Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très bien la faire précéder d&#39;un outil de comparaison (cf. le semantic versionning donc les outils sont ^ / ~ / &gt;= / &lt;=). Comme ceci :</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="err">...</span><span class="w">
     </span><span class="nt">"supported"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"eywek.shop.1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;= 1.0.0"</span><span class="w">
+        </span><span class="nt">"eywek.shop.1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.0.0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
