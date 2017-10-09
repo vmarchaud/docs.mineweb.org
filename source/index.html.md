@@ -31,7 +31,7 @@ MineWeb est développé sous un framework PHP nommé **CakePHP** permettant un d
 
 Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 
-*   Version PHP supérieure ou égale à 5.6
+*   Version PHP supérieure ou égale à 5.6 et inférieure à 7.1
 *   PDO activé
 *   cURL activé
 *   Réécriture d'URL

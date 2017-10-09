@@ -42,6 +42,7 @@ Pour que votre thème soit valide, celui-ci doit contenir un fichier _config.jso
     "author": "",
     "version": "",
     "apiID": 0,
+    "slider": false,
     "configurations": {},
     "supported": {}
 }
@@ -49,10 +50,17 @@ Pour que votre thème soit valide, celui-ci doit contenir un fichier _config.jso
 
 Vous allez devoir configurer les informations les plus importantes.
 Tout d'abord le _name_ qui est le nom de votre thème, vous pouvez à cet endroit écrire le nom de votre thème en français, avec des accents, espaces ou autre si vous le souhaitez. Ce nom sera affiché sur le panel admin du CMS. (exemple : Démonstration).
+
 Après, il faut configurer le _slug_, il faut ici insérer le nom du dossier du thème précédemment choisi (exemple : Demo).
+
 Pour la colonne _author_, mettez ici votre pseudo.
+
 Pour la _version_ du thème, la version doit être au format X.Y.Z comme expliqué [ici](http://semver.org).
+
 Pour _apiID_, laissez ceci à 0, ne vous en souciez pas, il sera automatiquement rempli quand vous soumettrez votre thème au market de mineweb.org.
+
+Pour _slider_, mettez **true** ou **false** selon si vous souhaitez ou non utiliser le système de slider prévu par le CMS _(cette clé permet d'afficher ou non le menu slider dans le panel admin)_.
+
 Ne vous occupez pas non plus de _configurations_ et _supported_, nous verrons cela plus tard.
 
 ## Modifier la disposition globale du site
@@ -243,7 +251,28 @@ Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très
 }
 ```
 
-À ce moment-là, vous indiquez que votre thème supporte uniquement les versions du plugin "Boutique" au dessus et incluant la 1.0.0.
+Dans ce cas là, vous indiquez que votre thème supporte uniquement les versions du plugin "Boutique" au dessus et incluant la 1.0.0.
+
+```json
+{
+	...
+    "supported": {
+	    "eywek.shop.1": "^1.0.0"
+    }
+}
+```
+
+Dans ce cas là, vous indiquez que votre thème supporte uniquement les versions du plugin "Boutique" au dessus et incluant la 1.0.0 mais en dessous de la 2.0.0.
+
+```json
+{
+	...
+    "supported": {
+	    "eywek.shop.1": "~1.0.0"
+    }
+}
+```
+Dans ce cas là, vous indiquez que votre thème supporte uniquement les versions du plugin "Boutique" au dessus et incluant la 1.0.0 mais au dessous de la 1.1.0.
 
 ## Utiliser des fichiers CSS, JS ou images personnalisées
 

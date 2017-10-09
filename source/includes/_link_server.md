@@ -24,7 +24,7 @@ Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra
 
 ## Liaison à un serveur (par défaut)
 
-Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [cette adresse](http://mineweb.org/files/1.1-mineweb_bukkit.jar).
+Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [cette adresse](http://mineweb.org/files/mineweb_bridge-2.0.0.jar).
 Une fois le plugin téléchargé, placez-le dans votre dossier `plugins` de votre serveur et __redémarrez celui-ci__.
 Vous n’avez __pas à toucher à la configuration du plugin__.
 

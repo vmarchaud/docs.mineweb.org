@@ -21,12 +21,8 @@ Une fois ce dossier créé, il faut créer différents autres dossiers et fichie
 
 - `Config/`
 - `Controller/`
-- `Controller/Component/`
 - `Model/`
-- `Model/Behavior`
 - `View/`
-- `View/Helper/`
-- `View/Layouts`
 - `lang/`
 - `SQL/`
 
@@ -46,9 +42,9 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
 {
   "name":"NAME",
   "author":"AUTHOR",
-  "version":"0.1.0",
+  "version":"1.0.0",
   "apiID":1,
-  "useEvents":true,
+  "useEvents":false,
   "permissions" : {
     "available" : [],
     "default" : {
@@ -57,7 +53,7 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
     }
   },
   "requirements" : {
-    "CMS" : "^1.0.0"
+    "CMS" : "^1.2.0"
   }
 }
 ```
@@ -81,10 +77,10 @@ Cette clé doit contenir un objet avec comme clé le nom de la route et comme va
 ```json
 {
 	"name":"Boutique",
-  "admin_menus": {},
-  "navbar_routes": {
-    "Boutique": "/shop"
-  },
+	"admin_menus": {},
+	"navbar_routes": {
+		"Boutique": "/shop"
+	},
 	"author":"Eywek",
 	"version":"1.0.0",
 	"apiID":1,
@@ -97,7 +93,7 @@ Cette clé doit contenir un objet avec comme clé le nom de la route et comme va
 		}
 	},
 	"requirements" : {
-		"CMS" : "^1.0.0"
+		"CMS" : "^1.2.0"
 	}
 }
 
@@ -157,7 +153,7 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
     "Boutique": "/shop"
   },
   "author":"AUTHOR",
-  "version":"0.1.0",
+  "version":"1.0.0",
   "apiID":1,
   "useEvents":true,
   "permissions" : {
@@ -168,7 +164,7 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
     }
   },
   "requirements" : {
-    "CMS" : "^1.0.0"
+    "CMS" : "^1.2.0"
   }
 }
 ```
@@ -204,7 +200,7 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
     "Boutique": "/shop"
   },
   "author":"AUTHOR",
-  "version":"0.1.0",
+  "version":"1.0.0",
   "apiID":1,
   "useEvents":true,
   "permissions" : {
@@ -215,9 +211,10 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
     }
   },
   "requirements" : {
-    "CMS" : "^1.0.0"
+    "CMS" : "^1.2.0"
   }
 }
+```
 
 > La clé `permission` dans chaque lien est optionnelle, elle permet d'afficher le lien seulement si la permission est accordée au groupe de l'utilisateur.
 
@@ -274,131 +271,6 @@ class MainComponent extends Object {
 
 Ces fonctions __onEnable__ et __onDisable__ seront __automatiquement__ appelées par le CMS lors de l’__installation__, l’__activation__ _(pour le onEnable)_, et pour la __désinstallation__ et la __désactivation__ _(pour le onDisable)_ du plugin.
 
-## Fonctions disponibles
-
-_Toutes les fonctions/variables présentes ici, sont celles du **EyPluginComponent**._
-### Fonctions
-
-Tout comme les variables, certaines méthodes/fonctions sont disponibles pour vous permettre d’intéragir avec les plugins installés.
-Tout d’abord vous avez la fonction __loadPlugins()__ qui vous retournera tout comme la variable __$pluginsLoaded__ (voir ci-dessous) les plugins chargés et installés, cette méthode/fonction vous donne simplement les données à jour si celles-ci ont été modifiées depuis le chargement du Component des plugins.
-
-Vous avez ensuite la fonction __getPluginConfig($slug)__ qui vous retourne le JSON de la configuration d’un plugin. Vous devez __spécifier__ le __slug du plugin__, par exemple, pour Boutique c’est Shop.
-
-Vous pouvez savoir si un plugin est installé avec __isInstalled(*$id*)__, qui retourne un __boolean__, sachant que _$id_ est l’ID au format _auteur.nom.apiID_.
-
-Vous pouvez rechercher un plugin avec cette fonction :
-
-- __findPlugin(*$key*, *$value*)__
-
-Ces fonctions vous retourneront soit __un objet__ contenant les données du/des plugin(s) trouvé(s) (selon la fonction) avec comme clé l’ID du plugin, soit un __objet vide__ si aucun plugin ne correspond à la recherche.
-
-### Variables
-
-Les plugins sont chargés dès le chargement de votre site, en effet le CMS __installe automatiquement__ les plugins qui sont valides dans le dossier _/app/Plugin/_ et qui ne sont pas encore présents dans la base de données. Et celui-ci __supprime__ aussi __automatiquement__ les plugins qui sont encore en base de données mais plus dans le dossier.
-
-Après ces opérations effectuées, le CMS __rafraichi les permissions__ (pour pouvoir supprimer/ajouter les permissions des plugins installés/supprimés).
-Une fois cela fait, vous pouvez accèder à une variable automatiquement initialisée nommée __$pluginsLoaded__. Celle-ci contient les différents plugins chargés et installés en base de données.
-
->Vous pouvez l’utilisez comme ceci :
-
-```php
-<?php
-debug($this->EyPlugin->pluginsLoaded); // Dans un controller
-```
-
->Ce qui retournera :
-
-```php
-object(stdClass) {
-  eywek.support.2 => object(stdClass) {
-      name => 'Support'
-      slug => 'support'
-      nav => true
-      admin => false
-      author => 'Eywek'
-      version => '0.2.0'
-      apiID => (int) 2
-      useEvents => false
-      permissions => object(stdClass) {
-          available => array(
-              (int) 0 => 'POST_TICKET',
-              (int) 1 => 'VIEW_TICKETS',
-              (int) 2 => 'VIEW_ALL_TICKETS',
-              (int) 3 => 'DELETE_ALL_TICKETS',
-              (int) 4 => 'DELETE_HIS_TICKET',
-              (int) 5 => 'RESOLVE_HIS_TICKET',
-              (int) 6 => 'RESOLVE_ALL_TICKETS',
-              (int) 7 => 'SHOW_TICKETS_ANWSERS',
-              (int) 8 => 'REPLY_TO_HIS_TICKETS',
-              (int) 9 => 'REPLY_TO_ALL_TICKETS'
-          )
-          default => object(stdClass) {
-              0 => array(
-                  (int) 0 => 'POST_TICKET',
-                  (int) 1 => 'VIEW_TICKETS',
-                  (int) 2 => 'DELETE_HIS_TICKET',
-                  (int) 3 => 'RESOLVE_HIS_TICKET',
-                  (int) 4 => 'SHOW_TICKETS_ANWSERS',
-                  (int) 5 => 'REPLY_TO_HIS_TICKETS'
-              )
-              2 => array(
-                  (int) 0 => 'POST_TICKET',
-                  (int) 1 => 'VIEW_TICKETS',
-                  (int) 2 => 'DELETE_HIS_TICKET',
-                  (int) 3 => 'RESOLVE_HIS_TICKET',
-                  (int) 4 => 'SHOW_TICKETS_ANWSERS',
-                  (int) 5 => 'REPLY_TO_HIS_TICKETS'
-              )
-          }
-      }
-      tables => array(
-          (int) 0 => 'support__tickets',
-          (int) 1 => 'support__reply_tickets'
-      )
-  }
-  eywek.shop.1 => object(stdClass) {
-      name => 'Boutique'
-      slug => 'shop'
-      nav => true
-      admin => false
-      author => 'Eywek'
-      version => '0.3.1'
-      apiID => (int) 1
-      useEvents => false
-      permissions => object(stdClass) {
-          available => array(
-              (int) 0 => 'CREDIT_ACCOUNT',
-              (int) 1 => 'CAN_BUY'
-          )
-          default => object(stdClass) {
-              0 => array(
-                  (int) 0 => 'CREDIT_ACCOUNT',
-                  (int) 1 => 'CAN_BUY'
-              )
-              2 => array(
-                  (int) 0 => 'CREDIT_ACCOUNT',
-                  (int) 1 => 'CAN_BUY'
-              )
-          }
-      }
-      tables => array(
-          (int) 0 => 'shop__items',
-          (int) 1 => 'shop__categories',
-          (int) 2 => 'shop__vouchers',
-          (int) 3 => 'shop__paypals',
-          (int) 4 => 'shop__paysafecards',
-          (int) 5 => 'shop__paysafecard_messages',
-          (int) 6 => 'shop__starpasses'
-      )
-  }
-}
-```
-
-Les plugins sont différenciés avec un __ID__ propre à eux-même qui se compose comme ceci : _auteur.slug.apiID_ où le slug est le nom du dossier de votre plugin.
-
-Vous avez aussi accès aux variables __$pluginsInFolder__ et __$pluginsInDB__ qui vous retournent un array des plugins contenus dans leurs dossiers ou en base de données (donc installés).
-Ces listes __ne sont pas rafraîchies__ après la suppression et/ou installation de nouveaux plugins. Il y a donc de fortes chances que celles-ci ne soient pas à jour.
-
 ## Utiliser les events
 
 Dans la config.json du plugin, passez __useEvents__ à __true__.
@@ -453,6 +325,7 @@ Pour créer un __écouteur__ _(Listener)_, il vous faut créer un fichier dans l
 
 - __requestPage__ : appelé lors de chaque requête sans données particulières.
 - __onPostRequest__ : appelé lors d’une requête POST sans données particulières.
+- __beforePageDisplay__ : appelé lors de chaque chargement de page dans le afterFilter sans données particulières.
 - __onLoadPage__ : appelé lors de chaque chargement de page dans le beforeRender sans données particulières.
 - __onLoadAdminPanel__ : appelé lors de chaque chargement de page admin (prefix) dans le beforeRender sans données particulières.
 
@@ -485,26 +358,6 @@ Pour créer un __écouteur__ _(Listener)_, il vous faut créer un fichier dans l
 - __beforeSendPoints__ : appelé avant l’enregistrement de la transaction avec l’utilisateur, le nouveau solde de l’utilisateur, à qui sont transféré les points et combien comme données.
 - __beforeEditUser__ : appelé avant que les données ne soit enregistrées avec l’ID de l’utilisateur, les données et `password_updated` comme données.
 - __beforeDeleteUser__ : appelé avant que l’utilisateur ne soit supprimé avec ses informations comme données.
-
-### [PLUGIN] Shop
-
-- __onBuy__ : appelé à chaque achat avant tout enregistrement avec les articles, le prix total et les infos de l’user comme données.
-- __beforeEditItem__ : appelé avant que les modifications de l’article ne soit enregistrées avec les infos et l’utilisateur en données.
-- __beforeAddItem__ : appelé avant que les modifications de l’article ne soit enregistrées avec les infos et l’utilisateur en données.
-- __beforeAddCategory__ : appelé avant l’enregistrement de la catégorie avec le nom de la catégorie et les infos de l’utilisateur en données.
-- __beforeDeleteItem__ : appelé avant la suppression de l’article avec l’ID de l’article et les infos de l’utilisateur en données.
-- __beforeDeleteCategory__ : appelé avant la suppression de la catégorie avec l’ID de la catégorie et les infos de l’utilisateur en données.
-- __beforeDeletePaypalOffer__ : appelé avant la suppression de l’offre PayPal avec l’ID de l’offre et les infos de l’utilisateur en données.
-- __beforeDeleteStarpassOffer__ : appelé avant la suppression de l’offre StarPass avec l’ID de l’offre et les infos de l’utilisateur en données.
-- __beforeAddVoucher__ : appelé avant l’enregistrement du code promo avec les données et les infos de l’utilisateur en données.
-- __beforeDeleteVoucher__ : appelé avant la suppression du code promo avec l’ID du code et les infos de l’utilisateur en données.
-
-### [PLUGIN] Vote
-
-- __onVote__ : appelé pendant le vote (après l’enregistrement du vote, avant les récompenses) avec le choix du moyen de récompense (now/later), le site, la config et les infos de l’utilisateur en données.
-- __beforeReceiveRewards__ : appelé avant le gain des récompenses avec les récompenses, le type et les infos de l’utilisateur en données.
-- __beforeGetWaitingReward__ : appelé avant que la récompense en attente ne soit donnée avec l’utilisateur en données.
-- __beforeResetVotes__ : appelé avant que tous les votes ne soit rénitialisés avec les infos de l’utilisateur en données.
 
 ## Utiliser les modules
 
@@ -565,7 +418,7 @@ Pour des raisons de conventions, vous aurez remarqué que nous ne fermons pas no
 
 Si vous voulez plus d'information, je vous conseille ces liens : [StackOverflow](http://stackoverflow.com/questions/4410704/why-would-one-omit-the-close-tag/4499749#4499749) ainsi que les recommandations [PHP-Fig](http://www.php-fig.org/psr/psr-2/)
 
-###Les routes
+### Les routes
 
 Allons ensemble dans notre fichier `Config/routes.php` et écrivons ceci :
 
@@ -951,12 +804,12 @@ Si vous ne mettez pas deux accolades dedans, votre plugin ne fonctionnera pas co
 
 Notez que vous n'êtes pas obligé d'utiliser les fichiers de traductions, même si vous ne mettez rien dedans, veillez à les créer et à écrire ceci dedans : `{}`
 
-###Téléchargement
+### Téléchargement
 
 Je vous laisse télécharger le plugin afin de récupérer les codes : [lien du plugin](/files/Tutorial.zip)
 
 Il vous suffit d'extraire le .zip et de le mettre dans /app/Plugin. Vous allez ensuite dans placer le contenu extrait dans app/Plugin. Et allez sur la page de gestion des plugins,  si cela ne marche pas , videz votre cache : /app/tmp/
 
-##Utilisation avancé
+## Utilisation avancé
 
 Dans le dossier `Config/` se trouve un fichier nommé `bootstrap.php`, je vous redirige vers ce lien [Documentation CakePHP](https://book.cakephp.org/2.0/fr/development/configuration.html#bootstrapping-cakephp) pour savoir à quoi sert t-il.
