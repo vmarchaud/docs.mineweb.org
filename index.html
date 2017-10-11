@@ -328,6 +328,7 @@ Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.</p>
 <li>Quelle IP avez-vous mis ?</li>
 <li>Quel port ?</li>
 <li>Aucune erreur dans la console ?</li>
+<li>Quelle version de Spigot avez-vous ?</li>
 <li>Avez-vous essayé de rédemarrer le serveur ?</li>
 <li>Fournissez-nous des logs de démarrage sur pastebin.com</li>
 <li>Fournissez-nous le fichier config.json du plugin sur pastebin.com</li>
@@ -1204,41 +1205,37 @@ Exemple :</p>
 <h3 id="int-ragir-avec-le-serveur">Intéragir avec le serveur</h3>
 
 <p>Vous pouvez très bien envoyer des commandes ou récupérer toutes sortes d&#39;informations grâce au plugin de Bridge du CMS.
-Pour cela il vous suffit de procéder comme ceci (dans vos controllers) :
-&rdquo;`php
-&lt;?php
-// Pour récupérer la liste des connectés sur le serveur sélectionné
-$result = $this-&gt;Server-&gt;call([[&#39;GET_PLAYER_LIST&rsquo; =&gt; []]], $server_id);
-// Vous pouvez également procéder comme ceci :
-$result = $this-&gt;Server-&gt;call([&#39;GET_PLAYER_LIST&rsquo; =&gt; []], $server_id);
-// Ou plus simplement
-$result = $this-&gt;Server-&gt;call(&#39;GET_PLAYER_LIST&rsquo;, $server_id);</p>
+Pour cela il vous suffit de procéder comme ceci (dans vos controllers) :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// Pour récupérer la liste des connectés sur le serveur sélectionné
+</span><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([[</span><span class="s1">'GET_PLAYER_LIST'</span> <span class="o">=&gt;</span> <span class="p">[]]],</span> <span class="nv">$server_id</span><span class="p">);</span>
+<span class="c1">// Vous pouvez également procéder comme ceci :
+</span><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span><span class="s1">'GET_PLAYER_LIST'</span> <span class="o">=&gt;</span> <span class="p">[]],</span> <span class="nv">$server_id</span><span class="p">);</span>
+<span class="c1">// Ou plus simplement
+</span><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">(</span><span class="s1">'GET_PLAYER_LIST'</span><span class="p">,</span> <span class="nv">$server_id</span><span class="p">);</span>
 
-<p>/*
+<span class="cm">/*
   Vous pouvez également stack les méthodes
-*/</p>
+*/</span>
 
-<p>$result = $this-&gt;Server-&gt;call([&#39;GET_PLAYER_LIST&rsquo; =&gt; [], &#39;GET_PLAYER_COUNT&rsquo; =&gt; []], $server_id);
-&ldquo;`</p>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span><span class="s1">'GET_PLAYER_LIST'</span> <span class="o">=&gt;</span> <span class="p">[],</span> <span class="s1">'GET_PLAYER_COUNT'</span> <span class="o">=&gt;</span> <span class="p">[]],</span> <span class="nv">$server_id</span><span class="p">);</span>
+</code></pre>
 
-<p>Pour savoir si <strong>un joueur est connecté</strong> vous pouvez utilisez cette méthode :
-<code class="prettyprint">php
-&lt;?php
-$this-&gt;Server-&gt;userIsConnected($username, $server_id);
-</code></p>
+<p>Pour savoir si <strong>un joueur est connecté</strong> vous pouvez utilisez cette méthode :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">userIsConnected</span><span class="p">(</span><span class="nv">$username</span><span class="p">,</span> <span class="nv">$server_id</span><span class="p">);</span>
+</code></pre>
 
-<p>Pour <strong>envoyer des commandes</strong> vous avez ces deux méthodes :
-<code class="prettyprint">php
-&lt;?php
-$this-&gt;Server-&gt;send_command(&#39;say Boujour&#39;, $server_id);
-$this-&gt;Server-&gt;commands([&#39;say Boujour&#39;, &#39;say Boujour 2&#39;], $server_id);
-</code></p>
+<p>Pour <strong>envoyer des commandes</strong> vous avez ces deux méthodes :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">send_command</span><span class="p">(</span><span class="s1">'say Boujour'</span><span class="p">,</span> <span class="nv">$server_id</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">commands</span><span class="p">([</span><span class="s1">'say Boujour'</span><span class="p">,</span> <span class="s1">'say Boujour 2'</span><span class="p">],</span> <span class="nv">$server_id</span><span class="p">);</span>
+</code></pre>
 
-<p>Pour envoyer des <strong>commandes différéees</strong> pous avez cette méthode :
-<code class="prettyprint">php
-&lt;?php
-$this-&gt;Server-&gt;scheduleCommands([&#39;say Boujour&#39;, &#39;say Boujour 2&#39;], $time, [$server_id]); // Le $time doit être en minute
-</code></p>
+<p>Pour envoyer des <strong>commandes différéees</strong> pous avez cette méthode :</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Server</span><span class="o">-&gt;</span><span class="na">scheduleCommands</span><span class="p">([</span><span class="s1">'say Boujour'</span><span class="p">,</span> <span class="s1">'say Boujour 2'</span><span class="p">],</span> <span class="nv">$time</span><span class="p">,</span> <span class="p">[</span><span class="nv">$server_id</span><span class="p">]);</span> <span class="c1">// Le $time doit être en minute
+</span></code></pre>
 
 <p>Voici la <strong>liste des méthodes disponibles</strong> :
 - GET_PLAYER_LIST
@@ -1257,21 +1254,19 @@ $this-&gt;Server-&gt;scheduleCommands([&#39;say Boujour&#39;, &#39;say Boujour 2
 
 <h4 id="rajouter-des-m-thodes">Rajouter des méthodes</h4>
 
-<p>Vous pouvez créer un plugin Java vous permettant d&#39;ajouter des méthodes au plugin de Bridge pour pouvoir récupérer plus de données pour vos plugins. Pour cela il vous suffit de créer un plugin minecraft normal puis il vous faut ajouter MinewebBridge comme dépendance dans votre plugin.yml et d&#39;appeler cette méthode dans votre plugin pour ajouter une méthode :
-<code class="prettyprint">java
-BukkitCore.get().getMethods().put(&quot;GET_FACTIONS&quot;, new GetFactions());
-</code></p>
+<p>Vous pouvez créer un plugin Java vous permettant d&#39;ajouter des méthodes au plugin de Bridge pour pouvoir récupérer plus de données pour vos plugins. Pour cela il vous suffit de créer un plugin minecraft normal puis il vous faut ajouter MinewebBridge comme dépendance dans votre plugin.yml et d&#39;appeler cette méthode dans votre plugin pour ajouter une méthode :</p>
+<pre class="highlight java"><code><span class="n">BukkitCore</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getMethods</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">"GET_FACTIONS"</span><span class="o">,</span> <span class="k">new</span> <span class="n">GetFactions</span><span class="o">());</span>
+</code></pre>
 
-<p>La class que vous passez en paramètre doit ressembler a ceci :
-&rdquo;`java
-@MethodHandler
-public class GetFactions implements IMethod {</p>
+<p>La class que vous passez en paramètre doit ressembler a ceci :</p>
+<pre class="highlight java"><code><span class="nd">@MethodHandler</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GetFactions</span> <span class="kd">implements</span> <span class="n">IMethod</span> <span class="o">{</span>
 
-<p>@Override
-    public Object execute(ICore instance, Object&hellip; inputs) {
-    }
-}
-&ldquo;`</p>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="n">execute</span><span class="o">(</span><span class="n">ICore</span> <span class="n">instance</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
 
 <aside class="alert alert-info">
   <b>Note:</b> Vous pouvez vous aider du plugin de classement Factions disponible [ici](https://github.com/MineWeb/MineWebFactions).
