@@ -63,6 +63,7 @@ Si la connexion échoue toujours, contactez le [support](http://mineweb.org/supp
 - Quelle IP avez-vous mis ?
 - Quel port ?
 - Aucune erreur dans la console ?
+- Quelle version de Spigot avez-vous ?
 - Avez-vous essayé de rédemarrer le serveur ?
 - Fournissez-nous des logs de démarrage sur pastebin.com
 - Fournissez-nous le fichier config.json du plugin sur pastebin.com

@@ -818,6 +818,7 @@ Dans le dossier `Config/` se trouve un fichier nommé `bootstrap.php`, je vous r
 
 Vous pouvez très bien envoyer des commandes ou récupérer toutes sortes d'informations grâce au plugin de Bridge du CMS.
 Pour cela il vous suffit de procéder comme ceci (dans vos controllers) :
+
 ```php
 <?php
 // Pour récupérer la liste des connectés sur le serveur sélectionné
@@ -835,12 +836,14 @@ $result = $this->Server->call(['GET_PLAYER_LIST' => [], 'GET_PLAYER_COUNT' => []
 ```
 
 Pour savoir si **un joueur est connecté** vous pouvez utilisez cette méthode :
+
 ```php
 <?php
 $this->Server->userIsConnected($username, $server_id);
 ```
 
 Pour **envoyer des commandes** vous avez ces deux méthodes :
+
 ```php
 <?php
 $this->Server->send_command('say Boujour', $server_id);
@@ -848,6 +851,7 @@ $this->Server->commands(['say Boujour', 'say Boujour 2'], $server_id);
 ```
 
 Pour envoyer des **commandes différéees** pous avez cette méthode :
+
 ```php
 <?php
 $this->Server->scheduleCommands(['say Boujour', 'say Boujour 2'], $time, [$server_id]); // Le $time doit être en minute
@@ -871,11 +875,13 @@ Voici la **liste des méthodes disponibles** :
 #### Rajouter des méthodes
 
 Vous pouvez créer un plugin Java vous permettant d'ajouter des méthodes au plugin de Bridge pour pouvoir récupérer plus de données pour vos plugins. Pour cela il vous suffit de créer un plugin minecraft normal puis il vous faut ajouter MinewebBridge comme dépendance dans votre plugin.yml et d'appeler cette méthode dans votre plugin pour ajouter une méthode :
+
 ```java
 BukkitCore.get().getMethods().put("GET_FACTIONS", new GetFactions());
 ```
 
 La class que vous passez en paramètre doit ressembler a ceci :
+
 ```java
 @MethodHandler
 public class GetFactions implements IMethod {
