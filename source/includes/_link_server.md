@@ -3,7 +3,7 @@
 <aside class="alert alert-warning">
   <h3>Compatibilité</h3>
   <p>Les plugins sont compatibles à partir de la version 1.7.10</p>
-  <p><small><em>Des problèmes de compatibilité peuvent survenir avec Cauldron.</em></small></p>
+  <p><small><em>Des problèmes de compatibilité peuvent survenir avec Cauldron et Sponge.</em></small></p>
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
@@ -36,6 +36,10 @@ Maintenant que vous avez configuré le serveur vous pouvez __ajouter un serveur_
 - `Port` par le port de votre serveur (25565 par défaut si vous n’avez pas de port).
 
 Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, rendez-vous sur [cette section](https://docs.mineweb.org/#la-connexion-choue)
+
+<aside class="alert alert-info">
+**Cauldron :** Dans le dossier de votre serveur, vous devez vous rendre dans le dossier _Librairies/com/google/guava/guava_ et changez le JAR par [celui-ci](https://docs.mineweb.org/files/guava-17.jar).
+</aside>
 
 ## Liaison par Ping
 
