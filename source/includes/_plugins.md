@@ -893,5 +893,5 @@ public class GetFactions implements IMethod {
 ```
 
 <aside class="alert alert-info">
-  <b>Note:</b> Vous pouvez vous aider du plugin de classement Factions disponible [ici](https://github.com/MineWeb/MineWebFactions).
+  <b>Note:</b> Vous pouvez vous aider du plugin de classement Factions disponible [ici](https://github.com/MineWeb/MineWebFactions) .
 </aside>
