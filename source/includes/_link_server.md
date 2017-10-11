@@ -38,7 +38,7 @@ Maintenant que vous avez configuré le serveur vous pouvez __ajouter un serveur_
 Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, rendez-vous sur [cette section](https://docs.mineweb.org/#la-connexion-choue)
 
 <aside class="alert alert-info">
-**Cauldron :** Dans le dossier de votre serveur, vous devez vous rendre dans le dossier _Librairies/com/google/guava/guava_ et changez le JAR par [celui-ci](https://docs.mineweb.org/files/guava-17.jar).
+<b>Cauldron :</b> Dans le dossier de votre serveur, vous devez vous rendre dans le dossier _Librairies/com/google/guava/guava_ et changez le JAR par <a href="https://docs.mineweb.org/files/guava-17.jar">celui-ci</a>.
 </aside>
 
 ## Liaison par Ping
