@@ -43,6 +43,23 @@ Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, r
 
 ## Liaison par Ping
 
+Vous n’avez pas besoin de plugin pour cette liaison. Le protocol RCON est disponible sur tous les serveurs minecraft et permet de communiquer avec le site. Pour utiliser ce protocol il vous faut le configurer dans votre server.properties :
+- Passer enable-rcon à true
+- Changer rcon.password par un mot de passe
+- Changer rcon.port par un port disponible
+Il vous suffit ensuite de configurer un serveur comme ceci depuis la page de liaison :
+
+- `Type` de la connexion, donc mettez _Ping_.
+- `Nom` par le nom affiché.
+- `IP` par l’ip (ou domaine) __sans le port__.
+- `Port` par le port de votre serveur (25565 par défaut si vous n’avez pas de port).
+- `Port RCON` par le port de RCON configureé (doit être ouvert et disponible bien sûr).
+- `Mot de passe RCON` par le mot de passe RCON.
+
+Cliquez ensuite sur _Connexion_ pour tester la connexion.
+
+## Liaison par RCON
+
 Vous n’avez pas besoin de plugin pour cette liaison, il vous suffit juste de configurer un serveur comme ceci depuis la page de liaison :
 
 - `Type` de la connexion, donc mettez _Ping_.
