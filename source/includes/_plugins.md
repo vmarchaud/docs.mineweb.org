@@ -858,6 +858,7 @@ $this->Server->scheduleCommands(['say Boujour', 'say Boujour 2'], $time, [$serve
 ```
 
 Voici la **liste des méthodes disponibles** :
+
 - GET_PLAYER_LIST
 - GET_PLAYER_COUNT
 - IS_CONNECTED
@@ -872,7 +873,7 @@ Voici la **liste des méthodes disponibles** :
 - GET_VERSION
 - GET_WHITELISTED_PLAYERS
 
-#### Rajouter des méthodes
+### Rajouter des méthodes
 
 Vous pouvez créer un plugin Java vous permettant d'ajouter des méthodes au plugin de Bridge pour pouvoir récupérer plus de données pour vos plugins. Pour cela il vous suffit de créer un plugin minecraft normal puis il vous faut ajouter MinewebBridge comme dépendance dans votre plugin.yml et d'appeler cette méthode dans votre plugin pour ajouter une méthode :
 
