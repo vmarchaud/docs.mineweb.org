@@ -295,7 +295,7 @@ Pour pouvoir les inclure facilement, il vous suffit de faire ceci dans vos fichi
 ```
 
 ```php
-<?= $this->Html->img('votreimage.ext', array('alt' => 'Ce que je veux')) ?>
+<?= $this->Html->image('votreimage.ext', array('alt' => 'Ce que je veux')) ?>
 ```
 
 >Vous pouvez avoir plus d'informations [ici](http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html).
