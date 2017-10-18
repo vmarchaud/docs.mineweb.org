@@ -3,7 +3,6 @@
 <aside class="alert alert-warning">
   <h3>Compatibilité</h3>
   <p>Les plugins sont compatibles à partir de la version 1.7.10</p>
-  <p><small><em>Des problèmes de compatibilité peuvent survenir avec Cauldron et Sponge.</em></small></p>
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
@@ -42,9 +41,6 @@ Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, r
 </aside>
 <aside class="alert alert-info">
 <b>ProtocolLib :</b> Si vous avez ProtocolLib et que le plugin produit une erreur à cause du plugin de MineWeb vous pouvez utiliser <a href="https://docs.mineweb.org/files/mineweb_bridge-2.0.0-no-injector.jar">celui-ci</a>. Vous devez obligatoirement configurer un port disponible et ouvert à l'aide la commande /mineweb port <port>.
-</aside>
-<aside class="alert alert-info">
-<b>Cauldron :</b> Dans le dossier de votre serveur, vous devez vous rendre dans le dossier <em>Librairies/com/google/guava/guava/17.0/</em> et changez le JAR par <a href="https://docs.mineweb.org/files/guava-17.0.jar">celui-ci</a>.
 </aside>
 
 ## Liaison par RCON
