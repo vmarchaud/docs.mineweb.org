@@ -2,7 +2,7 @@
 
 <aside class="alert alert-warning">
   <h3>Compatibilité</h3>
-  <p>Les plugins sont compatibles à partir de la version 1.7.10</p>
+  <p>Les plugins sont compatibles à partir de la version 1.8</p>
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
