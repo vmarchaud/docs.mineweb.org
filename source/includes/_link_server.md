@@ -6,7 +6,7 @@
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://docs.mineweb.org/files/mineweb_bridge-2.0.0.jar">plugin Bukkit/Spigot/Bungeecord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">plugin Bukkit/Spigot/Bungeecord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
   - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
@@ -23,7 +23,7 @@ Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra
 
 ## Liaison à un serveur (par défaut)
 
-Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [cette adresse](https://docs.mineweb.org/files/mineweb_bridge-2.0.0.jar).
+Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [cette adresse](https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar).
 Une fois le plugin téléchargé, placez-le dans votre dossier `plugins` de votre serveur et __redémarrez celui-ci__.
 Vous n’avez __pas à toucher à la configuration du plugin__.
 
@@ -40,7 +40,7 @@ Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, r
 <b>Port customisé :</b> Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert et effectuez la commande /mineweb port <port>.
 </aside>
 <aside class="alert alert-info">
-<b>ProtocolLib :</b> Si vous avez ProtocolLib et que le plugin produit une erreur à cause du plugin de MineWeb vous pouvez utiliser <a href="https://docs.mineweb.org/files/mineweb_bridge-2.0.0-no-injector.jar">celui-ci</a>. Vous devez obligatoirement configurer un port disponible et ouvert à l'aide la commande /mineweb port <port>.
+<b>ProtocolLib :</b> Si vous avez ProtocolLib et que le plugin produit une erreur à cause du plugin de MineWeb vous pouvez utiliser <a href="https://github.com/MineWeb/ServerBridge/raw/no-injector/mineweb_bridge-2.0.0.jar">celui-ci</a>. Vous devez obligatoirement configurer un port disponible et ouvert à l'aide la commande /mineweb port <port>.
 </aside>
 
 ## Liaison par RCON
@@ -77,7 +77,7 @@ Dans un premier temps, vérifiez que vous n'avez pas d'__erreur dans la console_
 
 Ensuite, essayez de __redémarrer votre serveur__.
 
-Si la connexion échoue toujours, contactez le [support](http://mineweb.org/support) avec un maximum d'explications et d'informations, et répondez à ces questions :
+Si la connexion échoue toujours, venez-nous voir sur [Discord](https://discordapp.com/invite/3QYdt8r) avec un maximum d'explications et d'informations, et répondez à ces questions :
 
 - Quelle IP avez-vous mis ?
 - Quel port ?

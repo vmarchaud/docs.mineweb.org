@@ -1,13 +1,8 @@
 # Créer des thèmes
 
-<aside class="alert alert-warning">
-  <b>Nouveau:</b> Pour les thèmes personnalisés, vous êtes maintenant obligé de passer par l'<a href="https://mineweb.org/developer/custom">API de MineWeb</a> pour vérifier votre thème et que le CMS puisse le charger.<br>
-  <small>Note: <em>Les licences de développement chargent le thème même si celui-ci n'a pas été vérifié.</em></small>
-</aside>
-
 ## Introduction
 
-Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l'apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles sur le site de MineWeb. D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.
+Un thème, c’est des fichiers qui sont ajoutés à votre CMS pour transformer l'apparence de celui-ci. Différents thèmes “officiels” sont déjà disponibles [ici](https://github.com/MineWeb?utf8=%E2%9C%93&q=Theme-&type=&language=). D’autres peuvent être développés par la communauté et c’est le but de ce tutoriel.
 
 Il faut savoir que les thèmes sont une couche supplémentaire, c'est-à-dire que si votre thème ne s'occupe pas d'une page du site, c'est le thème par défaut qui prendra la relève.
 
@@ -41,7 +36,6 @@ Pour que votre thème soit valide, celui-ci doit contenir un fichier _config.jso
     "slug": "",
     "author": "",
     "version": "",
-    "apiID": 0,
     "slider": false,
     "configurations": {},
     "supported": {}
@@ -56,8 +50,6 @@ Après, il faut configurer le _slug_, il faut ici insérer le nom du dossier du 
 Pour la colonne _author_, mettez ici votre pseudo.
 
 Pour la _version_ du thème, la version doit être au format X.Y.Z comme expliqué [ici](http://semver.org).
-
-Pour _apiID_, laissez ceci à 0, ne vous en souciez pas, il sera automatiquement rempli quand vous soumettrez votre thème au market de mineweb.org.
 
 Pour _slider_, mettez **true** ou **false** selon si vous souhaitez ou non utiliser le système de slider prévu par le CMS _(cette clé permet d'afficher ou non le menu slider dans le panel admin)_.
 
@@ -234,19 +226,19 @@ Il est mieux aussi de **préciser dans la configuration** si vous _supporter_ (s
 {
 	...
     "supported": {
-	    "eywek.shop.1": "1.0.0"
+	    "eywek.shop": "1.0.0"
     }
 }
 ```
 
-Vous pouvez voir que l'_ID_ du plugin est spécial, en effet celui-ci se compose de la manière suivante : **auteur.nomdudossier.apiID**, vous pouvez donc trouver cet ID vous même facilement en regardant l'intérieur du _config.json_ d'un plugin.
+Vous pouvez voir que l'_ID_ du plugin est spécial, en effet celui-ci se compose de la manière suivante : **auteur.nomdudossier**, vous pouvez donc trouver cet ID vous même facilement en regardant l'intérieur du _config.json_ d'un plugin.
 Pour la version, nous avons ici mis la version du plugin, mais vous pouvez très bien la faire précéder d'un outil de comparaison (cf. le semantic versionning donc les outils sont ^ / ~ / >= / <=). Comme ceci :
 
 ```json
 {
 	...
     "supported": {
-	    "eywek.shop.1": ">=1.0.0"
+	    "eywek.shop": ">=1.0.0"
     }
 }
 ```
@@ -257,7 +249,7 @@ Dans ce cas là, vous indiquez que votre thème supporte uniquement les versions
 {
 	...
     "supported": {
-	    "eywek.shop.1": "^1.0.0"
+	    "eywek.shop": "^1.0.0"
     }
 }
 ```
@@ -268,7 +260,7 @@ Dans ce cas là, vous indiquez que votre thème supporte uniquement les versions
 {
 	...
     "supported": {
-	    "eywek.shop.1": "~1.0.0"
+	    "eywek.shop": "~1.0.0"
     }
 }
 ```

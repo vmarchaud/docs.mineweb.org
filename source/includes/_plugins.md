@@ -1,13 +1,8 @@
 # Créer un plugin
 
-<aside class="alert alert-warning">
-  <b>Nouveau:</b> Pour les plugins personnalisés, vous êtes maintenant obligé de passer par l'<a href="https://mineweb.org/developer/custom">API de MineWeb</a> pour vérifier votre plugin et que le CMS puisse le charger.<br>
-  <small>Note: <em>Les licences de développement chargent le plugin même si celui-ci n'a pas été vérifié.</em></small>
-</aside>
-
 ### Introduction
 
-Un plugin (aussi appelé _extension_), est un ensemble de __fichiers__ qui sont ajoutés à votre CMS pour y ajouter plusieurs __fonctionnalités__ ou modifier certains __comportements__ par défaut. Différents plugins “officiels” sont _déjà disponibles_ sur le site de MineWeb. D’autres peuvent être _développés par la communauté_ et c’est le but de ce tutoriel.
+Un plugin (aussi appelé _extension_), est un ensemble de __fichiers__ qui sont ajoutés à votre CMS pour y ajouter plusieurs __fonctionnalités__ ou modifier certains __comportements__ par défaut. Différents plugins “officiels” sont _déjà disponibles_ [ici](https://github.com/MineWeb?utf8=%E2%9C%93&q=Plugin-&type=&language=php). D’autres peuvent être _développés par la communauté_ et c’est le but de ce tutoriel.
 
 ## Création
 
@@ -43,7 +38,6 @@ Maintenant que vous avez créé tous ces fichiers, nous allons passer à la conf
   "name":"NAME",
   "author":"AUTHOR",
   "version":"1.0.0",
-  "apiID":1,
   "useEvents":false,
   "permissions" : {
     "available" : [],
@@ -62,10 +56,9 @@ Maintenant, vous allez pouvoir configurer. Remplacez __NAME__ par le _nom de vot
 Ensuite voici une explication des autres lignes :
 
 - `version` : la version de votre plugin (__double__),
-- `apiID` : l’ID du plugin, ce champ est à remplir par la valeur -1 _(sera automatiquement rempli après)_,
 - `useEvents` : si votre plugin utilise les événements disponible sur le CMS (__boolean__),
 - `permissions` : les permissions de votre plugin (voir plus tard) (__array__)
-- `requirements` : les pré-requis de votre plugin : vous devez spécifier comme clé un autre ID de plugin (au format _auteur.slug.apiID_) ou CMS et comme valeur une version correcte (cf. le semantic versionning donc préfixée ou non par ^ / ~ / >= / <=). Si un des pré-requis n'est pas rempli, le plugin ne sera pas installé sur le CMS.
+- `requirements` : les pré-requis de votre plugin : vous devez spécifier comme clé un autre ID de plugin (au format _auteur.slug_) ou CMS et comme valeur une version correcte (cf. le semantic versionning donc préfixée ou non par ^ / ~ / >= / <=). Si un des pré-requis n'est pas rempli, le plugin ne sera pas installé sur le CMS.
 
 ### Les liens de la barre de navigation
 
@@ -83,7 +76,6 @@ Cette clé doit contenir un objet avec comme clé le nom de la route et comme va
 	},
 	"author":"Eywek",
 	"version":"1.0.0",
-	"apiID":1,
 	"useEvents":true,
 	"permissions" : {
 		"available" : [],
@@ -154,7 +146,6 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
   },
   "author":"AUTHOR",
   "version":"1.0.0",
-  "apiID":1,
   "useEvents":true,
   "permissions" : {
     "available" : [],
@@ -201,7 +192,6 @@ La valeur doit ensuite être un objet contenu l'`icon`, la `route` ou le `menu` 
   },
   "author":"AUTHOR",
   "version":"1.0.0",
-  "apiID":1,
   "useEvents":true,
   "permissions" : {
     "available" : [],
