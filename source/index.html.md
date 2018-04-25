@@ -13,6 +13,7 @@ includes:
   - link_server
   - plugins
   - themes
+  - github
 
 search: true
 ---
