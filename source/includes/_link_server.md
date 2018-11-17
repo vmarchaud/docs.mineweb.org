@@ -39,16 +39,18 @@ Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, r
 <aside class="alert alert-info">
 <b>Port customisé :</b> Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert et effectuez la commande /mineweb port <port>.
 </aside>
-<aside class="alert alert-info">
+<aside class="alert alert-warning">
 <b>ProtocolLib :</b> Si vous avez ProtocolLib et que le plugin produit une erreur à cause du plugin de MineWeb vous pouvez utiliser <a href="https://github.com/MineWeb/ServerBridge/raw/no-injector/mineweb_bridge-2.0.0.jar">celui-ci</a>. Vous devez obligatoirement configurer un port disponible et ouvert à l'aide la commande /mineweb port <port>.
 </aside>
 
 ## Liaison par RCON
 
 Vous n’avez pas besoin de plugin pour cette liaison. Le protocol RCON est disponible sur tous les serveurs minecraft et permet de communiquer avec le site. Pour utiliser ce protocol il vous faut le configurer dans votre server.properties :
-- Passer enable-rcon à true
+
+- Passer enable-rcon à true, puis redémarrez votre serveur
 - Changer rcon.password par un mot de passe
 - Changer rcon.port par un port disponible
+
 Il vous suffit ensuite de configurer un serveur comme ceci depuis la page de liaison :
 
 - `Type` de la connexion, donc mettez _RCON_.
