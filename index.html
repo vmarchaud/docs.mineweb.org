@@ -150,25 +150,38 @@
 <p>Pour installer le CMS MineWeb votre hébergeur <strong>doit</strong> avoir :</p>
 
 <ul>
-<li>  Version PHP supérieure ou égale à 5.6 et inférieure à 7.1</li>
-<li>  PDO activé</li>
-<li>  cURL activé</li>
-<li>  Réécriture d&#39;URL</li>
-<li>  .htaccess activés</li>
-<li>  La librairie GD2</li>
-<li>  La possibilité d&#39;ouvrir un zip</li>
-<li>  La possibilité d&#39;ouvrir un site à distance</li>
-<li>  ionCube Loader</li>
-<li>  OpenSSL</li>
+    <li>  Version PHP supérieure ou égale à 5.6 et inférieure à 7.2 (php 7.2 ne pourra pas être compatible avec le CMS)</li>
+    <li>  PDO activé</li>
+    <li>  cURL activé</li>
+    <li>  Réécriture d&#39;URL</li>
+    <li>  .htaccess présent à la racine du CMS</li>
+    <li>  La librairie GD2</li>
+    <li>  La possibilité d&#39;ouvrir un zip</li>
+    <li>  La possibilité d&#39;ouvrir un site à distance</li>
+    <li>  OpenSSL</li><br>
+    <li>  Falcutatif - Php-xml</li>
+</ul>
+<p>Pour plus de simplicité vous pouvez télécharger le <strong>fichier de compatibilité</strong> <a href="https://docs.mineweb.org/files/compatibilite.zip">ici</a>. Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.</p>
+<h2 id="error-500">Erreur 500</h2>
+
+<p>Pour corriger l'erreur 500 sur votre cms faites <strong>toutes</strong> les étapes :</p>
+
+<ul>
+    <li>  Supprimez le contenu du fichier /app/tmp/ </li>
+    <li>  Si ca ne marche toujours pas :</li>
+    <ul>
+        <li>  Réeffectuez la manipulation qui a provoqué l'erreur </li>
+        <li>  Mettez en ligne sur Pastebin le fichier /app/tmp/logs/error.log afin de donner le lien au support dans le chat du <a href="https://discordapp.com/invite/3QYdt8r">Discord</a></li>
+    </ul>
 </ul>
 
-<p>Pour plus de simplicité vous pouvez télécharger le <strong>fichier de compatibilité</strong> <a href="https://docs.mineweb.org/files/compatibilite.zip">ici</a>. Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.</p>
+<p>Pour éviter les confusions ou éviter toute erreur de votre part, merci de bien vouloir lire toute la documentation avant de demander de l'aide au support et pour être plus efficace.</p>
 
-          <h1 id="installation">Installation</h1>
+        <h1 id="installation">Installation</h1>
 
 <aside class="alert alert-info">
 <h3>Informations</h3>
-<p>Vous devez placer tout le contenu de l'archive téléchargée, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tous les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
+<p>Vous devez placer tout le contenu de l'archive téléchargée, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tous les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/</p>
 </aside>
 
 <h2 id="tape-1-configuration-de-la-base-de-donn-es">Étape 1 - Configuration de la base de données</h2>
@@ -253,16 +266,16 @@ Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.</p>
 <b>Port customisé :</b> Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert et effectuez la commande /mineweb port <port>.
 </aside>
 
-<aside class="alert alert-info">
+<aside class="alert alert-warning">
 <b>ProtocolLib :</b> Si vous avez ProtocolLib et que le plugin produit une erreur à cause du plugin de MineWeb vous pouvez utiliser <a href="https://github.com/MineWeb/ServerBridge/raw/no-injector/mineweb_bridge-2.0.0.jar">celui-ci</a>. Vous devez obligatoirement configurer un port disponible et ouvert à l'aide la commande /mineweb port <port>.
 </aside>
 
 <h2 id="liaison-par-rcon">Liaison par RCON</h2>
 
 <p>Vous n’avez pas besoin de plugin pour cette liaison. Le protocol RCON est disponible sur tous les serveurs minecraft et permet de communiquer avec le site. Pour utiliser ce protocol il vous faut le configurer dans votre server.properties :
-- Passer enable-rcon à true
-- Changer rcon.password par un mot de passe
-- Changer rcon.port par un port disponible
+<br>- Passer enable-rcon à true, puis redémarrez votre serveur
+<br>- Changer rcon.password par un mot de passe
+<br>- Changer rcon.port par un port disponible et ouvert
 Il vous suffit ensuite de configurer un serveur comme ceci depuis la page de liaison :</p>
 
 <ul>
@@ -308,7 +321,51 @@ Il vous suffit ensuite de configurer un serveur comme ceci depuis la page de lia
 <li>Fournissez-nous le fichier mineweb.log du plugin sur pastebin.com</li>
 </ul>
 
-          <h1 id="cr-er-un-plugin">Créer un plugin</h1>
+          <h1 id="installer-th-pl">Installer un Plugin/Thème</h1>
+<h2 id="ad-min">Via le panel admin</h2>
+    <h3>Installer un thème</h3>
+        <p>Vous devez préalablement allez sur la page des Thème et être connecté à votre site pour accéder à la page <b>"/admin/theme"</b> et faire les manipulations suivantes :</p>
+        <ul>
+            <li>Repérez le Thème voulu</li>
+            <li>Cliquez sur le bouton <b>"Installer"</b></li>
+            <li>Actualisez la page, et cliquer sur le bouton <b>"Activer"</b></li>
+            <li>Pour personnaliser votre Thème il suffit de cliquer le cliquer sur le bouton <b>"Personnaliser"</b></li>
+        </ul>
+    <h3>Installer un plugin</h3>
+        <p>Vous devez préalablement allez sur la page des Thème et être connecté à votre site pour accéder à la page <b>"/admin/plugin"</b> et faire les manipulations suivantes :</p>
+        <ul>
+            <li>Repérez le Plugin voulu</li>
+            <li>Cliquez sur le bouton <b>"Installer"</b></li>
+            <li>Actualisez la page, allez sur la page pour personnaliser la barre de navigation <b>"/admin/navbar"</b></li>
+            <li>Cliquez sur <b> "Ajouter un lien"</b></li>
+            <ul>
+                <li>Et ensuite cliquer sur <b>"Type"</b> et choisir <b>"classique"</b></li>
+                <li>Puis cliquer sur <b>"Plugin"</b> et chosir votre plugin</li>
+            </ul>
+        </ul>
+
+<h2 id="git-hub">Via Github</h2>
+    <p>Certains Plugins ou Thèmes ne sont pas présents sur la panel-admin, vous pouvez donc allez sur le <a href="https://github.com/MineWeb">Github</a> de Mineweb.</p>
+    <h3>Installer un thème</h3>
+        <p>Vous devez préalablement allez sur la page Github de votre thème mineweb et faire les manipulations suivantes :</p>
+        <ul>
+            <li>Cliquez sur <b>"Clone or download"</b> présent sur la page de votre Thème</li>
+            <li>Téléchargez et enregistrez le ZIP, puis extrayez le</li>
+            <li>Renommez le dossier <b>"Theme-"Nom du Thème"-master"</b> par <b>"Nom du Thème"</b>, respectez tout de même les majuscules</li>
+            <li>Déplacez le dossier dans votre FTP à l'adresse <b>"/app/view/themed"</b> et de mettre les permissions <b>"777"</b> à tout le dossier dossier en récursif</li>
+        </ul>
+    <h3>Installer un plugin</h3>
+    <p>Vous devez préalablement allez sur la page Github de votre plugin mineweb et faire les manipulations suivantes :</p>
+        <ul>
+            <li>Cliquez sur <b>"Clone or download"</b> présent sur la page de votre Plugin</li>
+            <li>Téléchargez et enregistrez le ZIP, puis extrayez le</li>
+            <li>Renommez le dossier <b>"Plugin-"Nom du Plugin"-master"</b> par <b>"Nom du Plugin"</b>, respectez tout de même les majuscules</li>
+            <li>Déplacez le dossier dans votre FTP à l'adresse <b>"/app/Plugin"</b> et de mettre les permissions <b>"777"</b> à tout le dossier en récursif</li>
+            <li>Supprimez tous les fichiers dans le dossier <b>"/app/tmp/cache"</b> présent dans votre FTP</li>
+        </ul><br>
+        
+        <p>Si vous n'y arrivez pas vous pouvez rejoindre le <a href="https://discordapp.com/invite/3QYdt8r">Discord</a></p>
+              <h1 id="cr-er-un-plugin">Créer un plugin</h1>
 
 <h3 id="introduction">Introduction</h3>
 
@@ -1641,7 +1698,24 @@ Insérez ce PHP au début de votre page:</p>
         <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"sidebar_code"</span> <span class="na">name=</span><span class="s">"sidebar_code"</span> <span class="na">cols=</span><span class="s">"30"</span> <span class="na">rows=</span><span class="s">"10"</span><span class="nt">&gt;</span><span class="cp">&lt;?= $config['sidebar_code']; ?&gt;</span><span class="nt">&lt;/textarea&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-
+        <h1 id="copyright">Copyright</h1>
+<h2 id="copyright-cms">Copyright sur le CMS</h2>
+    <p>Une question très légitime après le passage de MineWeb en open-source est ce qu'il faut garder le copyright de MineWeb ainsi que celui du Thème en bas du site. Il y a donc 2 manières dont les personnes voient le copyright :</p>
+    <ul>
+        <li>Le copyright fait tache sur mon site</li>
+        <li>Le copyright est là pour le respect des développeurs qui ont conçu mon site</li>
+    </ul>
+    <p>MineWeb est un CMS dit <b>Open Source</b>, cela vous autorise à utiliser le CMS à des fins commerciales, à modifier le code, le design, tout en restant gratuit pour vous. Toutefois vous avez <b>l’obligation de garder les noms des auteurs et du CMS</b> selon les règles établies par le fondateur du CMS et auteurs tiers (pour les thèmes & plugins). C’est grâce à cela que le CMS permet d’exister en restant gratuit. Cela agrandit la communauté du CMS, ce qui permet à de tiers développeurs d’agrandir par exemple le market.</p>
+    <p>MineWeb comporte actuellement une trentaine de thèmes et une trentaine de plugins développés par des développeurs de la communauté qui comme vous aussi ont voulu ajouter des fonctionnalités.
+    Si vous ne désirez pas laisser le copyright, nous ne pouvons pas vous forcer. Personne ne vous empêche de voler à la boutique du coin mais pourtant vous ne le faites pas puisque le vol est interdit.
+    </p>
+    <h3>Si vous le faites tout de même :</h3> 
+    <ul>
+        <li>C’est que vous ne respectez pas le travail d’autrui</li>
+        <li>Et personne ne sera près à vous aider sur ce Discord</li>
+    </ul>
+    
+    <p> 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
