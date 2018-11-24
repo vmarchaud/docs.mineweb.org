@@ -1,14 +1,3 @@
-# Erreur 500
-
-Pour corriger l'erreur 500 sur votre cms faites <strong>toutes</strong> les étapes :
-*   Supprimez le contenu du fichier **"/app/tmp/"**
-*   Si ca ne marche toujours pas : 
-    *   Réeffectuez la manipulation qui a provoqué l'erreur
-    *   Mettez en ligne sur Pastebin le fichier **"/app/tmp/logs/error.log"** afin de donner le lien au support dans le chat du [Discord](https://discordapp.com/invite/3QYdt8r)
-
-
-Pour éviter les confusions ou éviter toute erreur de votre part, merci de bien vouloir lire toute la documentation avant de demander de l'aide au support et pour être plus efficace.
-
 # Installation
 
 <aside class="alert alert-info">
@@ -45,6 +34,22 @@ Retirez les deux slashs
 `define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'lib');`
 
 Sauvegardez et rechargez la page.
+
+### Erreur 500
+
+Pour corriger l'erreur 500 sur votre cms faites **toutes** les étapes :
+
+*   Supprimez le contenu du fichier **"/app/tmp/"**
+*   Si ca ne marche toujours pas : 
+    *   Réeffectuez la manipulation qui a provoqué l'erreur
+    *   Mettez en ligne sur Pastebin le fichier **"/app/tmp/logs/error.log"** afin de donner le lien au support dans le chat du [Discord](https://discordapp.com/invite/3QYdt8r)
+
+
+Pour éviter les confusions ou éviter toute erreur de votre part, merci de bien vouloir lire toute la documentation avant de demander de l'aide au support et pour être plus efficace.
+
+### Page introuvable
+
+- Lorsque vous mettez un dossier a la racine du CMS vous avez une erreur de page introuvable suivez le PDF disponible [ici](https://docs.mineweb.org/files/Webroot-Helper.pdf).
 
 ### Autres
 
