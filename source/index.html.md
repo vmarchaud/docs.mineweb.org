@@ -39,7 +39,6 @@ Pour installer le CMS MineWeb votre hébergeur **doit** avoir :
 *   La librairie GD2
 *   La possibilité d'ouvrir un zip
 *   La possibilité d'ouvrir un site à distance
-*   ionCube Loader
 *   OpenSSL
 
 Pour plus de simplicité vous pouvez télécharger le **fichier de compatibilité** [ici](https://docs.mineweb.org/files/compatibilite.zip). Vous avez juste à extraire cette archive sur votre FTP pour voir si votre hébergeur est compatible.

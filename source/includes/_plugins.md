@@ -4,6 +4,8 @@
 
 Un plugin (aussi appelé _extension_), est un ensemble de __fichiers__ qui sont ajoutés à votre CMS pour y ajouter plusieurs __fonctionnalités__ ou modifier certains __comportements__ par défaut. Différents plugins “officiels” sont _déjà disponibles_ [ici](https://github.com/MineWeb?utf8=%E2%9C%93&q=Plugin-&type=&language=php). D’autres peuvent être _développés par la communauté_ et c’est le but de ce tutoriel.
 
+Un PDF est disponible [ici](https://docs.mineweb.org/files/Pl-Helper.pdf) pour vous aider à comprendre et à créer votre plugin.
+
 ## Création
 
 ### Création des fichiers/dossiers
