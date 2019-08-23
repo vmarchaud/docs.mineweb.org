@@ -6,7 +6,8 @@
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">plugin Bukkit/Spigot/Bungeecord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">plugin Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Rcon : <em>Permet l'utilisation des plugins (boutique, classement factions, vote…)</em></br>
   - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
@@ -61,6 +62,11 @@ Il vous suffit ensuite de configurer un serveur comme ceci depuis la page de lia
 - `Mot de passe RCON` par le mot de passe RCON.
 
 Cliquez ensuite sur _Connexion_ pour tester la connexion.
+
+<aside class="alert alert-warning">
+  <h3>Bungeecord</h3>
+  <p>Pour lier votre site Mineweb avec un serveur Bungeecord, vous devez utiliser le Rcon. Pour cela, installez BungeeRcon sur votre serveur Bungeecord, et reliez le Rcon à BungeeRcon.</p>
+</aside>
 
 ## Liaison par PING
 
