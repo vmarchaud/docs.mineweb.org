@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://mineweb.org/favicon.png" alt="MineWeb">
+  <img src="https://docs.mineweb.org/images/logo.png" alt="MineWeb">
 </p>
 
 <p align="center">Documentation du CMS MineWeb.</p>
