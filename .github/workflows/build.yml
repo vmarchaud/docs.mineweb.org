@@ -1,0 +1,35 @@
+name: Build doc
+
+on:
+  push:
+    branches:    
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-16.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install deps
+      run: |
+        sudo apt-get update
+        sudo apt -y install software-properties-common
+        sudo apt-add-repository ppa:brightbox/ruby-ng
+        sudo apt-get update
+        sudo apt-get install -yq ruby2.0 ruby2.0-dev pkg-config build-essential nodejs git libxml2-dev libxslt-dev
+        sudo apt-get autoremove -yq
+        sudo gem2.0 install --no-ri --no-rdoc bundler -v '1.14.6'
+        bundle config build.nokogiri --use-system-libraries
+        bundle install
+    - uses: webfactory/ssh-agent@v0.1.1
+      with:
+        ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+    - name: Build & deploy doc
+      run: |
+        # git config --global user.email "contact@eywek.fr"
+        # git config --global user.name "Eywek"
+        bash deploy.sh
+      env:
+        GIT_DEPLOY_REPO: git@github.com:${{github.repository}}.git
