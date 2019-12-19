@@ -167,7 +167,12 @@
 
 <aside class="alert alert-info">
 <h3>Informations</h3>
-<p>Vous devez placer tout le contenu de l'archive téléchargée, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 755 ou 775 sur tous les fichiers (pour permettre les mises à jour). Puis rendez-vous sur sur http://{votre site}/install</p>
+<h4>Sur un VPS</h4>
+
+Pour une installation simple, et rapide du CMS et de ses dépendances, utilisez le script d'installation : [TELECHARGEMENT & DOCUMENTATION](https://github.com/MaximeMichaud/mineweb-install)
+
+<h4>Sur un mutialisé</h4>
+<p>Vous devez placer tout le contenu de l'archive téléchargée, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 777 sur tous les fichiers (pour permettre les mises à jour et création des fichiers). Puis rendez-vous sur sur http://{votre site}/install</p>
 </aside>
 
 <h2 id="tape-1-configuration-de-la-base-de-donn-es">Étape 1 - Configuration de la base de données</h2>
@@ -180,9 +185,13 @@
 
 <h2 id="installation-termin-e">Installation terminée</h2>
 
-<p>Une fois l&#39;installation du CMS complétée vous pouvez passer à l&#39;utilisation du CMS en lui-même. Pour configurer votre CMS il vous faut vous connecter en cliquant sur le bouton en haut à gauche de la barre de navigation. Vous cliquez sur connexion puis entrez vos informations pour vous connecter. Vous cliquez ensuite sur Panel administrateur, vous serez redirigé et vous pourrez ensuite cliquer sur <em>Général</em> puis <em>Préférences générales</em>.</p>
+<p>Une fois l&#39;installation du CMS complétée vous pouvez passer à l&#39;utilisation du CMS en lui-même. Pour configurer votre CMS il vous faut vous connecter en cliquant sur le bouton en haut à droite de la barre de navigation. Vous cliquez sur &ldquo;Connexion&rdquo; puis entrez vos informations pour vous connecter. Vous cliquez ensuite sur &ldquo;Panel administrateur&rdquo;, vous serez redirigé vers l&#39;espace d&#39;administration où vous pouvez configurer votre site.</p>
 
 <h2 id="aide-externe-et-probl-mes-fr-quents">Aide externe et problèmes fréquents</h2>
+
+<h3 id="important">Important</h3>
+
+<p><strong>Pour éviter les confusions ou éviter toute erreur de votre part, merci de bien vouloir lire toute la documentation avant de demander de l&#39;aide au support et pour être plus efficace.</strong></p>
 
 <h3 id="probl-me-chez-livehost">Problème chez livehost</h3>
 
@@ -200,21 +209,40 @@
 
 <p>Sauvegardez et rechargez la page.</p>
 
-<h3 id="erreur-500">Erreur 500</h3>
+<h3 id="erreur-crsf">Erreur CRSF</h3>
+
+<ul>
+<li>Supprimer le contenu du dossier <strong>&ldquo;/app/tmp/&rdquo;</strong>*</li>
+<li>Supprimer le cache de votre navigateur</li>
+<li>Vérifier que le <strong>HTTPS</strong> est forcé</li>
+</ul>
+
+<h3 id="erreur-crsf-chez-ovh">Erreur CRSF chez OVH</h3>
+
+<p>Il est possible que les instructions ci-dessus pour l&#39;erreur CRSF n&#39;est aucun effet si vous êtes hébergés chez OVH.</p>
+
+<p>Dans le .ovhconfig, changez le <strong>app.engine=php</strong> en <strong>app.engine=phpcgi</strong></p>
+
+<h3 id="erreur-500-ionos">Erreur 500 (Ionos)</h3>
+
+<ul>
+<li>Supprimez le contenu du dossier <strong>&ldquo;/app/tmp/&rdquo;</strong></li>
+<li>Ajouter <strong>RewriteBase /</strong> dans le <strong>.htaccess</strong> contenu dans <strong>/app/webroot/</strong></li>
+</ul>
+
+<h3 id="erreur-500-hors-ionos">Erreur 500 (Hors Ionos)</h3>
 
 <p>Pour corriger l&#39;erreur 500 sur votre cms faites <strong>toutes</strong> les étapes :</p>
 
 <ul>
-<li>  Supprimez le contenu du fichier <strong>&ldquo;/app/tmp/&rdquo;</strong></li>
-<li>  Si ca ne marche toujours pas : 
+<li>  Supprimez le contenu du dossier <strong>&ldquo;/app/tmp/&rdquo;</strong></li>
+<li>  Si ca ne marche toujours pas :
 
 <ul>
 <li>  Réeffectuez la manipulation qui a provoqué l&#39;erreur</li>
 <li>  Mettez en ligne sur Pastebin le fichier <strong>&ldquo;/app/tmp/logs/error.log&rdquo;</strong> afin de donner le lien au support dans le chat du <a href="https://discordapp.com/invite/3QYdt8r">Discord</a></li>
 </ul></li>
 </ul>
-
-<p>Pour éviter les confusions ou éviter toute erreur de votre part, merci de bien vouloir lire toute la documentation avant de demander de l&#39;aide au support et pour être plus efficace.</p>
 
 <h3 id="page-introuvable">Page introuvable</h3>
 
@@ -237,7 +265,8 @@
 
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">plugin Bukkit/Spigot/Bungeecord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">plugin Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Rcon : <em>Permet l'utilisation des plugins (boutique, classement factions, vote…)</em></br>
   - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
 
@@ -299,6 +328,11 @@ Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.</p>
 </ul>
 
 <p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion.</p>
+
+<aside class="alert alert-warning">
+  <h3>Bungeecord</h3>
+  <p>Pour lier votre site Mineweb avec un serveur Bungeecord, vous devez utiliser le Rcon. Pour cela, installez BungeeRcon sur votre serveur Bungeecord, et reliez le Rcon à BungeeRcon.</p>
+</aside>
 
 <h2 id="liaison-par-ping">Liaison par PING</h2>
 
@@ -1739,7 +1773,7 @@ Insérez ce PHP au début de votre page:</p>
 <li>  Le copyright est là pour le respect des développeurs qui ont conçu mon site</li>
 </ul>
 
-<p>MineWeb est un CMS dit <strong>Open Source</strong>, cela vous autorise à utiliser le CMS à des fins commerciales, à modifier le code, le design, tout en restant gratuit pour vous. 
+<p>MineWeb est un CMS dit <strong>Open Source</strong>, cela vous autorise à utiliser le CMS à des fins commerciales, à modifier le code, le design, tout en restant gratuit pour vous.
 Toutefois vous avez <strong>l’obligation de garder les noms des auteurs et du CMS</strong> selon les règles établies par le fondateur du CMS et auteurs tiers (pour les thèmes &amp; plugins). C’est grâce à cela que le CMS permet d’exister en restant gratuit. Cela agrandit la communauté du CMS, ce qui permet à de tiers développeurs d’agrandir par exemple le market.</p>
 
 <p>MineWeb comporte actuellement une trentaine de thèmes et une trentaine de plugins développés par des développeurs de la communauté qui comme vous aussi ont voulu ajouter des fonctionnalités.
@@ -1749,7 +1783,7 @@ Si vous ne désirez pas laisser le copyright, nous ne pouvons pas vous forcer. P
 
 <ul>
 <li>  C’est que vous ne respectez pas le travail d’autrui</li>
-<li>  Et personne ne sera près à vous aider sur ce Discord</li>
+<li>  <strong>Et personne ne sera près à vous aider sur ce Discord</strong></li>
 </ul>
 
       </div>
