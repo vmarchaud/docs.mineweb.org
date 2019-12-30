@@ -141,7 +141,7 @@
 
 <h2 id="c-39-est-quoi-mineweb">C&#39;est quoi MineWeb ?</h2>
 
-<p>MineWeb est un <strong>CMS</strong>. Un CMS est un système de gestion de contenu. Plus précisément il vous permet de vous créer rapidement et facilement un site complètement personnalisable. MineWeb est la version 2 de l&#39;ancien CMS <strong>LapisCraft</strong> de Eywek. Celui-ci n&#39;étant plus stable et mal développé (cf. raisons <a href="https://eywek.fr/lc-explications.pdf">ici</a>).</p>
+<p>MineWeb est un <strong>CMS</strong>. Un CMS est un système de gestion de contenu. Plus précisément il vous permet de vous créer rapidement et facilement un site complètement personnalisable. MineWeb est la version 2 de l&#39;ancien CMS <strong>LapisCraft</strong> de Eywek. Celui-ci n&#39;étant plus stable et mal développé (cf. raisons <a href="https://docs.mineweb.org/files/lc-explications.pdf">ici</a>).</p>
 
 <p>MineWeb est développé sous un framework PHP nommé <strong>CakePHP</strong> permettant un développement plus <strong>rapide</strong>, <strong>sécurisé</strong> et <strong>optimisé</strong>. Le projet a été lancé en 2015 en compagnie de <strong>Mac&rsquo;</strong> permettant de convenir entièrement à <strong>vos besoins</strong>.</p>
 
@@ -150,7 +150,7 @@
 <p>Pour installer le CMS MineWeb votre hébergeur <strong>doit</strong> avoir :</p>
 
 <ul>
-<li>  Version PHP supérieure ou égale à 5.6 et inférieure ou égale à 7.3</li>
+<li>  Version PHP supérieure ou égale à 5.6 et inférieure ou égale à 7.4</li>
 <li>  PDO activé</li>
 <li>  cURL activé</li>
 <li>  Réécriture d&#39;URL</li>
@@ -169,7 +169,7 @@
 <h3>Informations</h3>
 <h4>Sur un VPS</h4>
 
-Pour une installation simple, et rapide du CMS et de ses dépendances, utilisez le script d'installation : [TELECHARGEMENT & DOCUMENTATION](https://github.com/MaximeMichaud/mineweb-install)
+Pour une installation simple, et rapide du CMS et de ses dépendances, utilisez le script d'installation : [TELECHARGEMENT](https://github.com/MaximeMichaud/mineweb-install)
 
 <h4>Sur un mutialisé</h4>
 <p>Vous devez placer tout le contenu de l'archive téléchargée, sur votre hébergeur (les fichiers .DS_Store & \__MACOSX sont inutiles). Il faut ensuite appliquer les permissions 777 sur tous les fichiers (pour permettre les mises à jour et création des fichiers). Puis rendez-vous sur sur http://{votre site}/install</p>
@@ -182,6 +182,8 @@ Pour une installation simple, et rapide du CMS et de ses dépendances, utilisez 
 <h2 id="tape-2-cr-ation-de-l-39-administrateur">Étape 2 - Création de l&#39;administrateur</h2>
 
 <p>Voici la deuxième et dernière étape de l&#39;installation du CMS, vous allez créer votre compte administrateur qui vous permettra d&#39;accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton &ldquo;Suivant&rdquo;.</p>
+
+<p>Si vous obtenez l&#39;erreur &ldquo;Erreur : vous n&#39;avez pas la même IP qu&#39;à la création de la base de données&rdquo; lors de la création du compte admin lors de l&#39;installation du CMS, supprimez le fichier config/secure.txt et actualisez la page.</p>
 
 <h2 id="installation-termin-e">Installation terminée</h2>
 
