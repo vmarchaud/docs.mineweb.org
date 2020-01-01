@@ -18,7 +18,7 @@ Vous devez avoir une page demandant vos identifiants de base de données, vous d
 
 Voici la deuxième et dernière étape de l'installation du CMS, vous allez créer votre compte administrateur qui vous permettra d'accéder au panel admin du CMS. Vous avez juste à remplir les champs qui vous sont présentés et à soumettre vos informations en cliquant sur le bouton "Suivant".
 
-Si vous obtenez l'erreur "Erreur : vous n'avez pas la même IP qu'à la création de la base de données" lors de la création du compte admin lors de l'installation du CMS, supprimez le fichier config/secure.txt et actualisez la page.
+La création d'un compte administrateur est sécurisée, seule celui qui a connecté la base de donné peut accéder a la création du compte administrateur, toute fois si vous venez à changer d'adresse IP ou que le site détecte que c'est le cas, veuillez supprimer le fichier config/secure.txt et actualisez la page.
 
 ## Installation terminée
 
