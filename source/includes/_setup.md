@@ -61,7 +61,7 @@ Dans le .ovhconfig, changez le **app.engine=php** en **app.engine=phpcgi**
 ### Erreur 500 (Ionos)
 
 * Supprimez le contenu du dossier **"/app/tmp/"**
-* Ajouter **RewriteBase /** dans le **.htaccess** contenu dans **/app/webroot/**
+* Ajouter **RewriteBase /** dans le **.htaccess** à la **racine du CMS** et dans **/app/webroot/**
 
 ### Erreur 500 (Hors Ionos)
 
