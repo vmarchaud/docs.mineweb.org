@@ -40,7 +40,7 @@ Maintenant que vous avez configuré le serveur vous pouvez __ajouter un serveur_
 Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, rendez-vous sur [**cette section**](https://docs.mineweb.org/#la-connexion-choue)
 
 <aside class="alert alert-warning">
-<b>Port customisé :</b>Protocolibs n'est pas obligatoire pour utiliser un port personnalisé. Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert (Ne pas mettre le port de son serveur) et effectuez la commande /mineweb port <port>.
+<b>Port customisé :</b> Protocolibs n'est pas obligatoire pour utiliser un port personnalisé. Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert (Ne pas mettre le port de son serveur) et effectuez la commande /mineweb port <port>.
 </aside>
 
 ## Liaison par RCON
