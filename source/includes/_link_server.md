@@ -63,6 +63,11 @@ Il vous suffit ensuite de configurer un serveur comme ceci depuis la page de lia
 
 Cliquez ensuite sur _Connexion_ pour tester la connexion.
 
+<aside class="alert alert-warning">
+  <h3>Bungeecord</h3>
+  <p>Pour lier votre site Mineweb avec un serveur Bungeecord, vous devez utiliser le Rcon. Pour cela, installez BungeeRcon sur votre serveur Bungeecord, et reliez le Rcon à BungeeRcon.</p>
+</aside>
+
 ## Liaison par PING
 
 Vous n’avez pas besoin de plugin pour cette liaison, il vous suffit juste de configurer un serveur comme ceci depuis la page de liaison :
