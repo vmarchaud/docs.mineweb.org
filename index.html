@@ -262,12 +262,12 @@ Pour une installation simple, et rapide du CMS et de ses dépendances, utilisez 
 
 <aside class="alert alert-warning">
   <h3>Compatibilité</h3>
-  <p>Les plugins sont compatibles à partir de la version 1.8</p>
+  <p>Le plugin est compatible à partir de la version 1.8</p>
 </aside>
 
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">plugin Spigot</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.3.jar">plugin Spigot/BungeCord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
   - Rcon : <em>Permet l'utilisation des plugins (boutique, classement factions, vote…)</em></br>
   - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
@@ -285,7 +285,7 @@ Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra
 
 <h2 id="liaison-un-serveur-par-d-faut">Liaison à un serveur (par défaut)</h2>
 
-<p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-2.0.0.jar">cette adresse</a>.
+<p>Maintenant nous allons lier votre <strong>serveur Minecraft</strong> au <strong>CMS</strong>. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.3.jar"><strong>cette adresse</strong></a>.
 Une fois le plugin téléchargé, placez-le dans votre dossier <code class="prettyprint">plugins</code> de votre serveur et <strong>redémarrez celui-ci</strong>.
 Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.</p>
 
@@ -294,23 +294,25 @@ Vous n’avez <strong>pas à toucher à la configuration du plugin</strong>.</p>
 <ul>
 <li><code class="prettyprint">Type de la connexion</code>, donc mettez <em>Par défaut</em>.</li>
 <li><code class="prettyprint">Nom</code> par le nom affiché.</li>
-<li><code class="prettyprint">IP</code> par l’ip (ou domaine) sans le port.</li>
-<li><code class="prettyprint">Port</code> par le port de votre serveur (25565 par défaut si vous n’avez pas de port).</li>
+<li><code class="prettyprint">IP</code> par l’ip (ou domaine) sans le port (Ex. 187.25.69.24).</li>
+<li><code class="prettyprint">Port</code> change suivant le type de serveur (Ex. 25565)
+
+<ul>
+<li><code class="prettyprint">Port</code> <strong>Pour Spigot :</strong> par le port de votre serveur, attention à ne pas effectuer de commande en jeu si vous utilisez le port du serveur (seulement si vous avez protocolibs, sinon utilisez un port personnalisé).</li>
+<li><code class="prettyprint">Port</code> <strong>Pour BungeeCord :</strong> par le port de votre serveur.</li>
+</ul></li>
 </ul>
 
-<p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion, si celle-ci échoue, rendez-vous sur <a href="https://docs.mineweb.org/#la-connexion-choue">cette section</a></p>
-
-<aside class="alert alert-info">
-<b>Port customisé :</b> Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert et effectuez la commande /mineweb port <port>.
-</aside>
+<p>Cliquez ensuite sur <em>Connexion</em> pour tester la connexion, si celle-ci échoue, rendez-vous sur <a href="https://docs.mineweb.org/#la-connexion-choue"><strong>cette section</strong></a></p>
 
 <aside class="alert alert-warning">
-<b>ProtocolLib :</b> Si vous avez ProtocolLib et que le plugin produit une erreur à cause du plugin de MineWeb vous pouvez utiliser <a href="https://github.com/MineWeb/ServerBridge/raw/no-injector/mineweb_bridge-2.0.0.jar">celui-ci</a>. Vous devez obligatoirement configurer un port disponible et ouvert à l'aide la commande /mineweb port <port>.
+<b>Port customisé :</b> Protocolibs n'est pas obligatoire pour utiliser un port personnalisé. Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert (Ne pas mettre le port de son serveur) et effectuez la commande /mineweb port <port>.
 </aside>
 
 <h2 id="liaison-par-rcon">Liaison par RCON</h2>
 
-<p>Vous n’avez pas besoin de plugin pour cette liaison. Le protocol RCON est disponible sur tous les serveurs minecraft et permet de communiquer avec le site. Pour utiliser ce protocol il vous faut le configurer dans votre server.properties :</p>
+<p>Vous n’avez pas besoin de plugin pour cette liaison. Via ce protocol vous ne pouvez pas utiliser l&#39;option obligeant un joueur à être connecté sur le serveur, il faut utiliser le plugin pour cela. 
+Le RCON est disponible sur tous les serveurs minecraft et permet de communiquer avec le site. Pour utiliser ce protocol il vous faut le configurer dans votre server.properties :</p>
 
 <ul>
 <li>Passer enable-rcon à true, puis redémarrez votre serveur</li>
