@@ -6,7 +6,7 @@
 </aside>
 <aside class="alert alert-info">
   <p><strong>Type de connexion</strong>:  <br>
-  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.5.jar">plugin Spigot/BungeCord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
+  - Par défaut : <em>connexion à un serveur lié avec le <a href="https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.6.jar">plugin Spigot/BungeCord</a>, permet l’utilisation de toutes les fonctionnalités du CMS (boutique, classement factions, vote…)</em> <br>
   - Rcon : <em>Permet l'utilisation des plugins (boutique, classement factions, vote…)</em></br>
   - Ping : <em>connexion à un serveur sans plugin, permet uniquement d’avoir le nombre de joueurs en ligne et le nombre de joueurs maximums (la <strong>boutique</strong> et le <strong>classement</strong> factions <strong>ne pourront pas être utilisés</strong> avec ce type de connexion) </em></p>
 </aside>
@@ -24,7 +24,7 @@ Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra
 
 ## Liaison à un serveur (par défaut)
 
-Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [**cette adresse**](https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.5.jar).
+Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [**cette adresse**](https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.6.jar).
 Une fois le plugin téléchargé, placez-le dans votre dossier `plugins` de votre serveur et __redémarrez celui-ci__.
 Vous n’avez __pas à toucher à la configuration du plugin__.
 
