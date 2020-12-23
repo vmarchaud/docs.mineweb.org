@@ -105,26 +105,39 @@ Si vous n'êtes pas un adepte du PHP, vous pouvez essayer d'utiliser le code dé
 La génération se fait à partir du code suivant (exemple):
 
 ```php
-<?php if(!empty($nav)): ?>
-	<?php $i = 0; ?>
-	<?php foreach ($nav as $key => $value): ?>
-		<?php if(empty($value['Navbar']['submenu'])): ?>
-			<li class="<?php if($this->here == $value['Navbar']['url']) { ?> active<?php } ?>"><a href="<?= $value['Navbar']['url'] ?>"><?= $value['Navbar']['name'] ?></a></li>
-		<?php else: ?>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $value['Navbar']['name'] ?> <span class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-				<?php
-				$submenu = json_decode($value['Navbar']['submenu']);
-				foreach ($submenu as $k => $v) {
-				?>
-					<li><a href="<?= rawurldecode(rawurldecode($v)) ?>"<?= ($value['Navbar']['open_new_tab']) ? ' target="_blank"' : '' ?>><?= rawurldecode(str_replace('+', ' ', $k)) ?></a></li>
-				<?php } ?>
-				</ul>
-			</li>
-		<?php endif; ?>
-	<?php endforeach; ?>
-<?php endif; ?>
+<?php
+if (!empty($nav)) {
+    foreach ($nav as $key => $value) { ?>
+        <?php if (empty($value['Navbar']['submenu'])) { ?>
+            <li class="li-nav<?php if ($this->params['controller'] == $value['Navbar']['name']) { ?> actived<?php } ?>">
+                <a href="<?= $value['Navbar']['url'] ?>"<?= ($value['Navbar']['open_new_tab']) ? ' target="_blank"' : '' ?>>
+                    <?php if (!empty($value['Navbar']['icon'])): ?>
+                        <i class="<?= $value['Navbar']['icon'] ?>"></i>
+                    <?php endif; ?>
+                    <?= $value['Navbar']['name'] ?>
+                </a>
+
+            </li>
+        <?php } else { ?>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false"><?= $value['Navbar']['name'] ?> <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <?php
+                    $submenu = json_decode($value['Navbar']['submenu']);
+                    foreach ($submenu as $k => $v) {
+                        ?>
+                        <li>
+                            <a href="<?= rawurldecode($v) ?>"<?= ($value['Navbar']['open_new_tab']) ? ' target="_blank"' : '' ?>>
+                                <?= rawurldecode(str_replace('+', ' ', $k)) ?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </li>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
 ```
 Il est conseillé de prendre pour exemple un thème déjà existant afin de comprendre les différentes variables et fonctions utilisées habituellement.
 
