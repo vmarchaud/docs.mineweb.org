@@ -58,12 +58,12 @@ Il est possible que les instructions ci-dessus pour l'erreur CRSF n'est aucun ef
 
 Dans le .ovhconfig, changez le **app.engine=php** en **app.engine=phpcgi**
 
-### Erreur 500 (Ionos)
+### MineWeb dans un sous Dossier ?
 
 * Supprimez le contenu du dossier **"/app/tmp/"**
-* Ajouter **RewriteBase /** dans le **.htaccess** à la **racine du CMS** et dans **/app/webroot/**
+* Supprimez **RewriteBase /** dans le **.htaccess** à la **racine du CMS** et dans **/app/webroot/** ou précisez le sous dossier à la suite du **/**.
 
-### Erreur 500 (Hors Ionos)
+### Erreur 500
 
 Pour corriger l'erreur 500 sur votre cms faites **toutes** les étapes :
 
