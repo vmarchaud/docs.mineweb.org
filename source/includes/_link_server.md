@@ -24,7 +24,7 @@ Vous avez à côté deux boutons pour désactiver la fonctionnalité (qui mettra
 
 ## Liaison à un serveur (par défaut)
 
-Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [**cette adresse**](https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.6.jar).
+Maintenant nous allons lier votre __serveur Minecraft__ au __CMS__. Pour cela vous devez avoir installé sur votre serveur le plugin MineWeb disponible à [**cette adresse**](https://github.com/MineWeb/ServerBridge/raw/master/mineweb_bridge-3.0.8.jar) (Attention ! Si vous avez java 17+ veuillez suivre les indications à la fin de la section).
 Une fois le plugin téléchargé, placez-le dans votre dossier `plugins` de votre serveur et __redémarrez celui-ci__.
 Vous n’avez __pas à toucher à la configuration du plugin__.
 
@@ -41,6 +41,15 @@ Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, r
 
 <aside class="alert alert-warning">
 <b>Port customisé :</b> Protocolibs n'est pas obligatoire pour utiliser un port personnalisé. Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert (Ne pas mettre le port de son serveur) et effectuez la commande /mineweb port <port>.
+</aside>
+<br><br>
+<aside class="alert alert-error">
+<b>Java 17 :</b> Pour utiliser le plugin avant java 17 vous devez ajouter ces lignes dans le lancement de votre serveur : 
+
+```
+  --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+```
+
 </aside>
 
 ## Liaison par RCON
