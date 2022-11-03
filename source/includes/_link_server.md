@@ -43,7 +43,7 @@ Cliquez ensuite sur _Connexion_ pour tester la connexion, si celle-ci échoue, r
 <b>Port customisé :</b> Protocolibs n'est pas obligatoire pour utiliser un port personnalisé. Vous pouvez également configurer un port personnalisé si vous ne souhaitez pas utiliser le port minecraft de votre serveur. Pour cela, assurez-vous d'avoir un port disponible et ouvert (Ne pas mettre le port de son serveur) et effectuez la commande /mineweb port <port>.
 </aside>
 <br><br>
-<aside class="alert alert-error">
+<aside class="alert alert-danger">
 <b>Java 17 :</b> Pour utiliser le plugin avant java 17 vous devez ajouter ces lignes dans le lancement de votre serveur : 
 
 ```
